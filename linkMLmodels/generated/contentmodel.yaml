@@ -1,0 +1,2946 @@
+id: https://who.int/whofic/foundation/whofic/contentmodel
+name: WhO-FIC Content Model
+description: |-
+  WHO-FIC Content Model for core WHO-FIC classifications
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sh: http://www.w3.org/ns/shacl#
+  icd: http://who.int/icd#
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+classes:
+
+  ICDSection:
+    description >-
+      Description of WHO-FIC Schema 
+    slots:
+      - displayStatus
+    in_subset:
+      - class_schema_subset
+
+  TreatmentSection:
+    is_a: ICDSection
+    description >-
+      Description of TreatmentSection
+    slots:
+      - treatment
+    in_subset:
+      - class_schema_subset
+
+  ExternalCauseSection:
+    is_a: ICDSection
+    description >-
+      Description of ExternalCauseSection
+    slots:
+      - activitiesDescriptor
+      - counterMeasureDescriptor
+      - placeOfOccurrenceDescriptor
+      - activityWhenInjured
+      - placeOfOccurrence
+      - intentDescriptor
+      - mechanismOfInjury
+      - substanceUse
+      - sportsActivityDescriptor
+      - occupationalDescriptor
+      - objectOrSubstanceProducingInjury
+      - transportDimension
+      - icd10Reference
+      - transportEventDescriptor
+      - violenceDescriptor
+      - intent
+    in_subset:
+      - class_schema_subset
+
+  DefinitionSection:
+    is_a: ICDSection
+    description >-
+      Description of Definitions 
+    slots:
+      - assignedTAG
+      - childrenOrder
+      - definitionPrefilled
+      - unspecifiedTypeComment
+      - icdCode
+      - icdTitle
+      - fullySpecifiedName
+      - hasType
+      - definition
+      - isObsolete
+      - sortingLabel
+      - clamlKind
+      - editorialStatusDefinition
+      - longDefinition
+      - clamlUsage
+      - id
+    in_subset:
+      - class_schema_subset
+
+  FunctionalImpactSection:
+    is_a: ICDSection
+    description >-
+      Description of FunctionalImpactSection 
+    slots:
+      - selectedHouseholdActivitiesImpact
+      - selectedChildrenAndYouthImpact
+      - selectedLifeManagementActivitiesImpact
+      - selectedSchoolActivitiesImpact
+      - otherHouseholdActivitiesImpact
+      - selectedInterpersonalRelationsImpact
+      - selectedUnderstandingImpact
+      - otherChildrenAndYouthImpact
+      - otherSelfCareImpact
+      - otherInterpersonalRelationsImpact
+      - otherMobilityImpact
+      - selectedSelfCareImpact
+      - otherLifeManagementActivitiesImpact
+      - otherCommunicationImpact
+      - functionalImpact
+      - selectedWorkActivitiesImpact
+      - otherWorkActivitiesImpact
+      - otherSchoolActivitiesImpact
+      - selectedSocialParticipationImpact
+      - otherSocialParticipationImpact
+      - selectedMobilityImpact
+      - otherUnderstandingImpact
+      - selectedCommunicationImpact
+    in_subset:
+      - class_schema_subset
+
+  TermSection:
+    is_a: ICDSection
+    description >-
+      Description of Terms 
+    slots:
+      - baseInclusion
+      - baseExclusion
+      - includesNote
+      - synonym
+      - baseIndex
+      - excludesNote
+      - remark
+      - narrower
+      - inclusion
+      - exclusion
+    in_subset:
+      - class_schema_subset
+
+  SpecificConditionSection:
+    is_a: ICDSection
+    description >-
+      Description of SpecificConditionSection
+    slots:
+      - biologicalSex
+      - lifeCycle
+    in_subset:
+      - class_schema_subset
+
+  CausalMechanismAndRiskFactorsSection:
+    is_a: ICDSection
+    description >-
+      Description of CausalMechanismAndRiskFactorsSection 
+    slots:
+      - diseaseCausingAgent
+      - genomicLinkage
+      - causalFactor
+      - riskFactor
+      - etiologyType
+    in_subset:
+      - class_schema_subset
+
+  PostcoordinationSection:
+    is_a: ICDSection
+    description >-
+      Description of ICD Postcoordination Model 
+    slots:
+      - hasCourseScale
+      - regional
+      - medication
+      - temporalPatternAndOnset
+      - associatedWith
+      - diagnosisConfirmedBy
+      - chemicalAgent
+      - allowedPostcoordinationAxes
+      - hasPatternActivityClinicalStatusScale
+      - causality
+      - specificAnatomy
+      - course
+      - histopathology
+      - severityAxis
+      - distribution
+      - timeInLife
+      - hasCausingCondition
+      - hasManifestation
+      - hasSeverityAxisScale
+      - hasPupilReactionScore
+      - hasGCSScore
+      - durationOfComa
+      - genomicAndChomosomalAnomaly
+      - serotype
+      - infectiousAgent
+      - hasSeverityScale
+      - hasSeverity
+      - precoordinationSuperclass
+      - laterality
+      - relational
+    in_subset:
+      - class_schema_subset
+
+  ICD10NotesAndHintsSection:
+    is_a: ICDSection
+    description >-
+      Description of ICD10NotesAndHintsSection 
+    slots:
+      - codingHint
+      - introduction
+      - preferredLong
+      - note
+      - preferred
+    in_subset:
+      - class_schema_subset
+
+  ExternalReferenceSection:
+    is_a: ICDSection
+    description >-
+      Description of ExternalReferenceSection
+    slots:
+      - externalReference
+    in_subset:
+      - class_schema_subset
+
+  SnomedReferenceSection:
+    is_a: ExternalReferenceSection
+    description >-
+      Description of SnomedReferenceSection 
+    slots:
+
+  LinearizationSection:
+    is_a: ICDSection
+    description >-
+      Description of Linearization Specification 
+    slots:
+      - linearization
+      - exhaustivePartition
+      - historicLinearization
+      - unspecifiedResidualTitle
+      - otherSpecifiedResidualTitle
+    in_subset:
+      - class_schema_subset
+
+  ICFPostcoordinationSection:
+    is_a: ICDSection
+    description >-
+      Description of ICF Postcoordination Model 
+    slots:
+      - hasCapacityWithoutAssistance
+      - hasPerformance
+      - isHinderedBy
+      - hasCapacityWithAssistance
+      - hasImpairmentNature
+      - hasPerformanceWithoutAssistance
+      - isFacilitatedBy
+      - hasDomain
+      - hasImpairmentLocation
+      - hasImpairmentExtent
+    in_subset:
+      - class_schema_subset
+
+  DiagnosticCriteriaSection:
+    is_a: ICDSection
+    description >-
+      Description of DiagnosticCriteriaSection
+    slots:
+      - diagnosticCriteria
+    in_subset:
+      - class_schema_subset
+
+  ClinicalDescriptionSection:
+    is_a: ICDSection
+    description >-
+      Description of ClinicalDescriptionSection 
+    slots:
+      - investigations
+      - temporalProperties
+      - bodyPart
+      - severityScale
+      - morphologicallyAbnormalStructure
+      - severity
+      - signsAndSymptoms
+      - bodySystem
+      - temporalModifier
+    in_subset:
+      - class_schema_subset
+
+  ICHIPostcoordinationSection:
+    is_a: ICDSection
+    description >-
+      Description of ICHI Postcoordinatin Model 
+    slots:
+      - initiatingOrMaintainingOrDiscontinuingOrResuming
+      - hasTarget
+      - hasAction
+      - hasMeans
+      - enablingFactorsForBehaviourChange
+      - temporaryIntervention
+      - clientOrRecipient
+      - additionalTarget
+      - numberOfTherapeuticProductsInserted
+      - interventionProvidedToRecipientInADistantLocation
+      - useOfEquipmentOrChallenge
+      - essentialPathologyTest
+      - standardisationOrStructure
+      - interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider
+      - creativeTherapy
+      - specificSkillsAndTechnique
+      - measurement
+      - laterality
+      - relational
+      - numberOfAnatomicalStructuresAnInterventionIsPerformedOn
+      - unplanned
+      - administrativeSystemLevelAtWhichInterventionDirected
+      - specificAnatomicDetail
+      - numberOfInterventionsPerformed
+      - tissueFlap
+      - relationshipToOtherIntervention
+      - medicament
+      - tissueGraft
+      - interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation
+      - therapeuticProduct
+      - assistiveProduct
+    in_subset:
+      - class_schema_subset
+
+  ContentModelEntity:
+    description >-
+      Description of ContentModelEntity
+    slots:
+
+  IdentifiableClass:
+    is_a: ContentModelEntity
+    description >-
+      Description of IdentifiableClass 
+    slots:
+      - id
+
+  Term:
+    is_a: IdentifiableClass
+    description >-
+      Description of Term 
+    slots:
+      - clamlReferences
+      - clamlContent
+      - label
+
+  PostcoordinationValueReferenceTerm:
+    is_a: Term
+    description >-
+      Description of PostcoordinationValueReferenceTerm
+    slots:
+      - referencedValue
+
+  ChemicalAgentReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of ChemicalAgentReferenceTerm
+    slots:
+      - referencedValue
+
+  SeverityReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of SeverityReferenceTerm
+    slots:
+      - referencedValue
+      - description
+
+  HistopathologyReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of HistopathologyReferenceTerm
+    slots:
+      - referencedValue
+
+  TemporalPatternAndOnsetReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of TemporalPatternAndOnsetReferenceTerm
+    slots:
+      - referencedValue
+      - description
+
+  TopologyReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of TopologyReferenceTerm
+    slots:
+      - referencedValue
+
+  RelationalReferenceTerm:
+    is_a: TopologyReferenceTerm
+    description >-
+      Description of RelationalReferenceTerm
+    slots:
+
+  DistributionReferenceTerm:
+    is_a: TopologyReferenceTerm
+    description >-
+      Description of DistributionReferenceTerm
+    slots:
+
+  RegionalReferenceTerm:
+    is_a: TopologyReferenceTerm
+    description >-
+      Description of RegionalReferenceTerm
+    slots:
+
+  LateralityReferenceTerm:
+    is_a: TopologyReferenceTerm
+    description >-
+      Description of LateralityReferenceTerm
+    slots:
+
+  TimeInLifeReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of TimeInLifeReferenceTerm
+    slots:
+      - referencedValue
+
+  CourseReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of CourseReferenceTerm
+    slots:
+      - referencedValue
+      - description
+
+  ICDCategoryReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of ICDCategoryReferenceTerm
+    slots:
+      - referencedValue
+
+  ManifestingConditionReferenceTerm:
+    is_a: ICDCategoryReferenceTerm
+    description >-
+      Description of ManifestingConditionReferenceTerm
+    slots:
+
+  AssociatedWithReferenceTerm:
+    is_a: ICDCategoryReferenceTerm
+    description >-
+      Description of AssociatedWithReferenceTerm
+    slots:
+
+  CausingConditionReferenceTerm:
+    is_a: ICDCategoryReferenceTerm
+    description >-
+      Description of CausingConditionReferenceTerm
+    slots:
+
+  SpecificAnatomyReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of SpecificAnatomyReferenceTerm
+    slots:
+      - referencedValue
+
+  BurnQualifierReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of BurnQualifierReferenceTerm
+    slots:
+      - referencedValue
+
+  ExtentOfBurnByBodySurfaceReferenceTerm:
+    is_a: BurnQualifierReferenceTerm
+    description >-
+      Description of ExtentOfBurnByBodySurfaceReferenceTerm
+    slots:
+
+  ExtentOfFullThicknessBurnByBodySurfaceReferenceTerm:
+    is_a: BurnQualifierReferenceTerm
+    description >-
+      Description of ExtentOfFullThicknessBurnByBodySurfaceReferenceTerm
+    slots:
+
+  OutcomeOfFullThicknessBurnReferenceTerm:
+    is_a: BurnQualifierReferenceTerm
+    description >-
+      Description of OutcomeOfFullThicknessBurnReferenceTerm
+    slots:
+
+  CausalityReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of CausalityReferenceTerm
+    slots:
+      - referencedValue
+
+  ExternalCauseDimensionReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of ExternalCauseDimensionReferenceTerm
+    slots:
+      - referencedValue
+
+  AspectsOfArmedConflictReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of AspectsOfArmedConflictReferenceTerm
+    slots:
+
+  RoleOfInjuredPersonInArmedConflictReferenceTerm:
+    is_a: AspectsOfArmedConflictReferenceTerm
+    description >-
+      Description of RoleOfInjuredPersonInArmedConflictReferenceTerm
+    slots:
+
+  TypeOfArmedConflictReferenceTerm:
+    is_a: AspectsOfArmedConflictReferenceTerm
+    description >-
+      Description of TypeOfArmedConflictReferenceTerm
+    slots:
+
+  AspectsOfIntentionalSelfHarmReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of AspectsOfIntentionalSelfHarmReferenceTerm
+    slots:
+
+  IntentionToDieAspectOfSelfHarmReferenceTerm:
+    is_a: AspectsOfIntentionalSelfHarmReferenceTerm
+    description >-
+      Description of IntentionToDieAspectOfSelfHarmReferenceTerm
+    slots:
+
+  PreviousSuicideAttemptReferenceTerm:
+    is_a: AspectsOfIntentionalSelfHarmReferenceTerm
+    description >-
+      Description of PreviousSuicideAttemptReferenceTerm
+    slots:
+
+  ProximalRiskFactorsForIntentionalSelfHarmReferenceTerm:
+    is_a: AspectsOfIntentionalSelfHarmReferenceTerm
+    description >-
+      Description of ProximalRiskFactorsForIntentionalSelfHarmReferenceTerm
+    slots:
+
+  OccupationalDescriptorReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of OccupationalDescriptorReferenceTerm
+    slots:
+
+  OccupationReferenceTerm:
+    is_a: OccupationalDescriptorReferenceTerm
+    description >-
+      Description of OccupationReferenceTerm
+    slots:
+
+  EconomicActivityReferenceTerm:
+    is_a: OccupationalDescriptorReferenceTerm
+    description >-
+      Description of EconomicActivityReferenceTerm
+    slots:
+
+  SportsActivityDescriptorReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of SportsActivityDescriptorReferenceTerm
+    slots:
+
+  PhaseOfSportOrExerciseActivityReferenceTerm:
+    is_a: SportsActivityDescriptorReferenceTerm
+    description >-
+      Description of PhaseOfSportOrExerciseActivityReferenceTerm
+    slots:
+
+  TypeOfSportOrExerciseActivityReferenceTerm:
+    is_a: SportsActivityDescriptorReferenceTerm
+    description >-
+      Description of TypeOfSportOrExerciseActivityReferenceTerm
+    slots:
+
+  PersonalCountermeasuresReferenceTerm:
+    is_a: SportsActivityDescriptorReferenceTerm
+    description >-
+      Description of PersonalCountermeasuresReferenceTerm
+    slots:
+
+  EnvironmentalCountermeasuresReferenceTerm:
+    is_a: SportsActivityDescriptorReferenceTerm
+    description >-
+      Description of EnvironmentalCountermeasuresReferenceTerm
+    slots:
+
+  TransportEventDescriptorReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of TransportEventDescriptorReferenceTerm
+    slots:
+
+  ModeOfTransportOfTheInjuredPersonReferenceTerm:
+    is_a: TransportEventDescriptorReferenceTerm
+    description >-
+      Description of ModeOfTransportOfTheInjuredPersonReferenceTerm
+    slots:
+
+  CounterpartReferenceTerm:
+    is_a: TransportEventDescriptorReferenceTerm
+    description >-
+      Description of CounterpartReferenceTerm
+    slots:
+
+  RoleOfTheInjuredPersonReferenceTerm:
+    is_a: TransportEventDescriptorReferenceTerm
+    description >-
+      Description of RoleOfTheInjuredPersonReferenceTerm
+    slots:
+
+  MechanismOfTransportInjuryWithoutCounterpartReferenceTerm:
+    is_a: TransportEventDescriptorReferenceTerm
+    description >-
+      Description of MechanismOfTransportInjuryWithoutCounterpartReferenceTerm
+    slots:
+
+  MechanismOfInjuryReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of MechanismOfInjuryReferenceTerm
+    slots:
+
+  AspectsOfAssaultAndMaltreatmentReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of AspectsOfAssaultAndMaltreatmentReferenceTerm
+    slots:
+
+  ContextOfAssaultAndMaltreatmentReferenceTerm:
+    is_a: AspectsOfAssaultAndMaltreatmentReferenceTerm
+    description >-
+      Description of ContextOfAssaultAndMaltreatmentReferenceTerm
+    slots:
+
+  GenderOfPerpetratorReferenceTerm:
+    is_a: AspectsOfAssaultAndMaltreatmentReferenceTerm
+    description >-
+      Description of GenderOfPerpetratorReferenceTerm
+    slots:
+
+  PerpetratorVictimRelationshipReferenceTerm:
+    is_a: AspectsOfAssaultAndMaltreatmentReferenceTerm
+    description >-
+      Description of PerpetratorVictimRelationshipReferenceTerm
+    slots:
+
+  PlaceOfOccurrenceReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of PlaceOfOccurrenceReferenceTerm
+    slots:
+
+  TypeOfPlaceReferenceTerm:
+    is_a: PlaceOfOccurrenceReferenceTerm
+    description >-
+      Description of TypeOfPlaceReferenceTerm
+    slots:
+
+  PartOfPlaceReferenceTerm:
+    is_a: PlaceOfOccurrenceReferenceTerm
+    description >-
+      Description of PartOfPlaceReferenceTerm
+    slots:
+
+  TypeOfLegalInterventionReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of TypeOfLegalInterventionReferenceTerm
+    slots:
+
+  ObjectOrSubstanceProducingInjuryReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of ObjectOrSubstanceProducingInjuryReferenceTerm
+    slots:
+
+  ActivityWhenInjuredReferenceTerm:
+    is_a: ExternalCauseDimensionReferenceTerm
+    description >-
+      Description of ActivityWhenInjuredReferenceTerm
+    slots:
+
+  DiagnosisConfirmedByReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of DiagnosisConfirmedByReferenceTerm
+    slots:
+
+  SerotypeReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of SerotypeReferenceTerm
+    slots:
+      - referencedValue
+
+  GenomicAndChromosomeAnomalyReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of GenomicAndChromosomeAnomalyReferenceTerm
+    slots:
+      - referencedValue
+
+  InfectiousAgentReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of InfectiousAgentReferenceTerm
+    slots:
+      - referencedValue
+
+  ConsciousnessMeasureReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of ConsciousnessMeasureReferenceTerm
+    slots:
+      - referencedValue
+
+  DurationOfComaReferenceTerm:
+    is_a: ConsciousnessMeasureReferenceTerm
+    description >-
+      Description of DurationOfComaReferenceTerm
+    slots:
+
+  LevelOfConsciousnessReferenceTerm:
+    is_a: ConsciousnessMeasureReferenceTerm
+    description >-
+      Description of LevelOfConsciousnessReferenceTerm
+    slots:
+
+  PupilReactionScoreReferenceTerm:
+    is_a: LevelOfConsciousnessReferenceTerm
+    description >-
+      Description of PupilReactionScoreReferenceTerm
+    slots:
+
+  GCSScoreReferenceTerm:
+    is_a: LevelOfConsciousnessReferenceTerm
+    description >-
+      Description of GCSScoreReferenceTerm
+    slots:
+
+  GCSMotorScoreReferenceTerm:
+    is_a: GCSScoreReferenceTerm
+    description >-
+      Description of GCSMotorScoreReferenceTerm
+    slots:
+
+  GCSVerbalScoreReferenceTerm:
+    is_a: GCSScoreReferenceTerm
+    description >-
+      Description of GCSVerbalScoreReferenceTerm
+    slots:
+
+  GCSEyeScoreReferenceTerm:
+    is_a: GCSScoreReferenceTerm
+    description >-
+      Description of GCSEyeScoreReferenceTerm
+    slots:
+
+  TypeOfInjuryReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of TypeOfInjuryReferenceTerm
+    slots:
+      - referencedValue
+
+  FractureQualifierReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of FractureQualifierReferenceTerm
+    slots:
+      - referencedValue
+
+  JointInvlolvementInFractureReferenceTerm:
+    is_a: FractureQualifierReferenceTerm
+    description >-
+      Description of JointInvlolvementInFractureReferenceTerm
+    slots:
+
+  FractureSubtypeReferenceTerm:
+    is_a: FractureQualifierReferenceTerm
+    description >-
+      Description of FractureSubtypeReferenceTerm
+    slots:
+
+  FractureOpenOrClosedReferenceTerm:
+    is_a: FractureQualifierReferenceTerm
+    description >-
+      Description of FractureOpenOrClosedReferenceTerm
+    slots:
+
+  MedicationReferenceTerm:
+    is_a: PostcoordinationValueReferenceTerm
+    description >-
+      Description of MedicationReferenceTerm
+    slots:
+      - referencedValue
+
+  DefiningTerm:
+    is_a: Term
+    description >-
+      Description of DefiningTerm
+    slots:
+      - isDefinitional
+
+  TreatmentTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 12 Treatment Property 
+    slots:
+
+  ClinicalDescriptionTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 5 Clinical Description 
+    slots:
+      - literatureReference
+      - evidenceLevel
+
+  BodySystemTerm:
+    is_a: ClinicalDescriptionTerm
+    description >-
+      Description of 5.1 Body System 
+    slots:
+
+  BodyPartTerm:
+    is_a: ClinicalDescriptionTerm
+    description >-
+      Description of 5.2 Body Part 
+    slots:
+
+  MorphologicallyAbnormalStructureTerm:
+    is_a: ClinicalDescriptionTerm
+    description >-
+      Description of 5.3 Morphologically Abnormal Structure 
+    slots:
+
+  ExternalCauseTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 14 External Cause 
+    slots:
+
+  TemporalPropertiesTerm:
+    is_a: DefiningTerm
+    mixins:
+      - ReferenceTerm
+    description >-
+      Description of 8 Temporal Property 
+    slots:
+      - ageRangeIsGenerallyTrue
+      - temporalRange
+      - temporalQualifier
+      - ageRangeIsDefinitional
+
+  FunctionalImpactTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 10 Functional Property (aka Function Impact) 
+    slots:
+
+  SelectedSelfCareImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedSelfCareImpact 
+    slots:
+
+  SelectedHouseholdActivitiesImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedHouseholdActivitiesImpact
+    slots:
+
+  SelectedSchoolActivitiesImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedSchoolActivitiesImpact 
+    slots:
+
+  SelectedWorkAndEconomicLifeActivitiesImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedWorkAndEconomicLifeActivitiesImpact 
+    slots:
+
+  SelectedUnderstandingImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedUnderstandingImpact
+    slots:
+
+  SelectedInterpersonalRelationsImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedInterpersonalRelationImpact 
+    slots:
+
+  SelectedLifeManagementActivitiesImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedLifeManagementActivitiesImpact 
+    slots:
+
+  SelectedSocialParticipationImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedSocialParticipationImpact 
+    slots:
+
+  SelectedChildrenAndYouthImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedChildrenAndYouthImpact 
+    slots:
+
+  SelectedMobilityImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedMobilityImpact
+    slots:
+      - label
+      - url
+      - termId
+
+  SelectedCommunicationImpact:
+    is_a: FunctionalImpactTerm
+    description >-
+      Description of SelectedCommunicationImpact
+    slots:
+
+  Type:
+    is_a: DefiningTerm
+    description >-
+      Description of Type 
+    slots:
+
+  DiagnosticCriteriaTerm:
+    is_a: EtiologyTypeTerm
+    mixins:
+      - DefiningTerm
+      - ReferenceTerm
+    description >-
+      Description of 13 Diagnostic Criterion 
+    slots:
+      - diagnosticCriteriaText
+      - diagnosticCriteriaRule
+
+  CausalPropertyTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 7 Causal Property 
+    slots:
+
+  DiseaseCausingAgentTerm:
+    is_a: CausalPropertyTerm
+    description >-
+      Description of 7.2 Agent 
+    slots:
+
+  RiskFactorTerm:
+    is_a: CausalPropertyTerm
+    description >-
+      Description of 7.5 Risk Factor 
+    slots:
+      - riskFactorModifier
+
+  CausalFactorTerm:
+    is_a: CausalPropertyTerm
+    description >-
+      Description of 7.3 Causal Mechanism 
+    slots:
+
+  GenomicLinkageTerm:
+    is_a: CausalPropertyTerm
+    description >-
+      Description of 7.4 Genomic Characteristics 
+    slots:
+      - citation
+
+  SeverityPropertyTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 9 Severity Property 
+    slots:
+
+  SeverityScaleTerm:
+    is_a: SeverityPropertyTerm
+    description >-
+      Description of Severity Scale 
+    slots:
+      - severityTerm
+      - severityScaleName
+      - allowsCategorySpecificValueDefinition
+
+  SeverityTerm:
+    is_a: SeverityPropertyTerm
+    description >-
+      Description of Severity Term 
+    slots:
+      - level
+      - description
+
+  Manifestation_Attribute:
+    is_a: ReferenceTerm
+    mixins:
+      - DefiningTerm
+    description >-
+      Description of 6 Manifestation Property 
+    slots:
+
+  SignsAndSymptomsTerm:
+    is_a: Manifestation_Attribute
+    description >-
+      Description of 6.1 Sign & Symptom 
+    slots:
+
+  InvestigationTerm:
+    is_a: Manifestation_Attribute
+    description >-
+      Description of 6.2 Finding 
+    slots:
+
+  ICD10NotesTerm:
+    is_a: Term
+    description >-
+      Description of ICD10NotesTerm 
+    slots:
+
+  ReferenceTerm:
+    is_a: Term
+    description >-
+      Description of ReferenceTerm 
+    slots:
+      - comment
+      - ontologyId
+      - url
+      - termId
+
+  ExternalReferenceTerm:
+    is_a: ReferenceTerm
+    description >-
+      Description of ExternalReferenceTerm
+    slots:
+
+  SnomedReferenceTerm:
+    is_a: ExternalReferenceTerm
+    description >-
+      Description of SnomedReferenceTerm 
+    slots:
+
+  ExternalDefinitionTerm:
+    is_a: ReferenceTerm
+    mixins:
+      - LanguageTerm
+    description >-
+      Description of External Definition 
+    slots:
+      - definitionType
+      - is_prefilled_definition_of
+      - citation
+
+  EtiologyTypeTerm:
+    is_a: ReferenceTerm
+    description >-
+      Description of EtiologyTypeTerm
+    slots:
+
+  EtiologyTerm:
+    is_a: EtiologyTypeTerm
+    mixins:
+      - ReferenceTerm
+    description >-
+      Description of EtiologyTerm 
+    slots:
+      - isDefinitional
+
+  ICD10ReferenceTerm:
+    is_a: ReferenceTerm
+    description >-
+      Description of ICD-10 Reference Term 
+    slots:
+
+  SpecificConditionTerm:
+    is_a: ReferenceTerm
+    description >-
+      Description of 11 Specific Condition Property 
+    slots:
+
+  BiologicalSexConditionTerm:
+    is_a: SpecificConditionTerm
+    description >-
+      Description of BiologicalSexConditionTerm
+    slots:
+
+  LifeCycleConditionTerm:
+    is_a: SpecificConditionTerm
+    description >-
+      Description of LifeCycleConditionTerm
+    slots:
+
+  MotherLifeCycleConditionTerm:
+    is_a: LifeCycleConditionTerm
+    description >-
+      Description of MotherLifeCycleConditionTerm
+    slots:
+
+  ChildLifeCycleConditionTerm:
+    is_a: LifeCycleConditionTerm
+    description >-
+      Description of ChildLifeCycleConditionTerm
+    slots:
+
+  TemporalModifierTerm:
+    is_a: ReferenceTerm
+    description >-
+      Description of TemporalModifierTerm
+    slots:
+      - description
+
+  InternalReferenceTerm:
+    is_a: Term
+    description >-
+      Description of InternalReferenceTerm
+    slots:
+      - referencedCategory
+
+  BaseExclusionTerm:
+    is_a: InternalReferenceTerm
+    description >-
+      Description of BaseExclusionTerm
+    slots:
+      - exclusionType
+
+  PrecoordinationSuperclassTerm:
+    is_a: InternalReferenceTerm
+    description >-
+      Description of PrecoordinationSuperclassTerm
+    slots:
+
+  SubclassInclusionTerm:
+    is_a: InternalReferenceTerm
+    description >-
+      Description of SubclassInclusionTerm
+    slots:
+
+  ICFReferenceTerm:
+    is_a: InternalReferenceTerm
+    description >-
+      Description of ICFReferenceTerm
+    slots:
+
+  PostcoordinationScaleTerm:
+    is_a: Term
+    description >-
+      Description of PostcoordinationScaleTerm
+    slots:
+      - allowsCategorySpecificValueDefinition
+      - hasScaleValue
+
+  PostcoordinationCourseScaleTerm:
+    is_a: PostcoordinationScaleTerm
+    description >-
+      Description of PostcoordinationCourseScaleTerm
+    slots:
+      - allowsCategorySpecificValueDefinition
+      - hasScaleValue
+
+  TemplateCourseScaleTerm:
+    is_a: PostcoordinationCourseScaleTerm
+    mixins:
+      - TemplateScaleTerm
+    description >-
+      Description of TemplateCourseScaleTerm
+    slots:
+
+  PostcoordinationSeverityScaleTerm:
+    is_a: PostcoordinationScaleTerm
+    description >-
+      Description of PostcoordinationSeverityScaleTerm
+    slots:
+      - allowsCategorySpecificValueDefinition
+      - hasScaleValue
+
+  TemplateSeverityScaleTerm:
+    is_a: PostcoordinationSeverityScaleTerm
+    mixins:
+      - TemplateScaleTerm
+    description >-
+      Description of TemplateSeverityScaleTerm
+    slots:
+
+  TemplateScaleTerm:
+    is_a: PostcoordinationScaleTerm
+    description >-
+      Description of TemplateScaleTerm
+    slots:
+
+  TemplateTemporalPatternAndOnsetScaleTerm:
+    is_a: PostcoordinationTemporalPatternAndOnsetScaleTerm
+    mixins:
+      - TemplateScaleTerm
+    description >-
+      Description of TemplateTemporalPatternAndOnsetScaleTerm
+    slots:
+
+  PostcoordinationTemporalPatternAndOnsetScaleTerm:
+    is_a: PostcoordinationScaleTerm
+    description >-
+      Description of PostcoordinationTemporalPatternAndOnsetScaleTerm
+    slots:
+      - allowsCategorySpecificValueDefinition
+      - hasScaleValue
+
+  LanguageTerm:
+    is_a: Term
+    description >-
+      Description of LanguageTerm 
+    slots:
+      - alternativeLabel
+      - language
+      - source
+      - isDeprecated
+      - label
+
+  IncludesNoteTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of IncludesNoteTerm
+    slots:
+
+  BaseIndexTerm:
+    is_a: LiniearizationEntity
+    mixins:
+      - LanguageTerm
+    description >-
+      Description of Base Index Term 
+    slots:
+
+  BaseInclusionTerm:
+    is_a: BaseIndexTerm
+    description >-
+      Description of BaseInclusionTerm
+    slots:
+
+  NarrowerTerm:
+    is_a: BaseIndexTerm
+    description >-
+      Description of NarrowerTerm
+    slots:
+
+  SynonymTerm:
+    is_a: BaseIndexTerm
+    description >-
+      Description of SynonymTerm 
+    slots:
+      - indexTermType
+
+  FullySpecifiedName:
+    is_a: LanguageTerm
+    description >-
+      Description of Fully Specified Name 
+    slots:
+
+  ExcludesNoteTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of ExcludesNoteTerm
+    slots:
+
+  RelatedImpairmentTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of RelatedImpairmentTerm
+    slots:
+
+  TitleTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of Concept Title 
+    slots:
+
+  CodingNoteTerm:
+    is_a: LanguageTerm
+    mixins:
+      - LiniearizationEntity
+    description >-
+      Description of CodingNoteTerm
+    slots:
+
+  DefinitionTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of Textual Definition 
+    slots:
+
+  RemarkTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of RemarkTerm
+    slots:
+
+  InstanceTemplate:
+    is_a: ContentModelEntity
+    description >-
+      Description of InstanceTemplate
+    slots:
+
+  ExternalReference:
+    is_a: ContentModelEntity
+    description >-
+      Description of ExternalReference
+    slots:
+      - label
+      - url
+      - termId
+
+  LiniearizationEntity:
+    is_a: ContentModelEntity
+    description >-
+      Description of LiniearizationEntity
+    slots:
+
+  Linearization:
+    is_a: LiniearizationEntity
+    description >-
+      Description of Linearization
+    slots:
+      - rootCodedTerm
+      - linearizationView
+
+  LinearizationSpecification:
+    is_a: LiniearizationEntity
+    description >-
+      Description of LinearizationSpecification
+    slots:
+      - codingNote
+      - isGrouping
+      - isIncludedInLinearization
+      - linearizationSortingLabel
+      - isAuxiliaryAxisChild
+      - linearizationParent
+      - linearizationView
+
+  HistoricLinearizationSpecification:
+    is_a: LinearizationSpecification
+    description >-
+      Description of HistoricLinearizationSpecification
+    slots:
+
+  PostcoordinationAxesSpecification:
+    is_a: LiniearizationEntity
+    description >-
+      Description of PostcoordinationAxesSpecification
+    slots:
+      - requiredPostcoordinationAxisProperty
+      - allowedPostcoordinationAxisProperty
+      - linearizationView
+
+  ValueSet:
+    is_a: ContentModelEntity
+    description >-
+      Description of ValueSet
+    slots:
+
+  RiskFactorQualifier:
+    is_a: ValueSet
+    description >-
+      Description of RiskFactorQualifier
+    slots:
+
+  BodySystemsValueSet:
+    is_a: ValueSet
+    description >-
+      Description of BodySystemsValueSet
+    slots:
+
+  RespiratorySystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Respiratory System 
+    slots:
+
+  MetabolicSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Metabolic System 
+    slots:
+
+  HaemolymphoidSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Haemolymphoid System 
+    slots:
+
+  HaematopoieticSystem:
+    is_a: HaemolymphoidSystem
+    description >-
+      Description of Haematopoietic System 
+    slots:
+
+  ImmuneSystem:
+    is_a: HaemolymphoidSystem
+    description >-
+      Description of Immune System 
+    slots:
+
+  MentalSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Mental System 
+    slots:
+
+  DigestiveSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Digestive System 
+    slots:
+
+  MusculoskeletalSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Musculoskeletal System 
+    slots:
+
+  MuscularSystem:
+    is_a: MusculoskeletalSystem
+    description >-
+      Description of Muscular System 
+    slots:
+
+  SceletalSystem:
+    is_a: MusculoskeletalSystem
+    description >-
+      Description of Sceletal System 
+    slots:
+
+  GenitourinarySystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Genitourinary System 
+    slots:
+
+  MaleGenitalSystem:
+    is_a: GenitourinarySystem
+    description >-
+      Description of Male Genital System 
+    slots:
+
+  UrinarySystem:
+    is_a: GenitourinarySystem
+    description >-
+      Description of Urinary System 
+    slots:
+
+  FemaleGenitalSystem:
+    is_a: GenitourinarySystem
+    description >-
+      Description of Female Genital System 
+    slots:
+
+  AuditorySystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Auditory System 
+    slots:
+
+  EndocrineSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Endocrine System 
+    slots:
+
+  SkinSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Skin System (Integumentary System) 
+    slots:
+
+  NervousSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Nervous System 
+    slots:
+
+  AutonomicNervousSystem:
+    is_a: NervousSystem
+    description >-
+      Description of Autonomic Nervous System 
+    slots:
+
+  SympatheticNervousSystem:
+    is_a: AutonomicNervousSystem
+    description >-
+      Description of Sympathetic Nervous System 
+    slots:
+
+  ParasympatheticNervousSystem:
+    is_a: AutonomicNervousSystem
+    description >-
+      Description of Parasympathetic Nervous System 
+    slots:
+
+  CentralNervousSystem:
+    is_a: NervousSystem
+    description >-
+      Description of Central Nervous System 
+    slots:
+
+  PeripheralNervousSystem:
+    is_a: NervousSystem
+    description >-
+      Description of Peripheral Nervous System 
+    slots:
+
+  MotoricSystem:
+    is_a: NervousSystem
+    description >-
+      Description of Motoric System 
+    slots:
+
+  CirculatorySystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Circulatory System (Cardiovascular System) 
+    slots:
+
+  VestibularSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Vestibular System 
+    slots:
+
+  VisualSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Visual System 
+    slots:
+
+  NutritionalSystem:
+    is_a: BodySystemsValueSet
+    description >-
+      Description of Nutritional System 
+    slots:
+
+  LinearizationView:
+    is_a: ValueSet
+    description >-
+      Description of LinearizationView
+    slots:
+      - sortingCode
+
+  FoundationComponentView:
+    is_a: LinearizationView
+    description >-
+      Description of FoundationComponentView
+    slots:
+
+  ICD11LinearizationView:
+    is_a: LinearizationView
+    description >-
+      Description of ICD11LinearizationView
+    slots:
+
+  ICD10TabulationListView:
+    is_a: LinearizationView
+    description >-
+      Description of ICD10TabulationListView
+    slots:
+
+  WHOFICLinearizationViews:
+    is_a: LinearizationView
+    description >-
+      Description of WHOFICLinearizationViews
+    slots:
+
+  ICD10LinearizationView:
+    is_a: LinearizationView
+    description >-
+      Description of ICD10LinearizationView
+    slots:
+
+  EditorialStatusValueSet:
+    is_a: ValueSet
+    description >-
+      Description of EditorialStatusValueSet
+    slots:
+
+  ReferenceSource:
+    is_a: ValueSet
+    description >-
+      Description of ReferenceSource
+    slots:
+
+  DisplayStatusValueSet:
+    is_a: ValueSet
+    description >-
+      Description of DisplayStatusValueSet
+    slots:
+
+  ExclusionTermType:
+    is_a: ValueSet
+    description >-
+      Description of ExclusionTermType
+    slots:
+
+  TAG:
+    is_a: ValueSet
+    description >-
+      Description of TAG
+    slots:
+
+  EvidenceLevel:
+    is_a: ValueSet
+    description >-
+      Description of EvidenceLevel
+    slots:
+
+  TemporalPropertyValueSet:
+    is_a: ValueSet
+    description >-
+      Description of TemporalPropertyValueSet
+    slots:
+
+
+slots:
+  narrower:
+    slot_uri: icd:narrower
+    is-a: baseIndex
+    range: NarrowerTerm
+  broader:
+    slot_uri: icd:broader
+    range: CodedTerm
+  referencedValue:
+    slot_uri: icd:referencedValue
+    range: ValueMetaClass, ICDSection
+  hasScaleValue:
+    slot_uri: icd:hasScaleValue
+    range: PostcoordinationValueReferenceTerm
+  indoorOrOutdoor:
+    slot_uri: icd:indoorOrOutdoor
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, IndoorOrOutdoorReferenceTerm
+  placeOfOccurrenceDescriptor:
+    slot_uri: icd:placeOfOccurrenceDescriptor
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm, PlaceOfOccurrenceDescriptorReferenceTerm
+  requiredPostcoordinationAxisProperty:
+    slot_uri: icd:requiredPostcoordinationAxisProperty
+    is-a: allowedPostcoordinationAxisProperty
+    range: ObjectProperty
+  allowedPostcoordinationAxisProperty:
+    slot_uri: icd:allowedPostcoordinationAxisProperty
+    range: ObjectProperty
+  agent:
+    slot_uri: icd:agent
+  hasCapacityWithoutAssistance:
+    slot_uri: icd:hasCapacityWithoutAssistance
+    is-a: hasCapacityOrPerformanceQualifier
+  hasCapacityOrPerformanceQualifier:
+    slot_uri: icd:hasCapacityOrPerformanceQualifier
+    is-a: hasQualifier
+  selectedHouseholdActivitiesImpact:
+    slot_uri: icd:selectedHouseholdActivitiesImpact
+    is-a: householdActivitiesImpact
+    range: SelectedHouseholdActivitiesImpact
+  householdActivitiesImpact:
+    slot_uri: icd:householdActivitiesImpact
+    is-a: lifeActivitiesImpact
+    range: FunctionalImpactTerm
+  baseInclusion:
+    slot_uri: icd:baseInclusion
+    range: BaseInclusionTerm, SubclassInclusionTerm
+  hasCourseScale:
+    slot_uri: icd:hasCourseScale
+    is-a: hasScale
+    range: PostcoordinationCourseScaleTerm
+    multivalued: false
+  hasScale:
+    slot_uri: icd:hasScale
+    multivalued: false
+  investigations:
+    slot_uri: icd:investigations
+    range: InvestigationTerm
+  assistiveProduct:
+    slot_uri: icd:assistiveProduct
+    is-a: ICHIPostcoordinationAxis
+  ICHIPostcoordinationAxis:
+    slot_uri: icd:ICHIPostcoordinationAxis
+    is-a: ICHIObjectProperty
+  typeOfHome:
+    slot_uri: icd:typeOfHome
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, TypeOfHomeReferenceTerm
+  linearization:
+    slot_uri: icd:linearization
+    range: LinearizationSpecification
+  regional:
+    slot_uri: icd:regional
+    is-a: topology
+    range: RegionalReferenceTerm
+  topology:
+    slot_uri: icd:topology
+    is-a: anatomy
+    range: TopologyReferenceTerm
+  personalCountermeasures:
+    slot_uri: icd:personalCountermeasures
+    is-a: sportsActivityDescriptor
+    range: ExternalCauseTerm, PersonalCountermeasuresReferenceTerm
+  sportsActivityDescriptor:
+    slot_uri: icd:sportsActivityDescriptor
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, SportsActivityDescriptorReferenceTerm
+  typeOfInjury:
+    slot_uri: icd:typeOfInjury
+    is-a: injuryQualifier
+    range: TypeOfInjuryReferenceTerm
+  injuryQualifier:
+    slot_uri: icd:injuryQualifier
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  temporality:
+    slot_uri: icd:temporality
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  postcoordinationAxis:
+    slot_uri: icd:postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  medication:
+    slot_uri: icd:medication
+    is-a: etiology
+    range: MedicationReferenceTerm
+  etiology:
+    slot_uri: icd:etiology
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  externalReference:
+    slot_uri: icd:externalReference
+    range: ExternalReferenceTerm
+  icd10TabulationList:
+    slot_uri: icd:icd10TabulationList
+    is-a: historicLinearization
+    range: HistoricLinearizationSpecification
+  historicLinearization:
+    slot_uri: icd:historicLinearization
+    range: HistoricLinearizationSpecification
+  activitiesDescriptor:
+    slot_uri: icd:activitiesDescriptor
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm
+  externalCauseDimensionDescriptor:
+    slot_uri: icd:externalCauseDimensionDescriptor
+    is-a: deprecatedECDimension
+    range: ExternalCauseTerm
+  assignedSecondaryTAG:
+    slot_uri: icd:assignedSecondaryTAG
+    is-a: assignedTAG
+    range: TAG
+  assignedTAG:
+    slot_uri: icd:assignedTAG
+    range: TAG
+  burnQualifier:
+    slot_uri: icd:burnQualifier
+    is-a: injuryQualifier
+    range: BurnQualifierReferenceTerm
+  temporalPatternAndOnset:
+    slot_uri: icd:temporalPatternAndOnset
+    is-a: temporality
+    range: TemporalPatternAndOnsetReferenceTerm
+  temporalProperties:
+    slot_uri: icd:temporalProperties
+    range: TemporalPropertiesTerm
+  environmentalCountermeasures:
+    slot_uri: icd:environmentalCountermeasures
+    is-a: sportsActivityDescriptor
+    range: ExternalCauseTerm, EnvironmentalCountermeasuresReferenceTerm
+  ICHIObjectProperty:
+    slot_uri: icd:ICHIObjectProperty
+  childrenAndYouthImpact:
+    slot_uri: icd:childrenAndYouthImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  functionalImpact:
+    slot_uri: icd:functionalImpact
+    range: FunctionalImpactTerm
+  associatedWith:
+    slot_uri: icd:associatedWith
+    is-a: postcoordinationAxis
+    range: AssociatedWithReferenceTerm
+  counterpart:
+    slot_uri: icd:counterpart
+    is-a: transportEventDescriptor
+    range: ExternalCauseTerm, CounterpartReferenceTerm
+  transportEventDescriptor:
+    slot_uri: icd:transportEventDescriptor
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, TransportEventDescriptorReferenceTerm
+  relevantEntity:
+    slot_uri: icd:relevantEntity
+    range: ICECIMetaClass
+  baseExclusion:
+    slot_uri: icd:baseExclusion
+    range: BaseExclusionTerm
+  codingNote:
+    slot_uri: icd:codingNote
+    range: CodingNoteTerm
+  icfReference:
+    slot_uri: icd:icfReference
+    range: ICFReferenceTerm
+  subclassBaseInclusion:
+    slot_uri: icd:subclassBaseInclusion
+    is-a: baseInclusion
+    range: SubclassInclusionTerm
+  diseaseCausingAgent:
+    slot_uri: icd:diseaseCausingAgent
+    is-a: agent
+    range: DiseaseCausingAgentTerm
+  residentOfHome:
+    slot_uri: icd:residentOfHome
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, ResidentOfHomeReferenceTerm
+  diagnosisConfirmedBy:
+    slot_uri: icd:diagnosisConfirmedBy
+    is-a: postcoordinationAxis
+    range: DiagnosisConfirmedByReferenceTerm
+  typeOfLegalIntervention:
+    slot_uri: icd:typeOfLegalIntervention
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, TypeOfLegalInterventionReferenceTerm
+  externalCauseDimension:
+    slot_uri: icd:externalCauseDimension
+    is-a: postcoordinationAxis
+    range: ExternalCauseTerm
+  clientOrRecipient:
+    slot_uri: icd:clientOrRecipient
+    is-a: additionalDescriptiveInformationForIntervention
+  additionalDescriptiveInformationForIntervention:
+    slot_uri: icd:additionalDescriptiveInformationForIntervention
+    is-a: ICHIPostcoordinationAxis
+  economicActivity:
+    slot_uri: icd:economicActivity
+    is-a: occupationalDescriptor
+    range: ExternalCauseTerm, EconomicActivityReferenceTerm
+  occupationalDescriptor:
+    slot_uri: icd:occupationalDescriptor
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, OccupationalDescriptorReferenceTerm
+  deprecatedECDimension:
+    slot_uri: icd:deprecatedECDimension
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm
+  essentialPathologyTest:
+    slot_uri: icd:essentialPathologyTest
+    is-a: ICHIPostcoordinationAxis
+  mortalityLinearization:
+    slot_uri: icd:mortalityLinearization
+  fractureSubtype:
+    slot_uri: icd:fractureSubtype
+    is-a: fractureQualifier
+    range: FractureSubtypeReferenceTerm
+  fractureQualifier:
+    slot_uri: icd:fractureQualifier
+    is-a: injuryQualifier
+    range: FractureQualifierReferenceTerm
+  communicationImpact:
+    slot_uri: icd:communicationImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  counterMeasureDescriptor:
+    slot_uri: icd:counterMeasureDescriptor
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm
+  chemicalAgent:
+    slot_uri: icd:chemicalAgent
+    is-a: etiology
+    range: ChemicalAgentReferenceTerm
+  includesNote:
+    slot_uri: icd:includesNote
+    range: IncludesNoteTerm
+  selectedChildrenAndYouthImpact:
+    slot_uri: icd:selectedChildrenAndYouthImpact
+    is-a: childrenAndYouthImpact
+    range: SelectedChildrenAndYouthImpact
+  genomicLinkage:
+    slot_uri: icd:genomicLinkage
+    range: GenomicLinkageTerm
+  contextOfAssaultAndMaltreatment:
+    slot_uri: icd:contextOfAssaultAndMaltreatment
+    is-a: aspectsOfAssaultAndMaltreatment
+    range: ExternalCauseTerm, ContextOfAssaultAndMaltreatmentReferenceTerm
+  aspectsOfAssaultAndMaltreatment:
+    slot_uri: icd:aspectsOfAssaultAndMaltreatment
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, AspectsOfAssaultAndMaltreatmentReferenceTerm
+  biologicalIndicator:
+    slot_uri: icd:biologicalIndicator
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  selectedLifeManagementActivitiesImpact:
+    slot_uri: icd:selectedLifeManagementActivitiesImpact
+    is-a: lifeManagementActivitiesImpact
+    range: SelectedLifeManagementActivitiesImpact
+  lifeManagementActivitiesImpact:
+    slot_uri: icd:lifeManagementActivitiesImpact
+    is-a: lifeActivitiesImpact
+    range: FunctionalImpactTerm
+  psychoactiveDrugUseInInjury:
+    slot_uri: icd:psychoactiveDrugUseInInjury
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, PsychoactiveDrugUseInInjuryReferenceTerm
+  selectedSchoolActivitiesImpact:
+    slot_uri: icd:selectedSchoolActivitiesImpact
+    is-a: schoolActivitiesImpact
+    range: SelectedSchoolActivitiesImpact
+  schoolActivitiesImpact:
+    slot_uri: icd:schoolActivitiesImpact
+    is-a: lifeActivitiesImpact
+    range: FunctionalImpactTerm
+  allowedPostcoordinationAxes:
+    slot_uri: icd:allowedPostcoordinationAxes
+    range: PostcoordinationAxesSpecification
+  hasPerformance:
+    slot_uri: icd:hasPerformance
+    is-a: hasCapacityOrPerformanceQualifier
+  isHinderedBy:
+    slot_uri: icd:isHinderedBy
+    is-a: hasQualifier
+  hasQualifier:
+    slot_uri: icd:hasQualifier
+    is-a: ICFObjectProperty
+  specificSkillsAndTechnique:
+    slot_uri: icd:specificSkillsAndTechnique
+    is-a: additionalDescriptiveInformationForIntervention
+  otherHouseholdActivitiesImpact:
+    slot_uri: icd:otherHouseholdActivitiesImpact
+    is-a: householdActivitiesImpact
+    range: FunctionalImpactTerm
+  hasPatternActivityClinicalStatusScale:
+    slot_uri: icd:hasPatternActivityClinicalStatusScale
+    is-a: hasScale
+    range: PostcoordinationTemporalPatternAndOnsetScaleTerm
+    multivalued: false
+  administrativeSystemLevelAtWhichInterventionDirected:
+    slot_uri: icd:administrativeSystemLevelAtWhichInterventionDirected
+    is-a: additionalDescriptiveInformationForIntervention
+  causality:
+    slot_uri: icd:causality
+    is-a: etiology
+    range: CausalityReferenceTerm
+  hasCapacityWithAssistance:
+    slot_uri: icd:hasCapacityWithAssistance
+    is-a: hasCapacityOrPerformanceQualifier
+  relational:
+    slot_uri: icd:relational
+    is-a: topology
+    mixins:
+      - ichiTopology
+    range: RelationalReferenceTerm
+  ichiTopology:
+    slot_uri: icd:ichiTopology
+    is-a: ICHIPostcoordinationAxis
+  severityTerm:
+    slot_uri: icd:severityTerm
+    range: SeverityTerm
+  codingHint:
+    slot_uri: icd:codingHint
+    range: ICD10NotesTerm
+  selectedInterpersonalRelationsImpact:
+    slot_uri: icd:selectedInterpersonalRelationsImpact
+    is-a: interpersonalRelationsImpact
+    range: SelectedInterpersonalRelationsImpact
+  interpersonalRelationsImpact:
+    slot_uri: icd:interpersonalRelationsImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  rootCodedTerm:
+    slot_uri: icd:rootCodedTerm
+    range: CodedTerm
+  primaryCareLinearization:
+    slot_uri: icd:primaryCareLinearization
+  aspectsOfArmedConflict:
+    slot_uri: icd:aspectsOfArmedConflict
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, AspectsOfArmedConflictReferenceTerm
+  understandingImpact:
+    slot_uri: icd:understandingImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  literatureReference:
+    slot_uri: icd:literatureReference
+    range: LiteratureReference
+  hasAlternativeSeverity2:
+    slot_uri: icd:hasAlternativeSeverity2
+    is-a: severityAxis
+    range: SeverityReferenceTerm
+  severityAxis:
+    slot_uri: icd:severityAxis
+    is-a: postcoordinationAxis
+    range: SeverityReferenceTerm
+  activityWhenInjured:
+    slot_uri: icd:activityWhenInjured
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, ActivityWhenInjuredReferenceTerm
+  placeOfOccurrence:
+    slot_uri: icd:placeOfOccurrence
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, PlaceOfOccurrenceReferenceTerm
+  selectedUnderstandingImpact:
+    slot_uri: icd:selectedUnderstandingImpact
+    is-a: understandingImpact
+    range: SelectedUnderstandingImpact
+  tissueFlap:
+    slot_uri: icd:tissueFlap
+    is-a: additionalDescriptiveInformationForIntervention
+  biologicalSex:
+    slot_uri: icd:biologicalSex
+    range: BiologicalSexConditionTerm
+  quantifier:
+    slot_uri: icd:quantifier
+    is-a: ICHIPostcoordinationAxis
+  otherChildrenAndYouthImpact:
+    slot_uri: icd:otherChildrenAndYouthImpact
+    is-a: childrenAndYouthImpact
+    range: FunctionalImpactTerm
+  extentOfFullThicknessBurnByBodySurface:
+    slot_uri: icd:extentOfFullThicknessBurnByBodySurface
+    is-a: burnQualifier
+    range: ExtentOfFullThicknessBurnByBodySurfaceReferenceTerm
+  hasGCSVerbalScore:
+    slot_uri: icd:hasGCSVerbalScore
+    is-a: hasGCSScore
+    range: GCSVerbalScoreReferenceTerm
+  hasGCSScore:
+    slot_uri: icd:hasGCSScore
+    is-a: levelOfConsciousness
+    range: GCSScoreReferenceTerm
+  specificAnatomy:
+    slot_uri: icd:specificAnatomy
+    is-a: anatomy
+    range: SpecificAnatomyReferenceTerm
+  anatomy:
+    slot_uri: icd:anatomy
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  course:
+    slot_uri: icd:course
+    is-a: temporality
+    range: CourseReferenceTerm
+  otherSelfCareImpact:
+    slot_uri: icd:otherSelfCareImpact
+    is-a: selfCareImpact
+    range: FunctionalImpactTerm
+  selfCareImpact:
+    slot_uri: icd:selfCareImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  synonym:
+    slot_uri: icd:synonym
+    is-a: baseIndex
+    range: SynonymTerm
+  baseIndex:
+    slot_uri: icd:baseIndex
+    range: BaseIndexTerm
+  roleOfInjuredPersonInArmedConflict:
+    slot_uri: icd:roleOfInjuredPersonInArmedConflict
+    is-a: aspectsOfArmedConflict
+    range: ExternalCauseTerm, RoleOfInjuredPersonInArmedConflictReferenceTerm
+  interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider:
+    slot_uri: icd:interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider
+    is-a: telehealth
+  telehealth:
+    slot_uri: icd:telehealth
+    is-a: ICHIPostcoordinationAxis
+  icdCategory:
+    slot_uri: icd:icdCategory
+    range: ICDSection
+  proximalRiskFactorsForIntentionalSelfHarm:
+    slot_uri: icd:proximalRiskFactorsForIntentionalSelfHarm
+    is-a: aspectsOfIntentionalSelfHarm
+    range: ExternalCauseTerm, ProximalRiskFactorsForIntentionalSelfHarmReferenceTerm
+  aspectsOfIntentionalSelfHarm:
+    slot_uri: icd:aspectsOfIntentionalSelfHarm
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, AspectsOfIntentionalSelfHarmReferenceTerm
+  socialParticipationImpact:
+    slot_uri: icd:socialParticipationImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  morbiditySubclasses:
+    slot_uri: icd:morbiditySubclasses
+  mechanism:
+    slot_uri: icd:mechanism
+  otherInterpersonalRelationsImpact:
+    slot_uri: icd:otherInterpersonalRelationsImpact
+    is-a: interpersonalRelationsImpact
+    range: FunctionalImpactTerm
+  alcoholUseInInjury:
+    slot_uri: icd:alcoholUseInInjury
+    is-a: externalCauseDimension
+    range: ExternalCauseTerm, AlcoholUseInInjuryReferenceTerm
+  ICFObjectProperty:
+    slot_uri: icd:ICFObjectProperty
+  phaseOfSportOrExerciseActivity:
+    slot_uri: icd:phaseOfSportOrExerciseActivity
+    is-a: sportsActivityDescriptor
+    range: ExternalCauseTerm, PhaseOfSportOrExerciseActivityReferenceTerm
+  partOfBuildingOrGrounds:
+    slot_uri: icd:partOfBuildingOrGrounds
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, PartOfBuildingOrGroundsReferenceTerm
+  treatment:
+    slot_uri: icd:treatment
+    range: TreatmentTerm
+  interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation:
+    slot_uri: icd:interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation
+    is-a: telehealth
+  otherMobilityImpact:
+    slot_uri: icd:otherMobilityImpact
+    is-a: mobilityImpact
+    range: FunctionalImpactTerm
+  mobilityImpact:
+    slot_uri: icd:mobilityImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  workActivitiesImpact:
+    slot_uri: icd:workActivitiesImpact
+    is-a: lifeActivitiesImpact
+    range: FunctionalImpactTerm
+  lifeActivitiesImpact:
+    slot_uri: icd:lifeActivitiesImpact
+    is-a: functionalImpact
+    range: FunctionalImpactTerm
+  creativeTherapy:
+    slot_uri: icd:creativeTherapy
+    is-a: additionalDescriptiveInformationForIntervention
+  intentionToDieAspectOfSelfHarm:
+    slot_uri: icd:intentionToDieAspectOfSelfHarm
+    is-a: aspectsOfIntentionalSelfHarm
+    range: ExternalCauseTerm, IntentionToDieAspectOfSelfHarmReferenceTerm
+  selectedSelfCareImpact:
+    slot_uri: icd:selectedSelfCareImpact
+    is-a: selfCareImpact
+    range: SelectedSelfCareImpact
+  otherLifeManagementActivitiesImpact:
+    slot_uri: icd:otherLifeManagementActivitiesImpact
+    is-a: lifeManagementActivitiesImpact
+    range: FunctionalImpactTerm
+  otherCommunicationImpact:
+    slot_uri: icd:otherCommunicationImpact
+    is-a: communicationImpact
+    range: FunctionalImpactTerm
+  introduction:
+    slot_uri: icd:introduction
+    range: ICD10NotesTerm
+  hasImpairmentNature:
+    slot_uri: icd:hasImpairmentNature
+    is-a: hasQualifier
+  specificAnatomicDetail:
+    slot_uri: icd:specificAnatomicDetail
+    is-a: ICHIPostcoordinationAxis
+  preferredLong:
+    slot_uri: icd:preferredLong
+    range: ICD10NotesTerm
+  therapeuticProduct:
+    slot_uri: icd:therapeuticProduct
+    is-a: ICHIPostcoordinationAxis
+  typeOfPlace:
+    slot_uri: icd:typeOfPlace
+    is-a: placeOfOccurrence
+    range: ExternalCauseTerm, TypeOfPlaceReferenceTerm
+  selectedWorkActivitiesImpact:
+    slot_uri: icd:selectedWorkActivitiesImpact
+    is-a: workActivitiesImpact
+    range: SelectedWorkAndEconomicLifeActivitiesImpact
+  excludesNote:
+    slot_uri: icd:excludesNote
+    range: ExcludesNoteTerm
+  histopathology:
+    slot_uri: icd:histopathology
+    is-a: postcoordinationAxis
+    range: HistopathologyReferenceTerm
+  otherWorkActivitiesImpact:
+    slot_uri: icd:otherWorkActivitiesImpact
+    is-a: workActivitiesImpact
+    range: FunctionalImpactTerm
+  intentDescriptor:
+    slot_uri: icd:intentDescriptor
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm
+  distribution:
+    slot_uri: icd:distribution
+    is-a: topology
+    range: DistributionReferenceTerm
+  measurement:
+    slot_uri: icd:measurement
+    is-a: ichiTopology
+  timeInLife:
+    slot_uri: icd:timeInLife
+    is-a: temporality
+    range: TimeInLifeReferenceTerm
+  mechanismOfTransportInjuryWithoutCounterpart:
+    slot_uri: icd:mechanismOfTransportInjuryWithoutCounterpart
+    is-a: mechanism
+    mixins:
+      - transportEventDescriptor
+    range: ExternalCauseTerm, MechanismOfTransportInjuryWithoutCounterpartReferenceTerm
+  childrenOrder:
+    slot_uri: icd:childrenOrder
+    range: ChildOrder
+  initiatingOrMaintainingOrDiscontinuingOrResuming:
+    slot_uri: icd:initiatingOrMaintainingOrDiscontinuingOrResuming
+    is-a: additionalDescriptiveInformationForIntervention
+  hasCausingCondition:
+    slot_uri: icd:hasCausingCondition
+    is-a: postcoordinationAxis
+    range: CausingConditionReferenceTerm
+  mechanismOfInjury:
+    slot_uri: icd:mechanismOfInjury
+    is-a: mechanism
+    mixins:
+      - externalCauseDimension
+    range: ExternalCauseTerm, MechanismOfInjuryReferenceTerm
+  hasGCSEyeScore:
+    slot_uri: icd:hasGCSEyeScore
+    is-a: hasGCSScore
+    range: GCSEyeScoreReferenceTerm
+  childLifeCycle:
+    slot_uri: icd:childLifeCycle
+    is-a: lifeCycle
+    range: ChildLifeCycleConditionTerm
+  lifeCycle:
+    slot_uri: icd:lifeCycle
+    range: LifeCycleConditionTerm
+  note:
+    slot_uri: icd:note
+    range: ICD10NotesTerm
+  extentOfBurnByBodySurface:
+    slot_uri: icd:extentOfBurnByBodySurface
+    is-a: burnQualifier
+    range: ExtentOfBurnByBodySurfaceReferenceTerm
+  otherSchoolActivitiesImpact:
+    slot_uri: icd:otherSchoolActivitiesImpact
+    is-a: schoolActivitiesImpact
+    range: FunctionalImpactTerm
+  tissueGraft:
+    slot_uri: icd:tissueGraft
+    is-a: additionalDescriptiveInformationForIntervention
+  hasManifestation:
+    slot_uri: icd:hasManifestation
+    is-a: postcoordinationAxis
+    range: ManifestingConditionReferenceTerm
+  hasSeverityAxisScale:
+    slot_uri: icd:hasSeverityAxisScale
+    is-a: hasScale
+    range: PostcoordinationSeverityScaleTerm
+    multivalued: false
+  useOfEquipmentOrChallenge:
+    slot_uri: icd:useOfEquipmentOrChallenge
+    is-a: additionalDescriptiveInformationForIntervention
+  hasPerformanceWithoutAssistance:
+    slot_uri: icd:hasPerformanceWithoutAssistance
+    is-a: hasCapacityOrPerformanceQualifier
+  numberOfTherapeuticProductsInserted:
+    slot_uri: icd:numberOfTherapeuticProductsInserted
+    is-a: quantifier
+  hasAlternativeSeverity1:
+    slot_uri: icd:hasAlternativeSeverity1
+    is-a: severityAxis
+    range: SeverityReferenceTerm
+  bodyPart:
+    slot_uri: icd:bodyPart
+    range: BodyPartTerm
+  interventionProvidedToRecipientInADistantLocation:
+    slot_uri: icd:interventionProvidedToRecipientInADistantLocation
+    is-a: telehealth
+  exhaustivePartition:
+    slot_uri: icd:exhaustivePartition
+    range: ICDCategory
+  hasPupilReactionScore:
+    slot_uri: icd:hasPupilReactionScore
+    is-a: levelOfConsciousness
+    range: PupilReactionScoreReferenceTerm
+  levelOfConsciousness:
+    slot_uri: icd:levelOfConsciousness
+    is-a: consciousnessMeasure
+    range: LevelOfConsciousnessReferenceTerm
+  typeOfArmedConflict:
+    slot_uri: icd:typeOfArmedConflict
+    is-a: aspectsOfArmedConflict
+    range: ExternalCauseTerm, TypeOfArmedConflictReferenceTerm
+  hasTarget:
+    slot_uri: icd:hasTarget
+    is-a: ICHIPostcoordinationAxis
+  numberOfInterventionsPerformed:
+    slot_uri: icd:numberOfInterventionsPerformed
+    is-a: quantifier
+  selectedSocialParticipationImpact:
+    slot_uri: icd:selectedSocialParticipationImpact
+    is-a: socialParticipationImpact
+    range: SelectedSocialParticipationImpact
+  hasComponent:
+    slot_uri: icd:hasComponent
+    is-a: ICFObjectProperty
+  enablingFactorsForBehaviourChange:
+    slot_uri: icd:enablingFactorsForBehaviourChange
+    is-a: additionalDescriptiveInformationForIntervention
+  motherLifeCycle:
+    slot_uri: icd:motherLifeCycle
+    is-a: lifeCycle
+    range: MotherLifeCycleConditionTerm
+  otherSocialParticipationImpact:
+    slot_uri: icd:otherSocialParticipationImpact
+    is-a: socialParticipationImpact
+    range: FunctionalImpactTerm
+  substanceUse:
+    slot_uri: icd:substanceUse
+    is-a: deprecatedECDimension
+    range: ExternalCauseTerm, SubstanceUseReferenceTerm
+  selectedMobilityImpact:
+    slot_uri: icd:selectedMobilityImpact
+    is-a: mobilityImpact
+    range: SelectedMobilityImpact
+  consciousnessMeasure:
+    slot_uri: icd:consciousnessMeasure
+    is-a: postcoordinationAxis
+    range: PostcoordinationValueReferenceTerm
+  roleOfTheInjuredPerson:
+    slot_uri: icd:roleOfTheInjuredPerson
+    is-a: transportEventDescriptor
+    range: ExternalCauseTerm, RoleOfTheInjuredPersonReferenceTerm
+  severityScale:
+    slot_uri: icd:severityScale
+    range: SeverityScaleTerm
+  hasAlternativeSeverity1Scale:
+    slot_uri: icd:hasAlternativeSeverity1Scale
+    is-a: hasSeverityAxisScale
+    range: PostcoordinationSeverityScaleTerm
+    multivalued: false
+  causalFactor:
+    slot_uri: icd:causalFactor
+    is-a: mechanism
+    range: CausalFactorTerm
+  fractureOpenOrClosed:
+    slot_uri: icd:fractureOpenOrClosed
+    is-a: fractureQualifier
+    range: FractureOpenOrClosedReferenceTerm
+  isFacilitatedBy:
+    slot_uri: icd:isFacilitatedBy
+    is-a: hasQualifier
+  additionalTarget:
+    slot_uri: icd:additionalTarget
+    is-a: ICHIPostcoordinationAxis
+  evidenceLevel:
+    slot_uri: icd:evidenceLevel
+    range: EvidenceLevel
+  hasAlternativeSeverity2Scale:
+    slot_uri: icd:hasAlternativeSeverity2Scale
+    is-a: hasSeverityAxisScale
+    range: PostcoordinationSeverityScaleTerm
+    multivalued: false
+  standardisationOrStructure:
+    slot_uri: icd:standardisationOrStructure
+    is-a: additionalDescriptiveInformationForIntervention
+  otherUnderstandingImpact:
+    slot_uri: icd:otherUnderstandingImpact
+    is-a: understandingImpact
+    range: FunctionalImpactTerm
+  morbidityParent:
+    slot_uri: icd:morbidityParent
+  durationOfComa:
+    slot_uri: icd:durationOfComa
+    is-a: consciousnessMeasure
+    range: DurationOfComaReferenceTerm
+  medicament:
+    slot_uri: icd:medicament
+    is-a: ICHIPostcoordinationAxis
+  indexBaseInclusion:
+    slot_uri: icd:indexBaseInclusion
+    is-a: baseInclusion
+    range: BaseInclusionTerm
+  unplanned:
+    slot_uri: icd:unplanned
+    is-a: additionalDescriptiveInformationForIntervention
+  genomicAndChomosomalAnomaly:
+    slot_uri: icd:genomicAndChomosomalAnomaly
+    is-a: biologicalIndicator
+    range: GenomicAndChromosomeAnomalyReferenceTerm
+  riskFactor:
+    slot_uri: icd:riskFactor
+    range: RiskFactorTerm
+  partOfPlace:
+    slot_uri: icd:partOfPlace
+    is-a: placeOfOccurrence
+    range: ExternalCauseTerm, PartOfPlaceReferenceTerm
+  jointInvolvementInFracture:
+    slot_uri: icd:jointInvolvementInFracture
+    is-a: fractureQualifier
+    range: JointInvlolvementInFractureReferenceTerm
+  numberOfAnatomicalStructuresAnInterventionIsPerformedOn:
+    slot_uri: icd:numberOfAnatomicalStructuresAnInterventionIsPerformedOn
+    is-a: quantifier
+  definitionPrefilled:
+    slot_uri: icd:definitionPrefilled
+    range: ExternalDefinitionTerm
+  morphologicallyAbnormalStructure:
+    slot_uri: icd:morphologicallyAbnormalStructure
+    range: MorphologicallyAbnormalStructureTerm
+  hasDomain:
+    slot_uri: icd:hasDomain
+    is-a: ICFObjectProperty
+  diagnosticCriteria:
+    slot_uri: icd:diagnosticCriteria
+    range: DiagnosticCriteriaTerm
+  outcomeOfFullThicknessBurn:
+    slot_uri: icd:outcomeOfFullThicknessBurn
+    is-a: burnQualifier
+    range: OutcomeOfFullThicknessBurnReferenceTerm
+  laterality:
+    slot_uri: icd:laterality
+    is-a: topology
+    mixins:
+      - ichiTopology
+    range: LateralityReferenceTerm
+  referencedCategory:
+    slot_uri: icd:referencedCategory
+    range: DefinitionSection
+  typeOfSportOrExerciseActivity:
+    slot_uri: icd:typeOfSportOrExerciseActivity
+    is-a: sportsActivityDescriptor
+    range: ExternalCauseTerm, TypeOfSportOrExerciseActivityReferenceTerm
+  hasImpairmentLocation:
+    slot_uri: icd:hasImpairmentLocation
+    is-a: hasQualifier
+  temporaryIntervention:
+    slot_uri: icd:temporaryIntervention
+    is-a: additionalDescriptiveInformationForIntervention
+  hasGCSMotorScore:
+    slot_uri: icd:hasGCSMotorScore
+    is-a: hasGCSScore
+    range: GCSMotorScoreReferenceTerm
+  perpetratorVictimRelationship:
+    slot_uri: icd:perpetratorVictimRelationship
+    is-a: aspectsOfAssaultAndMaltreatment
+    range: ExternalCauseTerm, PerpetratorVictimRelationshipReferenceTerm
+  severity:
+    slot_uri: icd:severity
+    range: SeverityTerm
+  objectOrSubstanceProducingInjury:
+    slot_uri: icd:objectOrSubstanceProducingInjury
+    is-a: agent
+    mixins:
+      - externalCauseDimension
+    range: ExternalCauseTerm, ObjectOrSubstanceProducingInjuryReferenceTerm
+  relationshipToOtherIntervention:
+    slot_uri: icd:relationshipToOtherIntervention
+    is-a: additionalDescriptiveInformationForIntervention
+  signsAndSymptoms:
+    slot_uri: icd:signsAndSymptoms
+    range: SignsAndSymptomsTerm
+  hasAction:
+    slot_uri: icd:hasAction
+    is-a: ICHIPostcoordinationAxis
+  clamlReferences:
+    slot_uri: icd:clamlReferences
+    range: ClamlReference
+  modeOfTransportOfTheInjuredPerson:
+    slot_uri: icd:modeOfTransportOfTheInjuredPerson
+    is-a: transportEventDescriptor
+    range: ExternalCauseTerm, ModeOfTransportOfTheInjuredPersonReferenceTerm
+  icd10Linearization:
+    slot_uri: icd:icd10Linearization
+    is-a: historicLinearization
+    range: HistoricLinearizationSpecification
+  morbidityLinearization:
+    slot_uri: icd:morbidityLinearization
+  modeOfTransport:
+    slot_uri: icd:modeOfTransport
+    is-a: transportDimension
+    range: ExternalCauseTerm
+  icd10Reference:
+    slot_uri: icd:icd10Reference
+    range: ICD10ReferenceTerm
+  relatedImpairment:
+    slot_uri: icd:relatedImpairment
+    range: RelatedImpairmentTerm
+  serotype:
+    slot_uri: icd:serotype
+    is-a: biologicalIndicator
+    range: SerotypeReferenceTerm
+  typeOfSchool:
+    slot_uri: icd:typeOfSchool
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, TypeOfSchoolReferenceTerm
+  previousSuicideAttempt:
+    slot_uri: icd:previousSuicideAttempt
+    is-a: aspectsOfIntentionalSelfHarm
+    range: ExternalCauseTerm, PreviousSuicideAttemptReferenceTerm
+  hasMeans:
+    slot_uri: icd:hasMeans
+    is-a: ICHIPostcoordinationAxis
+  insideOrOutsideCityLimits:
+    slot_uri: icd:insideOrOutsideCityLimits
+    is-a: placeOfOccurrenceDescriptor
+    range: ExternalCauseTerm, InsideOrOutsideCityLimitsReferenceTerm
+  selectedCommunicationImpact:
+    slot_uri: icd:selectedCommunicationImpact
+    is-a: communicationImpact
+    range: SelectedCommunicationImpact
+  remark:
+    slot_uri: icd:remark
+    range: RemarkTerm
+  bodySystem:
+    slot_uri: icd:bodySystem
+    range: BodySystemTerm
+  genderOfPerpetrator:
+    slot_uri: icd:genderOfPerpetrator
+    is-a: aspectsOfAssaultAndMaltreatment
+    range: ExternalCauseTerm, GenderOfPerpetratorReferenceTerm
+  hasImpairmentExtent:
+    slot_uri: icd:hasImpairmentExtent
+    is-a: hasQualifier
+  occupation:
+    slot_uri: icd:occupation
+    is-a: occupationalDescriptor
+    range: ExternalCauseTerm, OccupationReferenceTerm
+  infectiousAgent:
+    slot_uri: icd:infectiousAgent
+    is-a: etiology
+    range: InfectiousAgentReferenceTerm
+  hasICDCategory:
+    slot_uri: icd:hasICDCategory
+    range: ICDSection
+    multivalued: false
+  hasType:
+    slot_uri: icd:hasType
+    range: Type
+    multivalued: false
+  exclusion:
+    slot_uri: icd:exclusion
+    range: ExclusionTerm
+  counterPartInCollision:
+    slot_uri: icd:counterPartInCollision
+    is-a: transportDimension
+    range: ExternalCauseTerm
+  fullySpecifiedName:
+    slot_uri: icd:fullySpecifiedName
+    range: FullySpecifiedName
+    multivalued: false
+  index:
+    slot_uri: icd:index
+    range: BaseIndexTerm
+  editorialStatusSnomedRef:
+    slot_uri: icd:editorialStatusSnomedRef
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  violenceDescriptor:
+    slot_uri: icd:violenceDescriptor
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm, ViolenceDescriptorReferenceTerm
+  assignedPrimaryTAG:
+    slot_uri: icd:assignedPrimaryTAG
+    is-a: assignedTAG
+    range: TAG
+    multivalued: false
+  editorialStatusICD10Notes:
+    slot_uri: icd:editorialStatusICD10Notes
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  etiologyType:
+    slot_uri: icd:etiologyType
+    range: EtiologyTypeTerm
+    multivalued: false
+  temporalRange:
+    slot_uri: icd:temporalRange
+    range: TemporalPropertyValueSet
+    multivalued: false
+  icdRefCode:
+    slot_uri: icd:icdRefCode
+    multivalued: false
+  displayStatus:
+    slot_uri: icd:displayStatus
+    range: DisplayStatusValueSet
+    multivalued: false
+  versionNote:
+    slot_uri: icd:versionNote
+    range: VersionNote
+  preferred:
+    slot_uri: icd:preferred
+    range: ICD10NotesTerm
+    multivalued: false
+  editorialStatusTerm:
+    slot_uri: icd:editorialStatusTerm
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  exclusionType:
+    slot_uri: icd:exclusionType
+    range: ExclusionTermType
+    multivalued: false
+  transportDimension:
+    slot_uri: icd:transportDimension
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm
+  editorialStatusCausalMechanism:
+    slot_uri: icd:editorialStatusCausalMechanism
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  temporalModifier:
+    slot_uri: icd:temporalModifier
+    range: TemporalModifierTerm
+    multivalued: false
+  editorialStatusClinicalDescription:
+    slot_uri: icd:editorialStatusClinicalDescription
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  typeOfTransportInjuryEvent:
+    slot_uri: icd:typeOfTransportInjuryEvent
+    is-a: externalCauseDimensionDescriptor
+    range: ExternalCauseTerm, TypeOfTransportInjuryEventReferenceTerm
+  longDefinition:
+    slot_uri: icd:longDefinition
+    range: DefinitionTerm
+    multivalued: false
+  linearizationParent:
+    slot_uri: icd:linearizationParent
+    range: ICDSection
+    multivalued: false
+  editorialStatus:
+    slot_uri: icd:editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  riskFactorModifier:
+    slot_uri: icd:riskFactorModifier
+    range: RiskFactorQualifier
+    multivalued: false
+  settingOfEvent:
+    slot_uri: icd:settingOfEvent
+    is-a: transportDimension
+    range: ExternalCauseTerm
+  inclusion:
+    slot_uri: icd:inclusion
+    range: InclusionTerm
+  linearizationView:
+    slot_uri: icd:linearizationView
+    range: LinearizationView
+    multivalued: false
+  intent:
+    slot_uri: icd:intent
+    is-a: deprecatedECDimension
+    range: ExternalCauseTerm, IntentReferenceTerm
+  referenceSource:
+    slot_uri: icd:referenceSource
+    range: ReferenceSource
+    multivalued: false
+  hasSeverity:
+    slot_uri: icd:hasSeverity
+    is-a: severityAxis
+    range: SeverityReferenceTerm
+    multivalued: false
+  definition:
+    slot_uri: icd:definition
+    range: DefinitionTerm
+    multivalued: false
+  is_prefilled_definition_of:
+    slot_uri: icd:is_prefilled_definition_of
+    range: DefinitionSection
+    multivalued: false
+  editorialStatusDefinition:
+    slot_uri: icd:editorialStatusDefinition
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  orderedChild:
+    slot_uri: icd:orderedChild
+    range: DefinitionSection
+    multivalued: false
+  transportUserRoleOfInjuredPerson:
+    slot_uri: icd:transportUserRoleOfInjuredPerson
+    is-a: transportDimension
+    range: ExternalCauseTerm
+  icdTitle:
+    slot_uri: icd:icdTitle
+    range: TitleTerm
+    multivalued: false
+  editorialStatusDiagnosticCriteria:
+    slot_uri: icd:editorialStatusDiagnosticCriteria
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  otherSpecifiedResidualTitle:
+    slot_uri: icd:otherSpecifiedResidualTitle
+    range: TitleTerm
+    multivalued: false
+  unspecifiedResidualTitle:
+    slot_uri: icd:unspecifiedResidualTitle
+    range: TitleTerm
+    multivalued: false
+  indexTermType:
+    slot_uri: icd:indexTermType
+    range: IndexTermType
+    multivalued: false
+  precoordinationSuperclass:
+    slot_uri: icd:precoordinationSuperclass
+    range: ICDSection
+    multivalued: false
+  hasSeverityScale:
+    slot_uri: icd:hasSeverityScale
+    is-a: hasSeverityAxisScale
+    range: PostcoordinationSeverityScaleTerm
+    multivalued: false
+  editorialStatusLinearization:
+    slot_uri: icd:editorialStatusLinearization
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  editorialStatusFunctionalImpact:
+    slot_uri: icd:editorialStatusFunctionalImpact
+    is-a: editorialStatus
+    range: EditorialStatusValueSet
+    multivalued: false
+  comment:
+    slot_uri: icd:comment
+    range: string
+  kind:
+    slot_uri: icd:kind
+    range: string
+  unspecifiedTypeComment:
+    slot_uri: icd:unspecifiedTypeComment
+  alternativeLabel:
+    slot_uri: icd:alternativeLabel
+    range: string
+  definitionType:
+    slot_uri: icd:definitionType
+    range: string
+  deprecatedDatatypeProperty:
+    slot_uri: icd:deprecatedDatatypeProperty
+  isReleased:
+    slot_uri: icd:isReleased
+    range: boolean
+  exclusion_type:
+    slot_uri: icd:exclusion_type
+  citation:
+    slot_uri: icd:citation
+    range: string
+  iceciCode:
+    slot_uri: icd:iceciCode
+    range: string
+    multivalued: false
+  inclusionType:
+    slot_uri: icd:inclusionType
+    range: owl:oneOf{"subclass" "synonym"}
+    multivalued: false
+  adminInfo:
+    slot_uri: icd:adminInfo
+    range: string
+    multivalued: false
+  orderedChildIndex:
+    slot_uri: icd:orderedChildIndex
+    range: int
+    multivalued: false
+  isDeprecated:
+    slot_uri: icd:isDeprecated
+    range: boolean
+    multivalued: false
+  isAuxiliaryAxisChild:
+    slot_uri: icd:isAuxiliaryAxisChild
+    range: boolean
+    multivalued: false
+  isDefinitional:
+    slot_uri: icd:isDefinitional
+    range: boolean
+    multivalued: false
+  language:
+    slot_uri: icd:language
+    range: string
+    multivalued: false
+  diagnosticCriteriaRule:
+    slot_uri: icd:diagnosticCriteriaRule
+    multivalued: false
+  ontologyId:
+    slot_uri: icd:ontologyId
+    is-a: deprecatedDatatypeProperty
+    range: string
+    multivalued: false
+  label:
+    slot_uri: icd:label
+    range: string
+    multivalued: false
+  clamlUsage:
+    slot_uri: icd:clamlUsage
+    range: string
+    multivalued: false
+  description:
+    slot_uri: icd:description
+    range: string
+    multivalued: false
+  url:
+    slot_uri: icd:url
+    range: string
+    multivalued: false
+  source:
+    slot_uri: icd:source
+    range: string
+    multivalued: false
+  sequenceNumber:
+    slot_uri: icd:sequenceNumber
+    multivalued: false
+  diagnosticCriteriaText:
+    slot_uri: icd:diagnosticCriteriaText
+    multivalued: false
+  suppressOtherSpecifiedResiduals:
+    slot_uri: icd:suppressOtherSpecifiedResiduals
+    range: boolean
+    multivalued: false
+  ontologyLabel:
+    slot_uri: icd:ontologyLabel
+    is-a: deprecatedDatatypeProperty
+    range: string
+    multivalued: false
+  ageRangeIsDefinitional:
+    slot_uri: icd:ageRangeIsDefinitional
+    range: boolean
+    multivalued: false
+  isIncludedInLinearization:
+    slot_uri: icd:isIncludedInLinearization
+    range: boolean
+    multivalued: false
+  temporalQualifier:
+    slot_uri: icd:temporalQualifier
+    range: string
+    multivalued: false
+  allowsCategorySpecificValueDefinition:
+    slot_uri: icd:allowsCategorySpecificValueDefinition
+    range: boolean
+    multivalued: false
+  publicId:
+    slot_uri: icd:publicId
+    range: string
+    multivalued: false
+  severityScaleName:
+    slot_uri: icd:severityScaleName
+    range: string
+    multivalued: false
+  icdCode:
+    slot_uri: icd:icdCode
+    range: string
+    multivalued: false
+  text:
+    slot_uri: icd:text
+    range: string
+    multivalued: false
+  termId:
+    slot_uri: icd:termId
+    range: string
+    multivalued: false
+  isGrouping:
+    slot_uri: icd:isGrouping
+    range: boolean
+    multivalued: false
+  viewFlag:
+    slot_uri: icd:viewFlag
+    multivalued: false
+  shortTermId:
+    slot_uri: icd:shortTermId
+    is-a: deprecatedDatatypeProperty
+    range: string
+    multivalued: false
+  clamlKind:
+    slot_uri: icd:clamlKind
+    range: string
+    multivalued: false
+  summary:
+    slot_uri: icd:summary
+    range: string
+    multivalued: false
+  isObsolete:
+    slot_uri: icd:isObsolete
+    range: boolean
+    multivalued: false
+  linearizationSortingLabel:
+    slot_uri: icd:linearizationSortingLabel
+    range: string
+    multivalued: false
+  sortingLabel:
+    slot_uri: icd:sortingLabel
+    range: string
+    multivalued: false
+  clamlContent:
+    slot_uri: icd:clamlContent
+    range: string
+    multivalued: false
+  suppressUnspecifiedResiduals:
+    slot_uri: icd:suppressUnspecifiedResiduals
+    range: boolean
+    multivalued: false
+  id:
+    slot_uri: icd:id
+    range: string
+    multivalued: false
+  sortingCode:
+    slot_uri: icd:sortingCode
+    range: string
+    multivalued: false
+  ageRangeIsGenerallyTrue:
+    slot_uri: icd:ageRangeIsGenerallyTrue
+    range: boolean
+    multivalued: false
+  ontologyId:
+    slot_uri: icd:ontologyId
+    range: string
+    multivalued: false
+  level:
+    slot_uri: icd:level
+    range: string
+    multivalued: false
+  referenceID:
+    slot_uri: icd:referenceID
+    range: string
+    multivalued: false
+
+subsets:
+  class_schema_subset:
+    description: A subset of the schema that defines templates for class entities
