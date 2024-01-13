@@ -1,0 +1,342 @@
+ICD Schema
+
+ICD-API uses sematic web formats RDF-XML and JSON-LD in poviding information on the entities of the classification.
+
+This document explains the meanings of the properties used in the ICD-API. Some of these properties share the schema from the *Simple Knowledge Organization System (SKOS) as explained at the World Wide Web Consortium (W3C) document : http://www.w3.org/2009/08/skos-reference/skos.html. Others are from the ICD Schema described in this document.
+
+Properties Used in ICD
+
+Parent
+
+A list of entities that are parent of the entity (super classes). In the case of ICD-11 linearizations and ICD-10, we only allow one parent per entity where as in the foundation there may be multiple parents.
+
+SKOS broaderTransitive is used for the parent property
+
+Schema URI: http://www.w3.org/2004/02/skos/core#broaderTransitive
+
+Child
+
+SKOS narrowerTransitive used for the child property
+
+Schema URI: http://www.w3.org/2004/02/skos/core#narrowerTransitive
+
+Title
+
+We use SKOS prefLabel for the ICD titles.
+
+Schema URI: http://www.w3.org/2004/02/skos/core#prefLabel
+
+Description (Definition)
+
+The description is a short characterization of the entity that states things that are always true about a disease or condition and necessary to understand the scope of the rubric
+
+SKOS definition property is used for the ICD description.
+
+Schema URI: http://www.w3.org/2004/02/skos/core#definition
+
+Additional Information (Long Definition)
+
+This is a text field that is not mandatory, but that may contain any additional information about, or characteristics of, the diseases or conditions included in the entity. This text field provides more context for the entity. For example, the most common epidemiologic circumstances, putative or highly suspected aetiologic agents, or other information that may not always be true but may be common, typical, or expected. Additional information was formally called 'long definition'.
+
+Schema URI: http://id.who.int/icd/schema/longDefinition
+
+Fully Specified Name
+
+This is an unambiguous title that does not assume context. For example, "systemic illness with predominant gastrointestinal diarrheal symptoms attributable to vibrio cholera" as opposed to "cholera" or "other" (where the meaning of other would have been clear from the hierarchical context.)
+
+Schema URI: http://id.who.int/icd/schema/fullySpecifiedName
+
+Synonym
+
+SKOS altLabel property is used for the ICD synonyms.
+
+Schema URI: http://www.w3.org/2004/02/skos/core#altLabel
+
+Inclusion
+
+Within the coded categories there are typically other optional diagnostic terms. These are known as 'inclusion terms' and are given, in addition to the title, as examples of the diagnostic statements to be classified to that category.
+
+They may refer to different conditions or be synonyms. They are not a sub-classification of the category. Inclusion terms are listed primarily as a guide to the content of the category, in addition to the definition. Many of the items listed relate to important or common terms belonging to the category. Others are borderline conditions or sites listed to distinguish the boundary between one subcategory and another. The lists of inclusion terms are by no means exhaustive.
+
+Schema URI: http://id.who.int/icd/schema/inclusion
+
+Exclusion
+
+Certain categories contain lists of 'Exclusions'. These are terms which are classified elsewhere. An example of this is 6A40 Hyperfunction of pituitary gland which excludes Cushing syndrome (6A50)
+
+Exclusions serve as a cross reference in ICD and help to delimitate the boundaries of a category.
+
+Schema URI: http://id.who.int/icd/schema/exclusion
+
+Narrower Term
+
+Narrower terms are terms included in an entity which are not synonyms but rather have a narrower meaning. Most of the time we have additional child entities for such narrower concepts but in some situations they are contained as terms included in an entity
+
+Schema URI: http://id.who.int/icd/schema/narrowerTerm
+
+Browser Url
+
+ICD Browser is a web site that allows users see the ICD in its hierarchical structure at the same time providing search and post-coordination features.
+
+Browser Url property provides a direct link to the classification or an entity in the classification in the WHO's on-line ICD Browser.
+
+Schema URI: http://id.who.int/icd/schema/browserUrl
+
+Code
+
+The classification code used for the entity. Applicable in ICD-10 and ICD-11 Tabular lists (Linearizations)
+
+Schema URI: http://id.who.int/icd/schema/code
+
+Source
+
+Source points to the URI of the foundation entity when you are at a linearization (release) end point.
+
+Schema URI: http://id.who.int/icd/schema/source
+
+Foundation Child Elsewhere
+
+ICD-11 Foundation allows multiple parenting which means a category could be located in more than one place in the foundation component. However, this is not possible for ICD-11 linearizations such as in ICD-11 MMS in which a category must be located at a single location only. When looking at a linearization entity, this property would list the foundation children that are not children in the linearization.
+
+The ICD-11 Browser shows them in gray colour therefore they sometimes referred as gray children.
+
+Schema URI: http://id.who.int/icd/schema/foundationChildElsewhere
+
+Index Term
+
+ICD-11 Index terms are generated from the terms (titles, inclusions, narrower terms) included in the entity as well as from the foundation entities that are not included in the linearization. The IndexTerm property includes all of the index terms of a linearization entity in one place.
+
+Schema URI: http://id.who.int/icd/schema/indexTerm
+
+Foundation Reference
+
+Some property values such as Exclusions or Index Terms may contain references to other foundation entities in this case the URI of the foundation entities could be found under this property.
+
+Schema URI: http://id.who.int/icd/schema/foundationReference
+
+Linearization Reference
+
+exclusion and foundationChildElsewhere properties contain references to other entities. linearizationReference property contains the linearization URI (release URI) for these referenced entities where as the foundationReference contains the reference to the entity in the foundation component.
+
+Schema URI: http://id.who.int/icd/schema/linearizationReference
+
+Class Kind
+
+An ICD-11 linearization category or an ICD-10 could have one of the following class kinds:
+
+chapter (top level entities in the classification)
+block (Higher level entities that do not have ICD codes)
+window (only in ICD-11) Same as block but does not have children in the linearization. It has only other foundation children located elsewhere in the classification.
+category (Entities that have ICD codes)
+Schema URI: http://id.who.int/icd/schema/classKind
+
+Block Id
+
+The blockId is a textual short unique identifier used for the blocks (groupings) in the classification.
+
+The blocks in the ICD-11 do not have codes as they should not be used for coding. However, sometimes they can be used in the analysis process as grouping constructs and in this case a unique identifier within the scope of the linearization could be helpful.
+
+Schema URI: http://id.who.int/icd/schema/blockId
+
+Code Range
+
+This shows the code range that a block (grouping) spans.
+
+Schema URI: http://id.who.int/icd/schema/codeRange
+
+Coding Note
+
+Additional information or guidelines provided to the user to be used during the ICD coding process. CodingNote is used in ICD-11 whereas note and codingHint are used for ICD-10
+
+Schema URI: http://id.who.int/icd/schema/codingNote
+
+Note
+
+Additional information or guidelines provided to the user to be used during the ICD coding process. CodingNote is used in ICD-11 whereas note and codingHint are used for ICD-10
+
+Schema URI: http://id.who.int/icd/schema/note
+
+Coding Hint
+
+Additional information or guidelines provided to the user to be used during the ICD coding process. CodingNote is used in ICD-11 whereas note and codingHint are used for ICD-10
+
+Schema URI: http://id.who.int/icd/schema/codingHint
+
+Release Date
+
+The release date of the classification version
+
+Schema URI: http://id.who.int/icd/schema/releaseDate
+
+Release Id
+
+Each release of ICD-11 has a release Id which is generally contains the year and the month of the release date. (e.g. 2018-12) Pre-release versions start with the text beta in front of them. Foundation top level URI and linearization top level URIs contain the information.
+
+Schema URI: http://id.who.int/icd/schema/releaseId
+
+Version
+
+Used with the release URIs when a minor is not supplied and lists all available versions of the requested entity.
+
+Schema URI: http://id.who.int/icd/schema/version
+
+Last Version
+
+Again used with the release URIs when a minor is not supplied and shows which of the minor version is the latest version.
+
+Schema URI: http://id.who.int/icd/schema/latestVersion
+
+Release
+
+Used with the release URIs when a specific release identifier is not supplied and lists all available releases of the requested entity. This was called "version" in the version 1 of the ICD-API
+
+Schema URI: http://id.who.int/icd/schema/release
+
+Latest Release
+
+Used with the release URIs when a release identifier is not supplied and shows which of the release is the latest. This was called "latestVersion" in the version 1 of the ICD-API
+
+Schema URI: http://id.who.int/icd/schema/latestRelease
+
+Postcoordination Scale
+
+Information on which axes allow or require postcoordination for an entity together with the valueset that could be used for the postcoordination
+
+Schema URI: http://id.who.int/icd/schema/postcoordinationScale
+
+Axis Name
+
+Used within the postcoordination scale, identifies the unique name of the axis for the postcoordination (a URI that uniquely identifies the axis)
+
+Schema URI: http://id.who.int/icd/schema/axisName
+
+Required Postcoordination
+
+Used within the postcoordination scale, identifies whether the postcoordination axis is a required one or not. Value could be true or false
+
+Schema URI: http://id.who.int/icd/schema/requiredPostcoordination
+
+Allow Multiple Values
+
+Used within the postcoordination scale, identifies whether the postcoordination axis allows multiple values or not.
+
+AllowAlways means the user could post-coordinate multiple times using this axis.
+NotAllowed means the user only post-coordinate once using this axis
+AllowedExceptFromSameBlock means multiple values are allowed only if they are coming from different blocks within the value set
+Schema URI: http://id.who.int/icd/schema/allowMultipleValues
+
+Scale Entity
+
+List of allowed values during postcoordination. They are hierarchical starting points of the allowed value set. i.e. any descendant of the entities provided under the scaleEntity property can be used during postcoordination.
+
+Schema URI: http://id.who.int/icd/schema/scaleEntity
+
+More Content Model Properties
+
+Explanations of the following properties could be found in the Content Model Reference Guide
+
+causality Schema URI: http://id.who.int/icd/schema/causality
+
+laterality Schema URI: http://id.who.int/icd/schema/laterality
+
+regional Schema URI: http://id.who.int/icd/schema/regional
+
+distribution Schema URI: http://id.who.int/icd/schema/distribution
+
+relational Schema URI: http://id.who.int/icd/schema/relational
+
+serotype Schema URI: http://id.who.int/icd/schema/serotype
+
+durationOfComa Schema URI: http://id.who.int/icd/schema/durationOfComa
+
+hasPupilReactionScore Schema URI: http://id.who.int/icd/schema/hasPupilReactionScore
+
+hasGCSEyeScore Schema URI: http://id.who.int/icd/schema/hasGCSEyeScore
+
+hasGCSMotorScore Schema URI: http://id.who.int/icd/schema/hasGCSMotorScore
+
+hasGCSVerbalScore Schema URI: http://id.who.int/icd/schema/hasGCSVerbalScore
+
+diagnosisConfirmedBy Schema URI: http://id.who.int/icd/schema/diagnosisConfirmedBy
+
+typeOfInjury Schema URI: http://id.who.int/icd/schema/typeOfInjury
+
+fractureSubtype Schema URI: http://id.who.int/icd/schema/fractureSubtype
+
+fractureOpenOrClosed Schema URI: http://id.who.int/icd/schema/fractureOpenOrClosed
+
+jointInvolvementInFracture Schema URI: http://id.who.int/icd/schema/jointInvolvementInFracture
+
+extentOfBurnByBodySurface Schema URI: http://id.who.int/icd/schema/extentOfBurnByBodySurface
+
+extentOfFullThicknessBurnByBodySurface Schema URI: http://id.who.int/icd/schema/extentOfFullThicknessBurnByBodySurface
+
+outcomeOfFullThicknessBurn Schema URI: http://id.who.int/icd/schema/outcomeOfFullThicknessBurn
+
+timeInLife Schema URI: http://id.who.int/icd/schema/timeInLife
+
+specificAnatomy Schema URI: http://id.who.int/icd/schema/specificAnatomy
+
+infectiousAgent Schema URI: http://id.who.int/icd/schema/infectiousAgent
+
+medication Schema URI: http://id.who.int/icd/schema/medication
+
+chemicalAgent Schema URI: http://id.who.int/icd/schema/chemicalAgent
+
+histopathology Schema URI: http://id.who.int/icd/schema/histopathology
+
+genomicAndChomosomalAnomaly Schema URI: http://id.who.int/icd/schema/genomicAndChomosomalAnomaly
+
+hasCausingCondition Schema URI: http://id.who.int/icd/schema/hasCausingCondition
+
+hasManifestation Schema URI: http://id.who.int/icd/schema/hasManifestation
+
+associatedWith Schema URI: http://id.who.int/icd/schema/associatedWith
+
+intent Schema URI: http://id.who.int/icd/schema/intent
+
+violenceDescriptor Schema URI: http://id.who.int/icd/schema/violenceDescriptor
+
+mechanismOfInjury Schema URI: http://id.who.int/icd/schema/mechanismOfInjury
+
+transportEventDescriptor Schema URI: http://id.who.int/icd/schema/transportEventDescriptor
+
+objectOrSubstanceProducingInjury Schema URI: http://id.who.int/icd/schema/objectOrSubstanceProducingInjury
+
+sportsActivityDescriptor Schema URI: http://id.who.int/icd/schema/sportsActivityDescriptor
+
+placeOfOccurrence Schema URI: http://id.who.int/icd/schema/placeOfOccurrence
+
+placeOfOccurrenceDescriptor Schema URI: http://id.who.int/icd/schema/placeOfOccurrenceDescriptor
+
+activityWhenInjured Schema URI: http://id.who.int/icd/schema/activityWhenInjured
+
+occupationalDescriptor Schema URI: http://id.who.int/icd/schema/occupationalDescriptor
+
+substanceUse Schema URI: http://id.who.int/icd/schema/substanceUse
+
+hasSeverity Schema URI: http://id.who.int/icd/schema/hasSeverity
+
+course Schema URI: http://id.who.int/icd/schema/course
+
+temporalPatternAndOnset Schema URI: http://id.who.int/icd/schema/temporalPatternAndOnset
+
+Properties specific to CodeInfo endpoint of the ICD-API
+
+When information on a code combination is requested from the API, many of the properties above content model properties are used to describe the postcoordination combination. There are some more properties specific to this result.
+
+otherPostcoordination Schema URI: http://id.who.int/icd/schema/otherPostcoordination
+
+If the postcoordination combination contains codes not defined in the allowed or required postcoordination axes, then these values are placed under the otherPostcoordination rubric
+
+stemCode Schema URI: http://id.who.int/icd/schema/stemCode
+
+This is them code for the postcoordination combination
+
+simplifiedCode Schema URI: http://id.who.int/icd/schema/simplifiedCode
+
+Some postcoordination combinations can be simplified. If a code postcoordinated with another is equivalent to a simpler code then this field contains this new simplified code
+
+simplifiedStemCode Schema URI: http://id.who.int/icd/schema/simplifiedStemCode
+
+Some postcoordination combinations can be simplified. If a code postcoordinated with another is equivalent to a simpler code then this field contains the stem code of the new simplified code
