@@ -1,0 +1,159 @@
+id: https://who.int/whofic/contentmodel/
+name: contentmodel
+description: |-
+  Metamodel representing the Content Model for WhO-FIC Ontology Model
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  icd: http://who.int/icd#  
+  foundation: http://id.who.int/icd/entity/
+  icdschema: http://id.who.int/icd/schema/
+  linearization: http://id.who.int/icd/linearization
+  ps: http://id.who.int/icd/postcoordnination
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+
+classes:
+  WHOFICEntityModel:
+    slots:
+      - title
+      - definition
+      - baseInclusion
+      - baseExclusion
+      - baseIndex
+      - subclassBaseInclusion
+     
+  ICDCategoryModel:
+    is_a:   WHOFICEntityModel
+    slots:
+      - longDefinition
+      - fullyspecifiedName
+
+  ICFCategoryModel:
+    is_a: WHOFICEntityModel
+    slots:
+      - relatedImpairment
+
+  ICHICategoryModel:
+    is_a: WHOFICEntityModel
+    slots:
+      - icfReference
+
+  Term:
+    description >-
+      Toplevel entity for reified values 
+    slots:
+      - label
+  
+  LanguageTerm:
+    is_a: Term
+    description >-
+      Reified string value 
+
+  BaseIndexTerm:
+    is_a: LanguageTerm
+    description >-
+      Description of BaseIndexTerm
+    slots:
+      - isInclusion
+      - indexType
+        
+  InternalReferenceTerm:
+    is_a: Term
+    description >-
+      Reified reference to a WHO-FIC entity
+    slots:
+      - referencedCategory
+
+slots:
+  title:
+    description: title of WHOFIC entity
+    range: LanguageTerm
+    slot_uri: skos:prefLabel
+        
+  definition:
+    description: definition of WHOFIC entity
+    range: LanguageTerm
+    slot_uri: skos:definition
+  
+  baseInclusion:
+    description >- 
+      Inclusion term of a Foundation entity, from which inclusions of classification 
+      entities are computed, may be synonym, narrower term, or subclass inclusions
+    range: Term
+    multivalued: true
+    slot_uri: icdschema:inclusion
+    
+  subclassBaseInclusion:
+    is-a: baseInclusion
+    range: InternalReferenceTerm
+    multivalued: true
+
+  baseExclusion:
+    description >- Exclusion term of a Foundation entity, from which exclusions of 
+      classification entities are computed
+    range: InternalReferenceTerm
+    multivalued: true
+    slot_uri: icdschema:exclusion
+    
+  baseIndex:
+    range: BaseIndexTerm
+    multivalued: true
+    
+  longDefinition:
+    description: Long definition
+    range: LanguageTerm
+    slot_uri: icdschema:longDefinition
+
+  fullySpecifiedName:
+    range: LanguageTerm
+    multivalued: false
+
+  relatedImpairment:
+    range: LanguageTerm
+    multivalued: true
+
+  icfReference:
+    range: InternalReferenceTerm
+
+  label:
+    range: string
+
+  isInclusion:
+    description: true if the synonym or narrower term is also an inclusion term
+    range: boolean
+  
+  indexType:
+    description: an index term that's either a synonym or a narrower term
+    ranage: SynonymOrNarrowerTerm
+    
+  #Not clear how to reference a WHOFIC entity. A ClasssificationEntity instantiates WHOFICEntityModel
+  #Are subclasses of ClasssificationEntity considered instances of WHOFICEntityModel
+  referencedCategory:
+    range: WHOFICEntityModel
+
+enums:
+  SynonymOrNarrowerTerm:
+    description: types of index terms
+    permissible_values:
+        SYNONYM
+        NARROWER

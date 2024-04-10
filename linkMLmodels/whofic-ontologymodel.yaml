@@ -1,0 +1,116 @@
+id: https://who.int/whofic/ontology-model
+name: WhO-FIC Ontology Model
+description: |-
+  WHO-FIC Ontology Model for reference WHO-FIC classifications (ICD, ICF, ICHI)
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  icd: http://who.int/icd#  
+  foundation: http://id.who.int/icd/entity/
+  icdschema: http://id.who.int/icd/schema/
+  linearization: http://id.who.int/icd/linearization
+  ps: http://id.who.int/icd/postcoordnination
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+# Should "codes" displayed for ICF and ICHI categories as they do in the current iCAT?
+
+
+classes:
+
+  ClassificationEntity:
+    description >-
+      Top-level classification entity 
+    instantiates:
+      - contentmodel:WHOFICEntityModel
+    class_uri: foundation:1224012103
+      
+  ICDEntity:
+    is_a: ClassificationEntity
+    description >-
+      Top-level ICD entity
+    class_uri: foundation:448895267
+    
+  ICFEntity:
+    is_a: ClassificationEntity
+    description >-
+      Top-level ICF entity
+    class_uri: foundation:1405434703
+      
+  ICHIEntity:
+    is_a: ClassificationEntity
+    description >-
+      Top-level ICHI entity
+    class_uri: foundation:60347385
+      
+
+  ICDCategory:
+    is_a: ICDEntity
+    instantiates:
+      - contentmodel:ICDCategoryModel    
+    description >-
+      Top-level codable ICD entities
+    class_uri: foundation:455013390
+    slots:
+      diagnosticCriteria
+      functionalImpact
+            
+  ICDExtensionCode:
+    is_a: ICDEntity
+    description >- 
+    Top-level ICD extension code
+    class_uri: foundation:1920852714
+  
+  ICFCategory:
+    is_a: ICFEntity
+    instantiates:
+      - ICFCategoryModel
+    description >-
+      Top-level ICF entities with codes 
+    class_uri: foundation:619527855
+
+      
+  ICFExtensionCode:
+    is_a: ICFEntity
+    description >- 
+    Top-level ICD extension code
+    class_uri: foundation:152976210
+
+  ICFQualifier:
+    is_a: ICFEntity
+    description >- 
+    Top-level ICD extension code
+    class_uri: foundation:423829389
+
+  ICHICategory:
+    is_a: ICHIEntity
+    instantiates:
+      - ICHICategoryModel
+    description >-
+      Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)
+    class_uri: foundation:1190112446
+      
+  ICHIExtensionCode:
+    class_uri: foundation:1153570334
+    is_a: ICHIEntity
+    description >- 
+      Top-level ICHI extension code
+  
