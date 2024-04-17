@@ -1,0 +1,367 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foundation: <http://id.who.int/icd/entity/> .
+@prefix icd: <http://who.int/icd#> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+icd:ICDCategory a owl:Class ;
+    rdfs:label "ICDCategory" ;
+    icd:fullySpecifiedName "None" ;
+    icd:longDefinition "None" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:functionalImpact ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty icd:diagnosticCriteria ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:InternalReferenceTerm ;
+            owl:onProperty icd:functionalImpact ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:diagnosticCriteria ],
+        icd:ICDEntity ;
+    skos:definition "Top-level codable ICD entities" ;
+    skos:exactMatch foundation:455013390 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICDCategoryModel a owl:Class ;
+    rdfs:label "ICDCategoryModel" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom icd:LanguageTerm ;
+            owl:onProperty icd:longDefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:longDefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:fullySpecifiedName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:LanguageTerm ;
+            owl:onProperty icd:fullySpecifiedName ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:fullySpecifiedName ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:longDefinition ],
+        icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICDExtensionCode a owl:Class ;
+    rdfs:label "ICDExtensionCode" ;
+    rdfs:subClassOf icd:ICDEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:1920852714 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICFCategory a owl:Class ;
+    rdfs:label "ICFCategory" ;
+    icd:relatedImpairment "None" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICF entities with codes" ;
+    skos:exactMatch foundation:619527855 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICFCategoryModel a owl:Class ;
+    rdfs:label "ICFCategoryModel" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom icd:LanguageTerm ;
+            owl:onProperty icd:relatedImpairment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:relatedImpairment ],
+        icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICFExtensionCode a owl:Class ;
+    rdfs:label "ICFExtensionCode" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:152976210 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICFQualifier a owl:Class ;
+    rdfs:label "ICFQualifier" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:423829389 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICHICategory a owl:Class ;
+    rdfs:label "ICHICategory" ;
+    icd:icfReference "None" ;
+    rdfs:subClassOf icd:ICHIEntity ;
+    skos:definition "Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)" ;
+    skos:exactMatch foundation:1190112446 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICHICategoryModel a owl:Class ;
+    rdfs:label "ICHICategoryModel" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom icd:InternalReferenceTerm ;
+            owl:onProperty icd:icfReference ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:icfReference ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:icfReference ],
+        icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICHIExtensionCode a owl:Class ;
+    rdfs:label "ICHIExtensionCode" ;
+    rdfs:subClassOf icd:ICHIEntity ;
+    skos:definition "Top-level ICHI extension code" ;
+    skos:exactMatch foundation:1153570334 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+<https://who.int/whofic/whofic-contentmodel.owl.ttl> a owl:Ontology ;
+    rdfs:label "WhO-FIC_Ontology_Model" ;
+    dcterms:license "https://creativecommons.org/licenses/by-nd/3.0/igo/" ;
+    skos:definition "WHO-FIC Ontology Model for reference WHO-FIC classifications (ICD, ICF, ICHI)" .
+
+icd:BaseIndexTerm a owl:Class ;
+    rdfs:label "BaseIndexTerm" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:indexType ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:isInclusion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:SynonymOrNarrowerTerm ;
+            owl:onProperty icd:indexType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:isInclusion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:indexType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty icd:isInclusion ],
+        icd:LanguageTerm ;
+    skos:definition "Description of BaseIndexTerm" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICDEntity a owl:Class ;
+    rdfs:label "ICDEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICD entity" ;
+    skos:exactMatch foundation:448895267 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICHIEntity a owl:Class ;
+    rdfs:label "ICHIEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICHI entity" ;
+    skos:exactMatch foundation:60347385 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+<http://who.int/icd#SynonymOrNarrowerTerm#NARROWER> a owl:Class ;
+    rdfs:label "NARROWER" ;
+    rdfs:subClassOf icd:SynonymOrNarrowerTerm .
+
+<http://who.int/icd#SynonymOrNarrowerTerm#SYNONYM> a owl:Class ;
+    rdfs:label "SYNONYM" ;
+    rdfs:subClassOf icd:SynonymOrNarrowerTerm .
+
+icd:baseExclusion a owl:ObjectProperty ;
+    rdfs:label "baseExclusion" ;
+    rdfs:range icd:InternalReferenceTerm ;
+    skos:definition "Exclusion term of a Foundation entity, from which exclusions of classification entities are computed" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:baseInclusion a owl:ObjectProperty ;
+    rdfs:label "baseInclusion" ;
+    rdfs:range icd:Term ;
+    skos:definition "Inclusion term of a Foundation entity, from which inclusions of classification entities are computed, may be synonym, narrower term, or subclass inclusions" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:baseIndex a owl:ObjectProperty ;
+    rdfs:label "baseIndex" ;
+    rdfs:range icd:BaseIndexTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:diagnosticCriteria a owl:DatatypeProperty ;
+    rdfs:label "diagnosticCriteria" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:functionalImpact a owl:ObjectProperty ;
+    rdfs:label "functionalImpact" ;
+    rdfs:range icd:InternalReferenceTerm ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:relatedImpairment a owl:ObjectProperty ;
+    rdfs:label "relatedImpairment" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:subclassBaseInclusion a owl:ObjectProperty ;
+    rdfs:label "subclassBaseInclusion" ;
+    rdfs:range icd:InternalReferenceTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ClassificationEntity a owl:Class ;
+    rdfs:label "ClassificationEntity" ;
+    icd:baseExclusion "None" ;
+    icd:baseInclusion "None" ;
+    icd:baseIndex "None" ;
+    icd:definition "None" ;
+    icd:subclassBaseInclusion "None" ;
+    icd:title "None" ;
+    skos:definition "Top-level classification entity" ;
+    skos:exactMatch foundation:1224012103 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:ICFEntity a owl:Class ;
+    rdfs:label "ICFEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICF entity" ;
+    skos:exactMatch foundation:1405434703 ;
+    skos:inScheme <https://who.int/whofic/whofic-contentmodel> .
+
+icd:definition a owl:ObjectProperty ;
+    rdfs:label "definition" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "definition of WHOFIC entity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:fullySpecifiedName a owl:ObjectProperty ;
+    rdfs:label "fullySpecifiedName" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:icfReference a owl:ObjectProperty ;
+    rdfs:label "icfReference" ;
+    rdfs:range icd:InternalReferenceTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:indexType a owl:ObjectProperty ;
+    rdfs:label "indexType" ;
+    rdfs:range icd:SynonymOrNarrowerTerm ;
+    skos:definition "an index term that's either a synonym or a narrower term" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:isInclusion a owl:DatatypeProperty ;
+    rdfs:label "isInclusion" ;
+    rdfs:range xsd:boolean ;
+    skos:definition "true if the synonym or narrower term is also an inclusion term" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:label a owl:DatatypeProperty ;
+    rdfs:label "label" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:longDefinition a owl:ObjectProperty ;
+    rdfs:label "longDefinition" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "Long definition" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:referencedCategory a owl:ObjectProperty ;
+    rdfs:label "referencedCategory" ;
+    rdfs:range icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:title a owl:ObjectProperty ;
+    rdfs:label "title" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "title of WHOFIC entity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:SynonymOrNarrowerTerm a owl:Class ;
+    owl:unionOf ( <http://who.int/icd#SynonymOrNarrowerTerm#SYNONYM> <http://who.int/icd#SynonymOrNarrowerTerm#NARROWER> ) ;
+    linkml:permissible_values <http://who.int/icd#SynonymOrNarrowerTerm#NARROWER>,
+        <http://who.int/icd#SynonymOrNarrowerTerm#SYNONYM> .
+
+icd:Term a owl:Class ;
+    rdfs:label "Term" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:label ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty icd:label ] ;
+    skos:definition "Toplevel entity for reified values" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:WHOFICEntityModel a owl:Class ;
+    rdfs:label "WHOFICEntityModel" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:definition ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:Term ;
+            owl:onProperty icd:baseInclusion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:subclassBaseInclusion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:baseInclusion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:LanguageTerm ;
+            owl:onProperty icd:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:InternalReferenceTerm ;
+            owl:onProperty icd:subclassBaseInclusion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:baseIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:BaseIndexTerm ;
+            owl:onProperty icd:baseIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:LanguageTerm ;
+            owl:onProperty icd:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:InternalReferenceTerm ;
+            owl:onProperty icd:baseExclusion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:baseExclusion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:definition ] ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:InternalReferenceTerm a owl:Class ;
+    rdfs:label "InternalReferenceTerm" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:referencedCategory ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty icd:referencedCategory ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom icd:WHOFICEntityModel ;
+            owl:onProperty icd:referencedCategory ],
+        icd:Term ;
+    skos:definition "Reified reference to a WHO-FIC entity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:LanguageTerm a owl:Class ;
+    rdfs:label "LanguageTerm" ;
+    rdfs:subClassOf icd:Term ;
+    skos:definition "Reified string value" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+

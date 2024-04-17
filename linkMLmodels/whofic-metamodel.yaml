@@ -1,5 +1,5 @@
-id: https://who.int/whofic/contentmodel/
-name: contentmodel
+id: https://who.int/whofic/contentmetamodel
+name: contentmetamodel
 description: |-
   Metamodel representing the Content Model for WhO-FIC Ontology Model
 license: https://creativecommons.org/licenses/by-nd/3.0/igo/
@@ -46,7 +46,7 @@ classes:
     is_a:   WHOFICEntityModel
     slots:
       - longDefinition
-      - fullyspecifiedName
+      - fullySpecifiedName
 
   ICFCategoryModel:
     is_a: WHOFICEntityModel
@@ -59,28 +59,24 @@ classes:
       - icfReference
 
   Term:
-    description >-
-      Toplevel entity for reified values 
+    description : Toplevel entity for reified values 
     slots:
       - label
   
   LanguageTerm:
     is_a: Term
-    description >-
-      Reified string value 
+    description : Reified string value 
 
   BaseIndexTerm:
     is_a: LanguageTerm
-    description >-
-      Description of BaseIndexTerm
+    description : Description of BaseIndexTerm
     slots:
       - isInclusion
       - indexType
         
   InternalReferenceTerm:
     is_a: Term
-    description >-
-      Reified reference to a WHO-FIC entity
+    description : Reified reference to a WHO-FIC entity
     slots:
       - referencedCategory
 
@@ -96,21 +92,18 @@ slots:
     slot_uri: skos:definition
   
   baseInclusion:
-    description >- 
-      Inclusion term of a Foundation entity, from which inclusions of classification 
-      entities are computed, may be synonym, narrower term, or subclass inclusions
+    description : Inclusion term of a Foundation entity, from which inclusions of classification entities are computed, may be synonym, narrower term, or subclass inclusions
     range: Term
     multivalued: true
     slot_uri: icdschema:inclusion
     
   subclassBaseInclusion:
-    is-a: baseInclusion
+    subproperty_of: baseInclusion
     range: InternalReferenceTerm
     multivalued: true
 
   baseExclusion:
-    description >- Exclusion term of a Foundation entity, from which exclusions of 
-      classification entities are computed
+    description: Exclusion term of a Foundation entity, from which exclusions of classification entities are computed
     range: InternalReferenceTerm
     multivalued: true
     slot_uri: icdschema:exclusion
@@ -144,7 +137,7 @@ slots:
   
   indexType:
     description: an index term that's either a synonym or a narrower term
-    ranage: SynonymOrNarrowerTerm
+    range: SynonymOrNarrowerTerm
     
   #Not clear how to reference a WHOFIC entity. A ClasssificationEntity instantiates WHOFICEntityModel
   #Are subclasses of ClasssificationEntity considered instances of WHOFICEntityModel
@@ -153,7 +146,8 @@ slots:
 
 enums:
   SynonymOrNarrowerTerm:
+    is_a: LanguageTerm
     description: types of index terms
     permissible_values:
-        SYNONYM
-        NARROWER
+        SYNONYM:
+        NARROWER:
