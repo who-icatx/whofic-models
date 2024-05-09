@@ -1,5 +1,5 @@
-id: https://who.int/whofic/whofic-contentmodel
-name: WhO-FIC_Ontology_Model
+id: https://who.int/whofic/contentmodel
+name: WhOFICOntologyContentModel
 description: |-
   WHO-FIC Ontology Model for reference WHO-FIC classifications (ICD, ICF, ICHI)
 license: https://creativecommons.org/licenses/by-nd/3.0/igo/
@@ -7,18 +7,17 @@ default_curi_maps:
   - semweb_context
 imports:
   - linkml:types
-  - ./whofic-metamodel
+  - ./metamodel
 prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   owl: http://www.w3.org/2002/07/owl#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
   skos: http://www.w3.org/2004/02/skos/core#
-  icd: http://who.int/icd#  
+  icd: http://who.int/icd#
   foundation: http://id.who.int/icd/entity/
   icdschema: http://id.who.int/icd/schema/
   linearization: http://id.who.int/icd/linearization
-  ps: http://id.who.int/icd/postcoordnination
   schema: http://schema.org/
   linkml: https://w3id.org/linkml/
 
@@ -30,19 +29,14 @@ emit_prefixes:
   - rdfs
   - xsd
   - skos
-  - icd
-
-# Should "codes" displayed for ICF and ICHI categories as they do in the current iCAT?
-
-
-
+  - icd    
+  
 classes:
-
   ClassificationEntity:
     class_uri: foundation:1224012103
     description : Top-level classification entity 
     instantiates:
-      - contentmodel:WHOFICEntityModel
+      - contentmetamodel:WHOFICEntityModel
     annotations:
       - title
       - definition
@@ -114,7 +108,7 @@ classes:
     annotations: 
       - icfReference
     class_uri: foundation:1190112446
-      
+    # Todo Add intervention and 3 axes
   ICHIExtensionCode:
     class_uri: foundation:1153570334
     is_a: ICHIEntity
@@ -126,4 +120,4 @@ slots:
     range: string
   functionalImpact:
     multivalued: true
-    range: InternalReferenceTerm
+    range: uriorcurie

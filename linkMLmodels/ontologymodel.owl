@@ -1,0 +1,265 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foundation: <http://id.who.int/icd/entity/> .
+@prefix icd: <http://who.int/icd#> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+icd:ICDCategory a owl:Class ;
+    rdfs:label "ICDCategory" ;
+    icd:fullySpecifiedName "None" ;
+    icd:longDefinition "None" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty icd:diagnosticCriteria ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:functionalImpact ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty icd:functionalImpact ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty icd:diagnosticCriteria ],
+        icd:ICDEntity ;
+    skos:definition "Top-level codable ICD entities" ;
+    skos:exactMatch foundation:455013390 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICDCategoryModel a owl:Class ;
+    rdfs:label "ICDCategoryModel" ;
+    icd:fullySpecifiedName "None" ;
+    icd:longDefinition "None" ;
+    rdfs:subClassOf icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICDExtensionCode a owl:Class ;
+    rdfs:label "ICDExtensionCode" ;
+    rdfs:subClassOf icd:ICDEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:1920852714 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICFCategory a owl:Class ;
+    rdfs:label "ICFCategory" ;
+    icd:relatedImpairment "None" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICF entities with codes" ;
+    skos:exactMatch foundation:619527855 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICFCategoryModel a owl:Class ;
+    rdfs:label "ICFCategoryModel" ;
+    icd:relatedImpairment "None" ;
+    rdfs:subClassOf icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICFExtensionCode a owl:Class ;
+    rdfs:label "ICFExtensionCode" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:152976210 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICFQualifier a owl:Class ;
+    rdfs:label "ICFQualifier" ;
+    rdfs:subClassOf icd:ICFEntity ;
+    skos:definition "Top-level ICD extension code" ;
+    skos:exactMatch foundation:423829389 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICHICategory a owl:Class ;
+    rdfs:label "ICHICategory" ;
+    icd:icfReference "None" ;
+    rdfs:subClassOf icd:ICHIEntity ;
+    skos:definition "Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)" ;
+    skos:exactMatch foundation:1190112446 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICHICategoryModel a owl:Class ;
+    rdfs:label "ICHICategoryModel" ;
+    icd:icfReference "None" ;
+    rdfs:subClassOf icd:WHOFICEntityModel ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICHIExtensionCode a owl:Class ;
+    rdfs:label "ICHIExtensionCode" ;
+    rdfs:subClassOf icd:ICHIEntity ;
+    skos:definition "Top-level ICHI extension code" ;
+    skos:exactMatch foundation:1153570334 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:baseExclusion a owl:AnnotationProperty ;
+    rdfs:label "baseExclusion" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Exclusion term of a Foundation entity, from which exclusions of classification entities are computed" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:baseInclusion a owl:AnnotationProperty ;
+    rdfs:label "baseInclusion" ;
+    rdfs:range icd:Term ;
+    skos:definition "Inclusion term of a Foundation entity, from which inclusions of classification  entities are computed, may be synonym, narrower term, or subclass inclusions" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:baseIndex a owl:AnnotationProperty ;
+    rdfs:label "baseIndex" ;
+    rdfs:range icd:BaseIndexTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:definition a owl:AnnotationProperty ;
+    rdfs:label "definition" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "definition of WHOFIC entity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:fullySpecifiedName a owl:AnnotationProperty ;
+    rdfs:label "fullySpecifiedName" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:icfReference a owl:AnnotationProperty ;
+    rdfs:label "icfReference" ;
+    rdfs:range xsd:anyURI ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:indexType a owl:ObjectProperty ;
+    rdfs:label "indexType" ;
+    rdfs:range icd:IndexType ;
+    skos:definition "an index term that's either a synonym or a narrower term" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:isInclusion a owl:AnnotationProperty ;
+    rdfs:label "isInclusion" ;
+    rdfs:range xsd:boolean ;
+    skos:definition "true if the synonym or narrower term is also an inclusion term" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:label a owl:AnnotationProperty ;
+    rdfs:label "label" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:longDefinition a owl:AnnotationProperty ;
+    rdfs:label "longDefinition" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "Long definition" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:relatedImpairment a owl:AnnotationProperty ;
+    rdfs:label "relatedImpairment" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:subclassBaseInclusion a owl:AnnotationProperty ;
+    rdfs:label "subclassBaseInclusion" ;
+    rdfs:range xsd:anyURI ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:title a owl:AnnotationProperty ;
+    rdfs:label "title" ;
+    rdfs:range icd:LanguageTerm ;
+    skos:definition "title of WHOFIC entity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+<https://who.int/whofic/contentmodel.owl.ttl> a owl:Ontology ;
+    rdfs:label "WhOFICOntologyContentModel" ;
+    dcterms:license "https://creativecommons.org/licenses/by-nd/3.0/igo/" ;
+    skos:definition "WHO-FIC Ontology Model for reference WHO-FIC classifications (ICD, ICF, ICHI)" .
+
+icd:BaseIndexTerm a owl:Class ;
+    rdfs:label "BaseIndexTerm" ;
+    icd:indexType "None" ;
+    icd:isInclusion "None" ;
+    rdfs:subClassOf icd:LanguageTerm ;
+    skos:definition "Description of BaseIndexTerm" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ContentModelEntity a owl:Class ;
+    rdfs:label "ContentModelEntity" ;
+    skos:definition "Description of ContentModelEntity" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:ICDEntity a owl:Class ;
+    rdfs:label "ICDEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICD entity" ;
+    skos:exactMatch foundation:448895267 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICHIEntity a owl:Class ;
+    rdfs:label "ICHIEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICHI entity" ;
+    skos:exactMatch foundation:60347385 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+<http://who.int/icd#IndexType#narrower> a icd:IndexType,
+        owl:NamedIndividual ;
+    rdfs:label "narrower" .
+
+<http://who.int/icd#IndexType#synonym> a icd:IndexType,
+        owl:NamedIndividual ;
+    rdfs:label "synonym" .
+
+icd:Term a owl:Class ;
+    rdfs:label "Term" ;
+    icd:label "None" ;
+    rdfs:subClassOf icd:ContentModelEntity ;
+    skos:definition "Toplevel entity for reified values" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:diagnosticCriteria a owl:DatatypeProperty ;
+    rdfs:label "diagnosticCriteria" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:functionalImpact a owl:DatatypeProperty ;
+    rdfs:label "functionalImpact" ;
+    rdfs:range xsd:anyURI ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ClassificationEntity a owl:Class ;
+    rdfs:label "ClassificationEntity" ;
+    icd:baseExclusion "None" ;
+    icd:baseInclusion "None" ;
+    icd:baseIndex "None" ;
+    icd:definition "None" ;
+    icd:subclassBaseInclusion "None" ;
+    icd:title "None" ;
+    skos:definition "Top-level classification entity" ;
+    skos:exactMatch foundation:1224012103 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:ICFEntity a owl:Class ;
+    rdfs:label "ICFEntity" ;
+    rdfs:subClassOf icd:ClassificationEntity ;
+    skos:definition "Top-level ICF entity" ;
+    skos:exactMatch foundation:1405434703 ;
+    skos:inScheme <https://who.int/whofic/contentmodel> .
+
+icd:IndexType a owl:Class ;
+    owl:oneOf ( <http://who.int/icd#IndexType#synonym> <http://who.int/icd#IndexType#narrower> ) ;
+    linkml:permissible_values <http://who.int/icd#IndexType#narrower>,
+        <http://who.int/icd#IndexType#synonym> .
+
+icd:WHOFICEntityModel a owl:Class ;
+    rdfs:label "WHOFICEntityModel" ;
+    icd:baseExclusion "None" ;
+    icd:baseInclusion "None" ;
+    icd:baseIndex "None" ;
+    icd:definition "None" ;
+    icd:subclassBaseInclusion "None" ;
+    icd:title "None" ;
+    rdfs:subClassOf icd:ContentModelEntity ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+icd:LanguageTerm a owl:Class ;
+    rdfs:label "LanguageTerm" ;
+    rdfs:subClassOf icd:Term ;
+    skos:definition "Reified string value" ;
+    skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+

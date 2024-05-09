@@ -13,7 +13,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
   skos: http://www.w3.org/2004/02/skos/core#
-  icd: http://who.int/icd#  
+  whofic: http://who.int/whofic/  
+  icd: http://who.int/icd#
   foundation: http://id.who.int/icd/entity/
   icdschema: http://id.who.int/icd/schema/
   linearization: http://id.who.int/icd/linearization
@@ -33,8 +34,15 @@ emit_prefixes:
 
 
 classes:
+
+  ContentModelEntity:
+    description: >-
+      Description of ContentModelEntity
+    slots: 
+
   WHOFICEntityModel:
-    slots:
+    is_a: ContentModelEntity
+    annotations:
       - title
       - definition
       - baseInclusion
@@ -44,23 +52,24 @@ classes:
      
   ICDCategoryModel:
     is_a:   WHOFICEntityModel
-    slots:
+    annotations:
       - longDefinition
       - fullySpecifiedName
 
   ICFCategoryModel:
     is_a: WHOFICEntityModel
-    slots:
+    annotations:
       - relatedImpairment
 
   ICHICategoryModel:
     is_a: WHOFICEntityModel
-    slots:
+    annotations:
       - icfReference
 
   Term:
+    is_a: ContentModelEntity
     description : Toplevel entity for reified values 
-    slots:
+    annotations:
       - label
   
   LanguageTerm:
@@ -70,84 +79,110 @@ classes:
   BaseIndexTerm:
     is_a: LanguageTerm
     description : Description of BaseIndexTerm
-    slots:
+    annotations:
       - isInclusion
       - indexType
-        
-  InternalReferenceTerm:
-    is_a: Term
-    description : Reified reference to a WHO-FIC entity
-    slots:
-      - referencedCategory
+      
+    
+#   InternalReferenceTerm:
+#     is_a: Term
+#     description : Reified reference to a WHO-FIC entity
+#     slots:
+#       - referencedCategory
 
 slots:
   title:
     description: title of WHOFIC entity
     range: LanguageTerm
     slot_uri: skos:prefLabel
+    implements:
+      - owl:AnnotationProperty
         
   definition:
     description: definition of WHOFIC entity
     range: LanguageTerm
     slot_uri: skos:definition
+    implements:
+      - owl:AnnotationProperty
   
   baseInclusion:
-    description : Inclusion term of a Foundation entity, from which inclusions of classification entities are computed, may be synonym, narrower term, or subclass inclusions
+    description : >- 
+      Inclusion term of a Foundation entity, from which inclusions of classification 
+      entities are computed, may be synonym, narrower term, or subclass inclusions
     range: Term
     multivalued: true
     slot_uri: icdschema:inclusion
+    implements:
+      - owl:AnnotationProperty
     
   subclassBaseInclusion:
     subproperty_of: baseInclusion
-    range: InternalReferenceTerm
+    range: uriorcurie  ## InternalReferenceTerm
     multivalued: true
+    implements:
+      - owl:AnnotationProperty
 
   baseExclusion:
     description: Exclusion term of a Foundation entity, from which exclusions of classification entities are computed
-    range: InternalReferenceTerm
+    range: uriorcurie #InternalReferenceTerm
     multivalued: true
     slot_uri: icdschema:exclusion
+    implements:
+      - owl:AnnotationProperty
     
   baseIndex:
     range: BaseIndexTerm
     multivalued: true
+    implements:
+      - owl:AnnotationProperty
     
   longDefinition:
     description: Long definition
     range: LanguageTerm
     slot_uri: icdschema:longDefinition
+    implements:
+      - owl:AnnotationProperty
 
   fullySpecifiedName:
     range: LanguageTerm
     multivalued: false
+    implements:
+      - owl:AnnotationProperty
 
   relatedImpairment:
     range: LanguageTerm
     multivalued: true
+    implements:
+      - owl:AnnotationProperty
 
   icfReference:
-    range: InternalReferenceTerm
+    range: uriorcurie # InternalReferenceTerm
+    implements:
+      - owl:AnnotationProperty
 
   label:
     range: string
+    implements:
+      - owl:AnnotationProperty
 
   isInclusion:
     description: true if the synonym or narrower term is also an inclusion term
     range: boolean
+    implements:
+      - owl:AnnotationProperty
   
   indexType:
     description: an index term that's either a synonym or a narrower term
-    range: SynonymOrNarrowerTerm
+    range: IndexType
     
-  #Not clear how to reference a WHOFIC entity. A ClasssificationEntity instantiates WHOFICEntityModel
-  #Are subclasses of ClasssificationEntity considered instances of WHOFICEntityModel
-  referencedCategory:
-    range: WHOFICEntityModel
+#   referencedCategory:
+#     range: uri
 
 enums:
-  SynonymOrNarrowerTerm:
-    is_a: LanguageTerm
+  IndexType:
+    implements:
+      - owl:NamedIndividual
     description: types of index terms
     permissible_values:
-        SYNONYM:
-        NARROWER:
+        synonym:
+        narrower:
