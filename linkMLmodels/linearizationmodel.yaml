@@ -1,0 +1,133 @@
+id: https://who.int/whofic/linearizationmodel
+name: WhOFICLinearizationModel
+description: |-
+  WHO-FIC Linearization Model for reference WHO-FIC classifications (ICD, ICF, ICHI)
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+  - ./metamodel
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sh: http://www.w3.org/ns/shacl#
+  foundation: http://id.who.int/icd/entity/
+  icdschema: http://id.who.int/icd/schema/
+  linearization: http://id.who.int/icd/linearization
+  ps: http://id.who.int/icd/postcoordnination
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+
+classes:
+
+  ContentModelEntity:
+    description: Description of ContentModelEntity
+    slots:
+#      - name
+
+  LiniearizationEntity:
+    is_a: ContentModelEntity
+    description: >-
+      Root class entity
+
+# We agreed that LinearizationSection will not have a back reference to the classification 
+# entity for which the LinearizationSection specify the entity's linearization
+  LinearizationSection:
+    is_a: LiniearizationEntity
+    description: >-
+      Description of an entity's set of linearization specifications 
+    slots:
+      - linearization  # the collection of linearization specifications
+      - unspecifiedResidualTitle
+      - otherSpecifiedResidualTitle
+      - suppressOtherSpecifiedResiduals
+      - suppressUnspecifiedResiduals
+
+# Add a container to indicate which class is the root of the linearization specifiation
+  Container:
+    tree_root: true
+    attributes:
+      whoficEntityLinearizations:
+        multivalued: true
+        inlined_as_list: true
+        range: LinearizationSection
+        
+  LinearizationSpecification:
+    is_a: LiniearizationEntity
+    description: >-
+      Description of LinearizationSpecification
+    slots:
+      - codingNote
+      - isGrouping
+      - isIncludedInLinearization
+      - linearizationSortingLabel
+      - isAuxiliaryAxisChild
+      - linearizationParent
+      - linearizationView
+
+  ValueSet:
+    is_a: ContentModelEntity
+    description: >-
+      Description of ValueSet
+    slots:
+
+  LinearizationView:
+    is_a: LiniearizationEntity
+    description: >-
+      Name of a linearization
+    slots:
+      - linearizationName  # previously sortingCode
+
+  
+slots:
+  linearization:
+    multivalued: true
+    range: LinearizationSpecification
+  suppressOtherSpecifiedResiduals:
+    multivalued: false
+    range: boolean
+  suppressUnspecifiedResiduals:
+    multivalued: false
+    range: boolean  
+  unspecifiedResidualTitle:
+    range: LanguageTerm
+    multivalued: false
+  otherSpecifiedResidualTitle:
+    range: LanguageTerm
+    multivalued: false
+  codingNote:
+    range: LanguageTerm
+  isGrouping:
+    range: boolean
+    multivalued: false
+  isIncludedInLinearization:
+    range: boolean
+    multivalued: false
+  linearizationSortingLabel:
+    range: string
+  isAuxiliaryAxisChild:
+    range: boolean
+    multivalued: false
+  linearizationParent:
+    range: WHOFICEntityModel   #Not clear how to constrain reference to other categories
+    multivalued: false
+  linearizationView:
+    range: LinearizationView
+    multivalued: false
+  linearizationName:
+    range: string
+    multivalued: false

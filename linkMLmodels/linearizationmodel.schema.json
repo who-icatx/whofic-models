@@ -1,0 +1,169 @@
+{
+    "$defs": {
+        "BaseIndexTerm": {
+            "additionalProperties": false,
+            "description": "Description of BaseIndexTerm",
+            "title": "BaseIndexTerm",
+            "type": "object"
+        },
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "whoficEntityLinearizations": {
+                    "items": {
+                        "$ref": "#/$defs/LinearizationSection"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "ContentModelEntity": {
+            "additionalProperties": false,
+            "description": "Description of ContentModelEntity",
+            "title": "ContentModelEntity",
+            "type": "object"
+        },
+        "ICDCategoryModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICDCategoryModel",
+            "type": "object"
+        },
+        "ICFCategoryModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICFCategoryModel",
+            "type": "object"
+        },
+        "ICHICategoryModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICHICategoryModel",
+            "type": "object"
+        },
+        "IndexType": {
+            "description": "types of index terms",
+            "enum": [
+                "synonym",
+                "narrower"
+            ],
+            "title": "IndexType",
+            "type": "string"
+        },
+        "LanguageTerm": {
+            "additionalProperties": false,
+            "description": "Reified string value",
+            "title": "LanguageTerm",
+            "type": "object"
+        },
+        "LinearizationSection": {
+            "additionalProperties": false,
+            "description": "Description of an entity's set of linearization specifications",
+            "properties": {
+                "linearization": {
+                    "items": {
+                        "$ref": "#/$defs/LinearizationSpecification"
+                    },
+                    "type": "array"
+                },
+                "otherSpecifiedResidualTitle": {
+                    "$ref": "#/$defs/LanguageTerm"
+                },
+                "suppressOtherSpecifiedResiduals": {
+                    "type": "boolean"
+                },
+                "suppressUnspecifiedResiduals": {
+                    "type": "boolean"
+                },
+                "unspecifiedResidualTitle": {
+                    "$ref": "#/$defs/LanguageTerm"
+                }
+            },
+            "title": "LinearizationSection",
+            "type": "object"
+        },
+        "LinearizationSpecification": {
+            "additionalProperties": false,
+            "description": "Description of LinearizationSpecification",
+            "properties": {
+                "codingNote": {
+                    "$ref": "#/$defs/LanguageTerm"
+                },
+                "isAuxiliaryAxisChild": {
+                    "type": "boolean"
+                },
+                "isGrouping": {
+                    "type": "boolean"
+                },
+                "isIncludedInLinearization": {
+                    "type": "boolean"
+                },
+                "linearizationParent": {
+                    "$ref": "#/$defs/WHOFICEntityModel"
+                },
+                "linearizationSortingLabel": {
+                    "type": "string"
+                },
+                "linearizationView": {
+                    "$ref": "#/$defs/LinearizationView"
+                }
+            },
+            "title": "LinearizationSpecification",
+            "type": "object"
+        },
+        "LinearizationView": {
+            "additionalProperties": false,
+            "description": "Name of a linearization",
+            "properties": {
+                "linearizationName": {
+                    "type": "string"
+                }
+            },
+            "title": "LinearizationView",
+            "type": "object"
+        },
+        "LiniearizationEntity": {
+            "additionalProperties": false,
+            "description": "Root class entity",
+            "title": "LiniearizationEntity",
+            "type": "object"
+        },
+        "Term": {
+            "additionalProperties": false,
+            "description": "Toplevel entity for reified values",
+            "title": "Term",
+            "type": "object"
+        },
+        "ValueSet": {
+            "additionalProperties": false,
+            "description": "Description of ValueSet",
+            "title": "ValueSet",
+            "type": "object"
+        },
+        "WHOFICEntityModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "WHOFICEntityModel",
+            "type": "object"
+        }
+    },
+    "$id": "https://who.int/whofic/linearizationmodel",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "whoficEntityLinearizations": {
+            "items": {
+                "$ref": "#/$defs/LinearizationSection"
+            },
+            "type": "array"
+        }
+    },
+    "title": "WhOFICLinearizationModel",
+    "type": "object",
+    "version": null
+}

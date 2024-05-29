@@ -1,0 +1,211 @@
+id: https://who.int/whofic/foundation/whofic/contentmodel
+name: WhO-FICPostCoordinationModel
+description: |-
+  WHO-FIC Content Model for core WHO-FIC classifications
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+  - ./linearizationmodel
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sh: http://www.w3.org/ns/shacl#
+  icd: http://who.int/icd#
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+
+
+classes:
+
+  PostcoordinationSection:
+    is_a: LiniearizationEntity
+    description: >-
+      Description of ICD Postcoordination Model 
+    slots:
+      - allowedPostcoordinationAxes
+      
+  ICDPostcoordinationSection:
+    is_a: PostcoordinationSection
+    slot_usage:
+      allowedPostcoordinationAxes:
+        range: ICDPostcoordinationAxesSpecification
+
+  PostcoordinationAxesSpecification:
+    is_a: LiniearizationEntity
+    description: >-
+      Description of PostcoordinationAxesSpecification, i.e., for a linearizationView, 
+      what post-coordination axes are allowed and required
+    slots:
+      - requiredPostcoordinationAxisProperty #list of required post-coordination axes
+      - allowedPostcoordinationAxisProperty  #list of allowed post-coordination axes
+      - linearizationView
+
+  ICDPostcoordinationAxesSpecification:
+    is_a: LiniearizationEntity
+    description: >-
+      Description of PostcoordinationAxesSpecification, for ICD
+    slot_usage:
+      requiredPostcoordinationAxisProperty:
+        range: ICDPostcoordinationProperty
+      allowedPostcoordinationAxisProperty:
+        range: ICDPostcoordinationProperty  #list of allowed post-coordination axes
+
+
+enums:
+  ICDPostcoordinationProperty:
+    permissible_values:
+      causality:
+        description: causality post-coordination axis
+        meaning: icd:causality        
+      laterality:
+        description: laterality post-coordination axis
+        meaning: icd:laterality        
+      regional:
+        description: regional post-coordination axis
+        meaning: icd:regional        
+      distribution:
+        description: distribution post-coordination axis
+        meaning: icd:distribution        
+      relational:
+        description: relational post-coordination axis
+        meaning: icd:relational        
+      serotype:
+        description: serotype post-coordination axis
+        meaning: icd:serotype        
+      durationOfComa:
+        description: durationOfComa post-coordination axis
+        meaning: icd:durationOfComa        
+      hasPupilReactionScore:
+        description: hasPupilReactionScore post-coordination axis
+        meaning: icd:hasPupilReactionScore        
+      hasGCSEyeScore:
+        description: hasGCSEyeScore post-coordination axis
+        meaning: icd:hasGCSEyeScore        
+      hasGCSMotorScore:
+        description: hasGCSMotorScore post-coordination axis
+        meaning: icd:hasGCSMotorScore        
+      hasGCSVerbalScore:
+        description: hasGCSVerbalScore post-coordination axis
+        meaning: icd:hasGCSVerbalScore        
+      diagnosisConfirmedBy:
+        description: diagnosisConfirmedBy post-coordination axis
+        meaning: icd:diagnosisConfirmedBy        
+      typeOfInjury:
+        description: typeOfInjury post-coordination axis
+        meaning: icd:typeOfInjury        
+      fractureSubtype:
+        description: fractureSubtype post-coordination axis
+        meaning: icd:fractureSubtype        
+      fractureOpenOrClosed:
+        description: fractureOpenOrClosed post-coordination axis
+        meaning: icd:fractureOpenOrClosed        
+      jointInvolvementInFracture:
+        description: jointInvolvementInFracture post-coordination axis
+        meaning: icd:jointInvolvementInFracture        
+      extentOfBurnByBodySurface:
+        description: extentOfBurnByBodySurface post-coordination axis
+        meaning: icd:extentOfBurnByBodySurface        
+      extentOfFullThicknessBurnByBodySurface:
+        description: extentOfFullThicknessBurnByBodySurface post-coordination axis
+        meaning: icd:extentOfFullThicknessBurnByBodySurface        
+      outcomeOfFullThicknessBurn:
+        description: outcomeOfFullThicknessBurn post-coordination axis
+        meaning: icd:outcomeOfFullThicknessBurn        
+      timeInLife:
+        description: timeInLife post-coordination axis
+        meaning: icd:timeInLife        
+      specificAnatomy:
+        description: specificAnatomy post-coordination axis
+        meaning: icd:specificAnatomy        
+      infectiousAgent:
+        description: infectiousAgent post-coordination axis
+        meaning: icd:infectiousAgent        
+      medication:
+        description: medication post-coordination axis
+        meaning: icd:medication        
+      chemicalAgent:
+        description: chemicalAgent post-coordination axis
+        meaning: icd:chemicalAgent        
+      histopathology:
+        description: histopathology post-coordination axis
+        meaning: icd:histopathology        
+      genomicAndChomosomalAnomaly:
+        description: genomicAndChomosomalAnomaly post-coordination axis
+        meaning: icd:genomicAndChomosomalAnomaly        
+      hasCausingCondition:
+        description: hasCausingCondition post-coordination axis
+        meaning: icd:hasCausingCondition        
+      hasManifestation:
+        description: hasManifestation post-coordination axis
+        meaning: icd:hasManifestation        
+      associatedWith:
+        description: associatedWith post-coordination axis
+        meaning: icd:associatedWith        
+      intent:
+        description: intent post-coordination axis
+        meaning: icd:intent        
+      violenceDescriptor:
+        description: violenceDescriptor post-coordination axis
+        meaning: icd:violenceDescriptor        
+      mechanismOfInjury:
+        description: mechanismOfInjury post-coordination axis
+        meaning: icd:mechanismOfInjury        
+      transportEventDescriptor:
+        description: transportEventDescriptor post-coordination axis
+        meaning: icd:transportEventDescriptor        
+      objectOrSubstanceProducingInjury:
+        description: objectOrSubstanceProducingInjury post-coordination axis
+        meaning: icd:objectOrSubstanceProducingInjury        
+      sportsActivityDescriptor:
+        description: sportsActivityDescriptor post-coordination axis
+        meaning: icd:sportsActivityDescriptor        
+      placeOfOccurrence:
+        description: placeOfOccurrence post-coordination axis
+        meaning: icd:placeOfOccurrence        
+      placeOfOccurrenceDescriptor:
+        description: placeOfOccurrenceDescriptor post-coordination axis
+        meaning: icd:placeOfOccurrenceDescriptor        
+      activityWhenInjured:
+        description: activityWhenInjured post-coordination axis
+        meaning: icd:activityWhenInjured        
+      occupationalDescriptor:
+        description: occupationalDescriptor post-coordination axis
+        meaning: icd:occupationalDescriptor        
+      substanceUse:
+        description: substanceUse post-coordination axis
+        meaning: icd:substanceUse        
+      hasSeverity:
+        description: hasSeverity post-coordination axis
+        meaning: icd:hasSeverity        
+      course:
+        description: course post-coordination axis
+        meaning: icd:course        
+      temporalPatternAndOnset:
+        description: temporalPatternAndOnset post-coordination axis
+        meaning: icd:temporalPatternAndOnset        
+
+
+slots:
+  allowedPostcoordinationAxes:
+    range: PostcoordinationAxesSpecification
+    multivalued: true
+  allowedPostcoordinationAxisProperty:
+    slot_uri: icd:allowedPostcoordinationAxisProperty
+  requiredPostcoordinationAxisProperty:
+    slot_uri: icd:requiredPostcoordinationAxisProperty
+    subproperty_of: allowedPostcoordinationAxisProperty

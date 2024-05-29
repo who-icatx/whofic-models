@@ -1,0 +1,366 @@
+id: https://who.int/whofic/contentmodel
+name: WhOFICOntologyContentModel
+description: |-
+  WHO-FIC Ontology Model for reference WHO-FIC classifications (ICD, ICF, ICHI)
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+  - ./metamodel
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  icd: http://who.int/icd#
+  foundation: http://id.who.int/icd/entity/
+  icdschema: http://id.who.int/icd/schema/
+  linearization: http://id.who.int/icd/linearization
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd    
+  
+classes:
+  ClassificationEntity:
+    class_uri: foundation:1224012103
+    description : Top-level classification entity 
+    instantiates:
+      - contentmetamodel:WHOFICEntityModel
+    annotations:
+      - title
+      - definition
+      - baseInclusion
+      - baseExclusion
+      - baseIndex
+      - subclassBaseInclusion
+
+      
+  ICDEntity:
+    class_uri: foundation:448895267
+    is_a: ClassificationEntity
+    description : Top-level ICD entity
+    
+  ICFEntity:
+    class_uri: foundation:1405434703
+    is_a: ClassificationEntity
+    description : Top-level ICF entity
+      
+  ICHIEntity:
+    class_uri: foundation:60347385
+    is_a: ClassificationEntity
+    description : Top-level ICHI entity
+      
+
+  ICDCategory:
+    class_uri: foundation:455013390
+    is_a: ICDEntity
+    instantiates:
+      - contentmodel:ICDCategoryModel    
+    description : Top-level codable ICD entities
+    annotations:
+      - longDefinition
+      - fullySpecifiedName
+    slots:
+      - diagnosticCriteria
+      - functionalImpact
+
+            
+  ICDExtensionCode:
+    is_a: ICDEntity
+    description : Top-level ICD extension code
+    class_uri: foundation:1920852714
+  
+  ICFCategory:
+    is_a: ICFEntity
+    instantiates:
+      - ICFCategoryModel
+    description : Top-level ICF entities with codes 
+    annotations: 
+      - relatedImpairment
+    class_uri: foundation:619527855
+
+      
+  ICFExtensionCode:
+    is_a: ICFEntity
+    description :    Top-level ICD extension code
+    class_uri: foundation:152976210
+
+  ICFQualifier:
+    is_a: ICFEntity
+    description :    Top-level ICD extension code
+    class_uri: foundation:423829389
+
+  ICHICategory:
+    is_a: ICHIEntity
+    instantiates:
+      - ICHICategoryModel
+    description : Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)
+    annotations: 
+      - icfReference
+    class_uri: foundation:1190112446
+    # Todo Add intervention and 3 axes
+  ICHIExtensionCode:
+    class_uri: foundation:1153570334
+    is_a: ICHIEntity
+    description :    Top-level ICHI extension code
+  
+slots:
+  diagnosticCriteria:
+    multivalued: true
+    range: string
+  functionalImpact:
+    multivalued: true
+    range: uriorcurie
+  activitiesDescriptor:
+    slot_uri: icd:activitiesDescriptor
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  activityWhenInjured:
+    slot_uri: icd:activityWhenInjured
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  anatomy:
+    slot_uri: icd:anatomy
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  biologicalIndicator:
+    slot_uri: icd:biologicalIndicator
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  causality:
+    slot_uri: icd:causality
+    subproperty_of: icd:etiology
+    range: ICDExtensionCode
+  chemicalAgent:
+    slot_uri: icd:chemicalAgent
+    subproperty_of: icd:etiology
+    range: ICDExtensionCode
+  consciousnessMeasure:
+    slot_uri: icd:consciousnessMeasure
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  counterMeasureDescriptor:
+    slot_uri: icd:counterMeasureDescriptor
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  counterPartInCollision:
+    slot_uri: icd:counterPartInCollision
+    subproperty_of: icd:transportDimension
+    range: ICDExtensionCode
+  course:
+    slot_uri: icd:course
+    subproperty_of: icd:temporality
+    range: ICDExtensionCode
+  customBurnScaleValue:
+    slot_uri: icd:customBurnScaleValue
+    subproperty_of: icd:injuryQualifier
+    range: ICDExtensionCode
+  diagnosisConfirmedBy:
+    slot_uri: icd:diagnosisConfirmedBy
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  distribution:
+    slot_uri: icd:distribution
+    subproperty_of: icd:topology
+    range: ICDExtensionCode
+  durationOfComa:
+    slot_uri: icd:durationOfComa
+    subproperty_of: icd:consciousnessMeasure
+    range: ICDExtensionCode
+  etiology:
+    slot_uri: icd:etiology
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  externalCauseDimension:
+    slot_uri: icd:externalCauseDimension
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  fractureSubtype:
+    slot_uri: icd:fractureSubtype
+    subproperty_of: icd:injuryQualifier
+    range: ICDExtensionCode
+  genomicAndChomosomalAnomaly:
+    slot_uri: icd:genomicAndChomosomalAnomaly
+    subproperty_of: icd:biologicalIndicator
+    range: ICDExtensionCode
+  hasGCSEyeScore:
+    slot_uri: icd:hasGCSEyeScore
+    subproperty_of: icd:hasGCSScore
+    range: ICDExtensionCode
+  hasGCSMotorScore:
+    slot_uri: icd:hasGCSMotorScore
+    subproperty_of: icd:hasGCSScore
+    range: ICDExtensionCode
+  hasGCSScore:
+    slot_uri: icd:hasGCSScore
+    subproperty_of: icd:levelOfConsciousness
+    range: ICDExtensionCode
+  hasGCSVerbalScore:
+    slot_uri: icd:hasGCSVerbalScore
+    subproperty_of: icd:hasGCSScore
+    range: ICDExtensionCode
+  hasPupilReactionScore:
+    slot_uri: icd:hasPupilReactionScore
+    subproperty_of: icd:levelOfConsciousness
+    range: ICDExtensionCode
+  hasSeverity:
+    slot_uri: icd:hasSeverity
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  histopathology:
+    slot_uri: icd:histopathology
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  infectiousAgent:
+    slot_uri: icd:infectiousAgent
+    subproperty_of: icd:etiology
+    range: ICDExtensionCode
+  injuryQualifier:
+    slot_uri: icd:injuryQualifier
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  intent:
+    slot_uri: icd:intent
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  intentDescriptor:
+    slot_uri: icd:intentDescriptor
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  laterality:
+    slot_uri: icd:laterality
+    subproperty_of: icd:topology
+    range: ICDExtensionCode
+  levelOfConsciousness:
+    slot_uri: icd:levelOfConsciousness
+    subproperty_of: icd:consciousnessMeasure
+    range: ICDExtensionCode
+  mechanismOfInjury:
+    slot_uri: icd:mechanismOfInjury
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  medication:
+    slot_uri: icd:medication
+    subproperty_of: icd:etiology
+    range: ICDExtensionCode
+  modeOfTransport:
+    slot_uri: icd:modeOfTransport
+    subproperty_of: icd:transportDimension
+    range: ICDExtensionCode
+  objectOrSubstanceProducingInjury:
+    slot_uri: icd:objectOrSubstanceProducingInjury
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  placeOfOccurrence:
+    slot_uri: icd:placeOfOccurrence
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  placeOfOccurrenceDescriptor:
+    slot_uri: icd:placeOfOccurrenceDescriptor
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  postcoordinationAxis:
+    slot_uri: icd:postcoordinationAxis
+    subproperty_of: icd:owl:topObjectProperty
+    range: ICDExtensionCode
+  regional:
+    slot_uri: icd:regional
+    subproperty_of: icd:topology
+    range: ICDExtensionCode
+  relational:
+    slot_uri: icd:relational
+    subproperty_of: icd:topology
+    range: ICDExtensionCode
+  serotype:
+    slot_uri: icd:serotype
+    subproperty_of: icd:biologicalIndicator
+    range: ICDExtensionCode
+  settingOfEvent:
+    slot_uri: icd:settingOfEvent
+    subproperty_of: icd:transportDimension
+    range: ICDExtensionCode
+  specificAnatomy:
+    slot_uri: icd:specificAnatomy
+    subproperty_of: icd:anatomy
+    range: ICDExtensionCode
+  substanceUse:
+    slot_uri: icd:substanceUse
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  temporalPatternAndOnset:
+    slot_uri: icd:temporalPatternAndOnset
+    subproperty_of: icd:temporality
+    range: ICDExtensionCode
+  temporality:
+    slot_uri: icd:temporality
+    subproperty_of: icd:postcoordinationAxis
+    range: ICDExtensionCode
+  timeInLife:
+    slot_uri: icd:timeInLife
+    subproperty_of: icd:temporality
+    range: ICDExtensionCode
+  topology:
+    slot_uri: icd:topology
+    subproperty_of: icd:anatomy
+    range: ICDExtensionCode
+  transportDimension:
+    slot_uri: icd:transportDimension
+    subproperty_of: icd:externalCauseDimension
+    range: ICDExtensionCode
+  transportUserRoleOfInjuredPerson:
+    slot_uri: icd:transportUserRoleOfInjuredPerson
+    subproperty_of: icd:transportDimension
+    range: ICDExtensionCode
+  typeOfInjury:
+    slot_uri: icd:typeOfInjury
+    subproperty_of: icd:injuryQualifier
+    range: ICDExtensionCode
+  associatedWith:
+    slot_uri: icd:associatedWith
+    range: ICDCategory
+  extentOfBurnByBodySurface:
+    slot_uri: icd:extentOfBurnByBodySurface
+    range: ICDExtensionCode
+  extentOfFullThicknessBurnByBodySurface:
+    slot_uri: icd:extentOfFullThicknessBurnByBodySurface
+    range: ICDExtensionCode
+  fractureOpenOrClosed:
+    slot_uri: icd:fractureOpenOrClosed
+    range: ICDExtensionCode
+  hasCausingCondition:
+    slot_uri: icd:hasCausingCondition
+    range: ICDCategory
+  hasManifestation:
+    slot_uri: icd:hasManifestation
+    range: ICDCategory
+  jointInvolvementInFracture:
+    slot_uri: icd:jointInvolvementInFracture
+    range: ICDExtensionCode
+  occupationalDescriptor:
+    slot_uri: icd:occupationalDescriptor
+    range: ICDExtensionCode
+  outcomeOfFullThicknessBurn:
+    slot_uri: icd:outcomeOfFullThicknessBurn
+    range: ICDExtensionCode
+  sportsActivityDescriptor:
+    slot_uri: icd:sportsActivityDescriptor
+    range: ICDExtensionCode
+  transportEventDescriptor:
+    slot_uri: icd:transportEventDescriptor
+    range: ICDExtensionCode
+  violenceDescriptor:
+    slot_uri: icd:violenceDescriptor
+    range: ICDExtensionCode
+
+
