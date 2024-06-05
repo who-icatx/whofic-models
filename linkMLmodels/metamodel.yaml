@@ -66,10 +66,19 @@ classes:
     annotations:
       - icfReference
 
+  ICDExtensionCodeModel:
+    is_a: WHOFICEntityModel
+
+  ICFExtensionCodeModel:
+    is_a: WHOFICEntityModel
+
+  ICHIExtensionCodeModel:
+    is_a: WHOFICEntityModel
+
   Term:
     is_a: ContentModelEntity
     description : Toplevel entity for reified values 
-    annotations:
+    slots:
       - label
   
   LanguageTerm:
@@ -79,9 +88,16 @@ classes:
   BaseIndexTerm:
     is_a: LanguageTerm
     description : Description of BaseIndexTerm
-    annotations:
+    slots:
       - isInclusion
       - indexType
+  
+  BaseExclusionTerm:
+    is_a: Term
+    description: Refeference to an excluded classification category
+    slots:
+      - referencedEntity
+    
       
     
 #   InternalReferenceTerm:
@@ -136,6 +152,13 @@ slots:
     implements:
       - owl:AnnotationProperty
     
+  synonym:
+    subproperty_of: baseIndex
+    range: BaseIndexTerm
+    multivalued: true
+    implements:
+      - owl:AnnotationProperty
+
   longDefinition:
     description: Long definition
     range: LanguageTerm
@@ -162,18 +185,20 @@ slots:
 
   label:
     range: string
-    implements:
-      - owl:AnnotationProperty
+    multivalued: false
 
   isInclusion:
     description: true if the synonym or narrower term is also an inclusion term
     range: boolean
-    implements:
-      - owl:AnnotationProperty
   
   indexType:
     description: an index term that's either a synonym or a narrower term
     range: IndexType
+
+  referencedEntity:
+    description: a WHO-FIC entity referenced by another WHO-FIC entity
+    range: uriorcurie
+      
     
 #   referencedCategory:
 #     range: uri
@@ -184,5 +209,5 @@ enums:
       - owl:NamedIndividual
     description: types of index terms
     permissible_values:
-        synonym:
-        narrower:
+        Synonym:
+        Narrower:

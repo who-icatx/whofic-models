@@ -37,13 +37,6 @@ classes:
     description : Top-level classification entity 
     instantiates:
       - contentmetamodel:WHOFICEntityModel
-    annotations:
-      - title
-      - definition
-      - baseInclusion
-      - baseExclusion
-      - baseIndex
-      - subclassBaseInclusion
 
       
   ICDEntity:
@@ -68,9 +61,6 @@ classes:
     instantiates:
       - contentmodel:ICDCategoryModel    
     description : Top-level codable ICD entities
-    annotations:
-      - longDefinition
-      - fullySpecifiedName
     slots:
       - diagnosticCriteria
       - functionalImpact
@@ -86,8 +76,6 @@ classes:
     instantiates:
       - ICFCategoryModel
     description : Top-level ICF entities with codes 
-    annotations: 
-      - relatedImpairment
     class_uri: foundation:619527855
 
       
@@ -106,8 +94,6 @@ classes:
     instantiates:
       - ICHICategoryModel
     description : Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)
-    annotations: 
-      - icfReference
     class_uri: foundation:1190112446
     # Todo Add intervention and 3 axes
   ICHIExtensionCode:
@@ -122,212 +108,217 @@ slots:
   functionalImpact:
     multivalued: true
     range: uriorcurie
-  activitiesDescriptor:
-    slot_uri: icd:activitiesDescriptor
-    subproperty_of: icd:externalCauseDimension
-    range: ICDExtensionCode
-  activityWhenInjured:
-    slot_uri: icd:activityWhenInjured
-    subproperty_of: icd:externalCauseDimension
-    range: ICDExtensionCode
-  anatomy:
-    slot_uri: icd:anatomy
-    subproperty_of: icd:postcoordinationAxis
-    range: ICDExtensionCode
-  biologicalIndicator:
-    slot_uri: icd:biologicalIndicator
-    subproperty_of: icd:postcoordinationAxis
-    range: ICDExtensionCode
-  causality:
-    slot_uri: icd:causality
-    subproperty_of: icd:etiology
-    range: ICDExtensionCode
-  chemicalAgent:
-    slot_uri: icd:chemicalAgent
-    subproperty_of: icd:etiology
-    range: ICDExtensionCode
-  consciousnessMeasure:
-    slot_uri: icd:consciousnessMeasure
-    subproperty_of: icd:postcoordinationAxis
-    range: ICDExtensionCode
-  counterMeasureDescriptor:
-    slot_uri: icd:counterMeasureDescriptor
-    subproperty_of: icd:externalCauseDimension
-    range: ICDExtensionCode
-  counterPartInCollision:
-    slot_uri: icd:counterPartInCollision
-    subproperty_of: icd:transportDimension
-    range: ICDExtensionCode
-  course:
-    slot_uri: icd:course
-    subproperty_of: icd:temporality
-    range: ICDExtensionCode
-  customBurnScaleValue:
-    slot_uri: icd:customBurnScaleValue
-    subproperty_of: icd:injuryQualifier
-    range: ICDExtensionCode
-  diagnosisConfirmedBy:
-    slot_uri: icd:diagnosisConfirmedBy
-    subproperty_of: icd:postcoordinationAxis
-    range: ICDExtensionCode
-  distribution:
-    slot_uri: icd:distribution
-    subproperty_of: icd:topology
-    range: ICDExtensionCode
-  durationOfComa:
-    slot_uri: icd:durationOfComa
-    subproperty_of: icd:consciousnessMeasure
-    range: ICDExtensionCode
-  etiology:
-    slot_uri: icd:etiology
-    subproperty_of: icd:postcoordinationAxis
+  postcoordinationAxis:
+    slot_uri: icd:postcoordinationAxis
     range: ICDExtensionCode
   externalCauseDimension:
     slot_uri: icd:externalCauseDimension
-    subproperty_of: icd:postcoordinationAxis
+    is_a:  postcoordinationAxis
+    range: ICDExtensionCode
+  activitiesDescriptor:
+    slot_uri: icd:activitiesDescriptor
+    is_a: externalCauseDimension
+    range: ICDExtensionCode
+  activityWhenInjured:
+    slot_uri: icd:activityWhenInjured
+    is_a: externalCauseDimension
+    range: ICDExtensionCode
+  anatomy:
+    slot_uri: icd:anatomy
+    is_a:  postcoordinationAxis
+    range: ICDExtensionCode
+  biologicalIndicator:
+    slot_uri: icd:biologicalIndicator
+    is_a:  postcoordinationAxis
+    range: ICDExtensionCode
+  causality:
+    slot_uri: icd:causality
+    is_a:  etiology
+    range: ICDExtensionCode
+  chemicalAgent:
+    slot_uri: icd:chemicalAgent
+    is_a:  etiology
+    range: ICDExtensionCode
+  consciousnessMeasure:
+    slot_uri: icd:consciousnessMeasure
+    is_a:  postcoordinationAxis
+    range: ICDExtensionCode
+  counterMeasureDescriptor:
+    slot_uri: icd:counterMeasureDescriptor
+    is_a:  externalCauseDimension
+    range: ICDExtensionCode
+  counterPartInCollision:
+    slot_uri: icd:counterPartInCollision
+    is_a:  transportDimension
+    range: ICDExtensionCode
+  course:
+    slot_uri: icd:course
+    is_a:  temporality
+    range: ICDExtensionCode
+  customBurnScaleValue:
+    slot_uri: icd:customBurnScaleValue
+    is_a:  injuryQualifier
+    range: ICDExtensionCode
+  diagnosisConfirmedBy:
+    slot_uri: icd:diagnosisConfirmedBy
+    is_a:  postcoordinationAxis
+    range: ICDExtensionCode
+  distribution:
+    slot_uri: icd:distribution
+    is_a:  topology
+    range: ICDExtensionCode
+  durationOfComa:
+    slot_uri: icd:durationOfComa
+    is_a:  consciousnessMeasure
+    range: ICDExtensionCode
+  etiology:
+    slot_uri: icd:etiology
+    is_a:  postcoordinationAxis
     range: ICDExtensionCode
   fractureSubtype:
     slot_uri: icd:fractureSubtype
-    subproperty_of: icd:injuryQualifier
+    is_a:  injuryQualifier
     range: ICDExtensionCode
   genomicAndChomosomalAnomaly:
     slot_uri: icd:genomicAndChomosomalAnomaly
-    subproperty_of: icd:biologicalIndicator
+    is_a:  biologicalIndicator
     range: ICDExtensionCode
   hasGCSEyeScore:
     slot_uri: icd:hasGCSEyeScore
-    subproperty_of: icd:hasGCSScore
+    is_a:  hasGCSScore
     range: ICDExtensionCode
   hasGCSMotorScore:
     slot_uri: icd:hasGCSMotorScore
-    subproperty_of: icd:hasGCSScore
+    is_a:  hasGCSScore
     range: ICDExtensionCode
   hasGCSScore:
     slot_uri: icd:hasGCSScore
-    subproperty_of: icd:levelOfConsciousness
+    is_a:  levelOfConsciousness
     range: ICDExtensionCode
   hasGCSVerbalScore:
     slot_uri: icd:hasGCSVerbalScore
-    subproperty_of: icd:hasGCSScore
+    is_a:  hasGCSScore
     range: ICDExtensionCode
   hasPupilReactionScore:
     slot_uri: icd:hasPupilReactionScore
-    subproperty_of: icd:levelOfConsciousness
+    is_a:  levelOfConsciousness
     range: ICDExtensionCode
   hasSeverity:
     slot_uri: icd:hasSeverity
-    subproperty_of: icd:postcoordinationAxis
+    is_a:  postcoordinationAxis
     range: ICDExtensionCode
   histopathology:
     slot_uri: icd:histopathology
-    subproperty_of: icd:postcoordinationAxis
+    is_a:  postcoordinationAxis
     range: ICDExtensionCode
   infectiousAgent:
     slot_uri: icd:infectiousAgent
-    subproperty_of: icd:etiology
+    is_a:  etiology
     range: ICDExtensionCode
   injuryQualifier:
     slot_uri: icd:injuryQualifier
-    subproperty_of: icd:postcoordinationAxis
+    is_a:  postcoordinationAxis
     range: ICDExtensionCode
   intent:
     slot_uri: icd:intent
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   intentDescriptor:
     slot_uri: icd:intentDescriptor
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   laterality:
     slot_uri: icd:laterality
-    subproperty_of: icd:topology
+    is_a:  topology
     range: ICDExtensionCode
   levelOfConsciousness:
     slot_uri: icd:levelOfConsciousness
-    subproperty_of: icd:consciousnessMeasure
+    is_a:  consciousnessMeasure
     range: ICDExtensionCode
   mechanismOfInjury:
     slot_uri: icd:mechanismOfInjury
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   medication:
     slot_uri: icd:medication
-    subproperty_of: icd:etiology
+    is_a:  etiology
     range: ICDExtensionCode
   modeOfTransport:
     slot_uri: icd:modeOfTransport
-    subproperty_of: icd:transportDimension
+    is_a:  transportDimension
     range: ICDExtensionCode
   objectOrSubstanceProducingInjury:
     slot_uri: icd:objectOrSubstanceProducingInjury
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   placeOfOccurrence:
     slot_uri: icd:placeOfOccurrence
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   placeOfOccurrenceDescriptor:
     slot_uri: icd:placeOfOccurrenceDescriptor
-    subproperty_of: icd:externalCauseDimension
-    range: ICDExtensionCode
-  postcoordinationAxis:
-    slot_uri: icd:postcoordinationAxis
-    subproperty_of: icd:owl:topObjectProperty
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   regional:
     slot_uri: icd:regional
-    subproperty_of: icd:topology
+    is_a:  topology
     range: ICDExtensionCode
   relational:
     slot_uri: icd:relational
-    subproperty_of: icd:topology
+    is_a:  topology
     range: ICDExtensionCode
   serotype:
     slot_uri: icd:serotype
-    subproperty_of: icd:biologicalIndicator
+    is_a:  biologicalIndicator
     range: ICDExtensionCode
   settingOfEvent:
     slot_uri: icd:settingOfEvent
-    subproperty_of: icd:transportDimension
+    is_a:  transportDimension
     range: ICDExtensionCode
   specificAnatomy:
     slot_uri: icd:specificAnatomy
-    subproperty_of: icd:anatomy
+    is_a:  anatomy
     range: ICDExtensionCode
   substanceUse:
     slot_uri: icd:substanceUse
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   temporalPatternAndOnset:
     slot_uri: icd:temporalPatternAndOnset
-    subproperty_of: icd:temporality
+    is_a:  temporality
     range: ICDExtensionCode
   temporality:
     slot_uri: icd:temporality
-    subproperty_of: icd:postcoordinationAxis
+    is_a:  postcoordinationAxis
     range: ICDExtensionCode
   timeInLife:
     slot_uri: icd:timeInLife
-    subproperty_of: icd:temporality
+    is_a:  temporality
     range: ICDExtensionCode
   topology:
     slot_uri: icd:topology
-    subproperty_of: icd:anatomy
+    is_a:  anatomy
     range: ICDExtensionCode
   transportDimension:
     slot_uri: icd:transportDimension
-    subproperty_of: icd:externalCauseDimension
+    is_a:  externalCauseDimension
     range: ICDExtensionCode
   transportUserRoleOfInjuredPerson:
     slot_uri: icd:transportUserRoleOfInjuredPerson
-    subproperty_of: icd:transportDimension
+    is_a:  transportDimension
     range: ICDExtensionCode
   typeOfInjury:
     slot_uri: icd:typeOfInjury
-    subproperty_of: icd:injuryQualifier
+    is_a:  injuryQualifier
     range: ICDExtensionCode
   associatedWith:
     slot_uri: icd:associatedWith
+    range: ICDCategory
+  hasCausingCondition:
+    slot_uri: icd:hasCausingCondition
+    range: ICDCategory
+  hasManifestation:
+    slot_uri: icd:hasManifestation
     range: ICDCategory
   extentOfBurnByBodySurface:
     slot_uri: icd:extentOfBurnByBodySurface
@@ -338,12 +329,6 @@ slots:
   fractureOpenOrClosed:
     slot_uri: icd:fractureOpenOrClosed
     range: ICDExtensionCode
-  hasCausingCondition:
-    slot_uri: icd:hasCausingCondition
-    range: ICDCategory
-  hasManifestation:
-    slot_uri: icd:hasManifestation
-    range: ICDCategory
   jointInvolvementInFracture:
     slot_uri: icd:jointInvolvementInFracture
     range: ICDExtensionCode
