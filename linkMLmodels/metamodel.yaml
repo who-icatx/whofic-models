@@ -49,6 +49,7 @@ classes:
       - baseExclusion
       - baseIndex
       - subclassBaseInclusion
+      - isObsolete
      
   ICDCategoryModel:
     is_a:   WHOFICEntityModel
@@ -180,6 +181,12 @@ slots:
 
   icfReference:
     range: uriorcurie # InternalReferenceTerm
+    implements:
+      - owl:AnnotationProperty
+      
+  isObsolete:
+    description: true if the WHO-FIC entity is obsolete
+    range: boolean
     implements:
       - owl:AnnotationProperty
 
