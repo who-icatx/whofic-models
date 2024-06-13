@@ -141,7 +141,7 @@ slots:
 
   baseExclusion:
     description: Exclusion term of a Foundation entity, from which exclusions of classification entities are computed
-    range: uriorcurie #InternalReferenceTerm
+    range: BaseExclusionTerm #InternalReferenceTerm
     multivalued: true
     slot_uri: icdschema:exclusion
     implements:
@@ -153,13 +153,6 @@ slots:
     implements:
       - owl:AnnotationProperty
     
-  synonym:
-    subproperty_of: baseIndex
-    range: BaseIndexTerm
-    multivalued: true
-    implements:
-      - owl:AnnotationProperty
-
   longDefinition:
     description: Long definition
     range: LanguageTerm
