@@ -1,4 +1,4 @@
-@prefix : <https://who.int/whofic/contentmodel#> .
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
 @prefix icd: <http://who.int/icd#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -9,7 +9,7 @@
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foundation: <http://id.who.int/icd/entity/> .
-@base <https://who.int/whofic/contentmodel> .
+@base <http://www.semanticweb.org/owl/owlapi/turtle#> .
 
 <https://who.int/whofic/contentmodel> rdf:type owl:Ontology ;
                                        dcterms:license "https://creativecommons.org/licenses/by-nd/3.0/igo/" ;
@@ -77,6 +77,13 @@ icd:isObsolete rdf:type owl:AnnotationProperty ;
                rdfs:range xsd:boolean .
 
 
+###  http://who.int/icd#label
+icd:label rdf:type owl:AnnotationProperty ;
+          rdfs:label "label" ;
+          skos:inScheme <https://who.int/whofic/contentmetamodel> ;
+          rdfs:range xsd:string .
+
+
 ###  http://who.int/icd#longDefinition
 icd:longDefinition rdf:type owl:AnnotationProperty ;
                    rdfs:label "longDefinition" ;
@@ -111,10 +118,6 @@ icd:title rdf:type owl:AnnotationProperty ;
 skos:definition rdf:type owl:AnnotationProperty .
 
 
-###  http://www.w3.org/2004/02/skos/core#exactMatch
-skos:exactMatch rdf:type owl:AnnotationProperty .
-
-
 ###  http://www.w3.org/2004/02/skos/core#inScheme
 skos:inScheme rdf:type owl:AnnotationProperty .
 
@@ -129,7 +132,6 @@ linkml:permissible_values rdf:type owl:AnnotationProperty .
 
 ###  http://who.int/icd#ICHIPostcoordinationAxis
 icd:ICHIPostcoordinationAxis rdf:type owl:ObjectProperty ;
-                             rdfs:range icd:ICHIExtensionCode ;
                              rdfs:label "ICHIPostcoordinationAxis" ;
                              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -137,7 +139,6 @@ icd:ICHIPostcoordinationAxis rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#activitiesDescriptor
 icd:activitiesDescriptor rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "activitiesDescriptor" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -145,7 +146,6 @@ icd:activitiesDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#activityWhenInjured
 icd:activityWhenInjured rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:externalCauseDimension ;
-                        rdfs:range icd:ICDExtensionCode ;
                         rdfs:label "activityWhenInjured" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -153,7 +153,6 @@ icd:activityWhenInjured rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#additionalDescriptiveInformationForIntervention
 icd:additionalDescriptiveInformationForIntervention rdf:type owl:ObjectProperty ;
                                                     rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                                                    rdfs:range icd:ICHIExtensionCode ;
                                                     rdfs:label "additionalDescriptiveInformationForIntervention" ;
                                                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -161,7 +160,6 @@ icd:additionalDescriptiveInformationForIntervention rdf:type owl:ObjectProperty 
 ###  http://who.int/icd#additionalTarget
 icd:additionalTarget rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                     rdfs:range icd:ICHIExtensionCode ;
                      rdfs:label "additionalTarget" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -169,7 +167,6 @@ icd:additionalTarget rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#administrativeSystemLevelAtWhichInterventionDirected
 icd:administrativeSystemLevelAtWhichInterventionDirected rdf:type owl:ObjectProperty ;
                                                          rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                                                         rdfs:range icd:ICHIExtensionCode ;
                                                          rdfs:label "administrativeSystemLevelAtWhichInterventionDirected" ;
                                                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -177,7 +174,6 @@ icd:administrativeSystemLevelAtWhichInterventionDirected rdf:type owl:ObjectProp
 ###  http://who.int/icd#alcoholUseInInjury
 icd:alcoholUseInInjury rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf icd:externalCauseDimension ;
-                       rdfs:range icd:ICDExtensionCode ;
                        rdfs:label "alcoholUseInInjury" ;
                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -185,7 +181,6 @@ icd:alcoholUseInInjury rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#anatomy
 icd:anatomy rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf icd:postcoordinationAxis ;
-            rdfs:range icd:ICDExtensionCode ;
             rdfs:label "anatomy" ;
             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -193,7 +188,6 @@ icd:anatomy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#aspectsOfArmedConflict
 icd:aspectsOfArmedConflict rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:externalCauseDimension ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "aspectsOfArmedConflict" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -201,7 +195,6 @@ icd:aspectsOfArmedConflict rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#aspectsOfAssaultAndMaltreatment
 icd:aspectsOfAssaultAndMaltreatment rdf:type owl:ObjectProperty ;
                                     rdfs:subPropertyOf icd:externalCauseDimension ;
-                                    rdfs:range icd:ICDExtensionCode ;
                                     rdfs:label "aspectsOfAssaultAndMaltreatment" ;
                                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -209,7 +202,6 @@ icd:aspectsOfAssaultAndMaltreatment rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#aspectsOfIntentionalSelfHarm
 icd:aspectsOfIntentionalSelfHarm rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf icd:externalCauseDimension ;
-                                 rdfs:range icd:ICDExtensionCode ;
                                  rdfs:label "aspectsOfIntentionalSelfHarm" ;
                                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -217,7 +209,6 @@ icd:aspectsOfIntentionalSelfHarm rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#assistiveProduct
 icd:assistiveProduct rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                     rdfs:range icd:ICHIExtensionCode ;
                      rdfs:label "assistiveProduct" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -225,7 +216,6 @@ icd:assistiveProduct rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#associatedWith
 icd:associatedWith rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:postcoordinationAxis ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "associatedWith" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -233,7 +223,6 @@ icd:associatedWith rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#biologicalIndicator
 icd:biologicalIndicator rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:postcoordinationAxis ;
-                        rdfs:range icd:ICDExtensionCode ;
                         rdfs:label "biologicalIndicator" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -241,7 +230,6 @@ icd:biologicalIndicator rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#burnQualifier
 icd:burnQualifier rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf icd:injuryQualifier ;
-                  rdfs:range icd:ICDExtensionCode ;
                   rdfs:label "burnQualifier" ;
                   skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -249,7 +237,6 @@ icd:burnQualifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#causality
 icd:causality rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf icd:etiology ;
-              rdfs:range icd:ICDExtensionCode ;
               rdfs:label "causality" ;
               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -257,7 +244,6 @@ icd:causality rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#chemicalAgent
 icd:chemicalAgent rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf icd:etiology ;
-                  rdfs:range icd:ICDExtensionCode ;
                   rdfs:label "chemicalAgent" ;
                   skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -265,7 +251,6 @@ icd:chemicalAgent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#clientOrRecipient
 icd:clientOrRecipient rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                      rdfs:range icd:ICHIExtensionCode ;
                       rdfs:label "clientOrRecipient" ;
                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -273,7 +258,6 @@ icd:clientOrRecipient rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#consciousnessMeasure
 icd:consciousnessMeasure rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf icd:postcoordinationAxis ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "consciousnessMeasure" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -281,7 +265,6 @@ icd:consciousnessMeasure rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#contextOfAssaultAndMaltreatment
 icd:contextOfAssaultAndMaltreatment rdf:type owl:ObjectProperty ;
                                     rdfs:subPropertyOf icd:aspectsOfAssaultAndMaltreatment ;
-                                    rdfs:range icd:ICDExtensionCode ;
                                     rdfs:label "contextOfAssaultAndMaltreatment" ;
                                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -289,7 +272,6 @@ icd:contextOfAssaultAndMaltreatment rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#counterMeasureDescriptor
 icd:counterMeasureDescriptor rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                             rdfs:range icd:ICDExtensionCode ;
                              rdfs:label "counterMeasureDescriptor" ;
                              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -297,7 +279,6 @@ icd:counterMeasureDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#counterPartInCollision
 icd:counterPartInCollision rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:transportDimension ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "counterPartInCollision" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -305,7 +286,6 @@ icd:counterPartInCollision rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#counterpart
 icd:counterpart rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:transportEventDescriptor ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "counterpart" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -313,7 +293,6 @@ icd:counterpart rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#course
 icd:course rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf icd:temporality ;
-           rdfs:range icd:ICDExtensionCode ;
            rdfs:label "course" ;
            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -321,7 +300,6 @@ icd:course rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#creativeTherapy
 icd:creativeTherapy rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                    rdfs:range icd:ICHIExtensionCode ;
                     rdfs:label "creativeTherapy" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -329,7 +307,6 @@ icd:creativeTherapy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#deprecatedECDimension
 icd:deprecatedECDimension rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf icd:externalCauseDimension ;
-                          rdfs:range icd:ICDExtensionCode ;
                           rdfs:label "deprecatedECDimension" ;
                           skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -337,7 +314,6 @@ icd:deprecatedECDimension rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#diagnosisConfirmedBy
 icd:diagnosisConfirmedBy rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf icd:postcoordinationAxis ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "diagnosisConfirmedBy" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -345,7 +321,6 @@ icd:diagnosisConfirmedBy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#distribution
 icd:distribution rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:topology ;
-                 rdfs:range icd:ICDExtensionCode ;
                  rdfs:label "distribution" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -353,7 +328,6 @@ icd:distribution rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#durationOfComa
 icd:durationOfComa rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:consciousnessMeasure ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "durationOfComa" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -361,7 +335,6 @@ icd:durationOfComa rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#economicActivity
 icd:economicActivity rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:occupationalDescriptor ;
-                     rdfs:range icd:ICDExtensionCode ;
                      rdfs:label "economicActivity" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -369,7 +342,6 @@ icd:economicActivity rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#enablingFactorsForBehaviourChange
 icd:enablingFactorsForBehaviourChange rdf:type owl:ObjectProperty ;
                                       rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                                      rdfs:range icd:ICHIExtensionCode ;
                                       rdfs:label "enablingFactorsForBehaviourChange" ;
                                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -377,7 +349,6 @@ icd:enablingFactorsForBehaviourChange rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#environmentalCountermeasures
 icd:environmentalCountermeasures rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf icd:sportsActivityDescriptor ;
-                                 rdfs:range icd:ICDExtensionCode ;
                                  rdfs:label "environmentalCountermeasures" ;
                                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -385,7 +356,6 @@ icd:environmentalCountermeasures rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#essentialPathologyTest
 icd:essentialPathologyTest rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                           rdfs:range icd:ICHIExtensionCode ;
                            rdfs:label "essentialPathologyTest" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -393,7 +363,6 @@ icd:essentialPathologyTest rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#etiology
 icd:etiology rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf icd:postcoordinationAxis ;
-             rdfs:range icd:ICDExtensionCode ;
              rdfs:label "etiology" ;
              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -401,7 +370,6 @@ icd:etiology rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#extentOfBurnByBodySurface
 icd:extentOfBurnByBodySurface rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf icd:burnQualifier ;
-                              rdfs:range icd:ICDExtensionCode ;
                               rdfs:label "extentOfBurnByBodySurface" ;
                               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -409,7 +377,6 @@ icd:extentOfBurnByBodySurface rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#extentOfFullThicknessBurnByBodySurface
 icd:extentOfFullThicknessBurnByBodySurface rdf:type owl:ObjectProperty ;
                                            rdfs:subPropertyOf icd:burnQualifier ;
-                                           rdfs:range icd:ICDExtensionCode ;
                                            rdfs:label "extentOfFullThicknessBurnByBodySurface" ;
                                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -417,7 +384,6 @@ icd:extentOfFullThicknessBurnByBodySurface rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#externalCauseDimension
 icd:externalCauseDimension rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:postcoordinationAxis ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "externalCauseDimension" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -425,7 +391,6 @@ icd:externalCauseDimension rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#externalCauseDimensionDescriptor
 icd:externalCauseDimensionDescriptor rdf:type owl:ObjectProperty ;
                                      rdfs:subPropertyOf icd:deprecatedECDimension ;
-                                     rdfs:range icd:ICDExtensionCode ;
                                      rdfs:label "externalCauseDimensionDescriptor" ;
                                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -433,7 +398,6 @@ icd:externalCauseDimensionDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#fractureOpenOrClosed
 icd:fractureOpenOrClosed rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf icd:fractureQualifier ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "fractureOpenOrClosed" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -441,7 +405,6 @@ icd:fractureOpenOrClosed rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#fractureQualifier
 icd:fractureQualifier rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf icd:injuryQualifier ;
-                      rdfs:range icd:ICDExtensionCode ;
                       rdfs:label "fractureQualifier" ;
                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -449,7 +412,6 @@ icd:fractureQualifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#fractureSubtype
 icd:fractureSubtype rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:fractureQualifier ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "fractureSubtype" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -457,7 +419,6 @@ icd:fractureSubtype rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#genderOfPerpetrator
 icd:genderOfPerpetrator rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:aspectsOfAssaultAndMaltreatment ;
-                        rdfs:range icd:ICDExtensionCode ;
                         rdfs:label "genderOfPerpetrator" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -465,7 +426,6 @@ icd:genderOfPerpetrator rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#genomicAndChomosomalAnomaly
 icd:genomicAndChomosomalAnomaly rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf icd:biologicalIndicator ;
-                                rdfs:range icd:ICDExtensionCode ;
                                 rdfs:label "genomicAndChomosomalAnomaly" ;
                                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -473,7 +433,6 @@ icd:genomicAndChomosomalAnomaly rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasAction
 icd:hasAction rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-              rdfs:range icd:ICHICategory ;
               rdfs:label "hasAction" ;
               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -481,7 +440,6 @@ icd:hasAction rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasAlternativeSeverity1
 icd:hasAlternativeSeverity1 rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:severityAxis ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "hasAlternativeSeverity1" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -489,7 +447,6 @@ icd:hasAlternativeSeverity1 rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasAlternativeSeverity2
 icd:hasAlternativeSeverity2 rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:severityAxis ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "hasAlternativeSeverity2" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -497,7 +454,6 @@ icd:hasAlternativeSeverity2 rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasCapacityOrPerformanceQualifier
 icd:hasCapacityOrPerformanceQualifier rdf:type owl:ObjectProperty ;
                                       rdfs:subPropertyOf icd:hasQualifier ;
-                                      rdfs:range icd:ICFExtensionCode ;
                                       rdfs:label "hasCapacityOrPerformanceQualifier" ;
                                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -505,7 +461,6 @@ icd:hasCapacityOrPerformanceQualifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasCapacityWithAssistance
 icd:hasCapacityWithAssistance rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf icd:hasCapacityOrPerformanceQualifier ;
-                              rdfs:range icd:ICFExtensionCode ;
                               rdfs:label "hasCapacityWithAssistance" ;
                               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -513,7 +468,6 @@ icd:hasCapacityWithAssistance rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasCapacityWithoutAssistance
 icd:hasCapacityWithoutAssistance rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf icd:hasCapacityOrPerformanceQualifier ;
-                                 rdfs:range icd:ICFExtensionCode ;
                                  rdfs:label "hasCapacityWithoutAssistance" ;
                                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -521,7 +475,6 @@ icd:hasCapacityWithoutAssistance rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasCausingCondition
 icd:hasCausingCondition rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:postcoordinationAxis ;
-                        rdfs:range icd:ICDExtensionCode ;
                         rdfs:label "hasCausingCondition" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -529,7 +482,6 @@ icd:hasCausingCondition rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasGCSEyeScore
 icd:hasGCSEyeScore rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:hasGCSScore ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "hasGCSEyeScore" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -537,7 +489,6 @@ icd:hasGCSEyeScore rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasGCSMotorScore
 icd:hasGCSMotorScore rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:hasGCSScore ;
-                     rdfs:range icd:ICDExtensionCode ;
                      rdfs:label "hasGCSMotorScore" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -545,7 +496,6 @@ icd:hasGCSMotorScore rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasGCSScore
 icd:hasGCSScore rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:levelOfConsciousness ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "hasGCSScore" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -553,7 +503,6 @@ icd:hasGCSScore rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasGCSVerbalScore
 icd:hasGCSVerbalScore rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf icd:hasGCSScore ;
-                      rdfs:range icd:ICDExtensionCode ;
                       rdfs:label "hasGCSVerbalScore" ;
                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -561,7 +510,6 @@ icd:hasGCSVerbalScore rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasImpairmentExtent
 icd:hasImpairmentExtent rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:hasQualifier ;
-                        rdfs:range icd:ICFExtensionCode ;
                         rdfs:label "hasImpairmentExtent" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -569,7 +517,6 @@ icd:hasImpairmentExtent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasImpairmentLocation
 icd:hasImpairmentLocation rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf icd:hasQualifier ;
-                          rdfs:range icd:ICFExtensionCode ;
                           rdfs:label "hasImpairmentLocation" ;
                           skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -577,7 +524,6 @@ icd:hasImpairmentLocation rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasImpairmentNature
 icd:hasImpairmentNature rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:hasQualifier ;
-                        rdfs:range icd:ICFExtensionCode ;
                         rdfs:label "hasImpairmentNature" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -585,7 +531,6 @@ icd:hasImpairmentNature rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasManifestation
 icd:hasManifestation rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:postcoordinationAxis ;
-                     rdfs:range icd:ICDExtensionCode ;
                      rdfs:label "hasManifestation" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -593,7 +538,6 @@ icd:hasManifestation rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasMeans
 icd:hasMeans rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-             rdfs:range icd:ICHICategory ;
              rdfs:label "hasMeans" ;
              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -601,7 +545,6 @@ icd:hasMeans rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasPerformance
 icd:hasPerformance rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:hasCapacityOrPerformanceQualifier ;
-                   rdfs:range icd:ICFExtensionCode ;
                    rdfs:label "hasPerformance" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -609,7 +552,6 @@ icd:hasPerformance rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasPerformanceWithoutAssistance
 icd:hasPerformanceWithoutAssistance rdf:type owl:ObjectProperty ;
                                     rdfs:subPropertyOf icd:hasCapacityOrPerformanceQualifier ;
-                                    rdfs:range icd:ICFExtensionCode ;
                                     rdfs:label "hasPerformanceWithoutAssistance" ;
                                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -617,14 +559,12 @@ icd:hasPerformanceWithoutAssistance rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasPupilReactionScore
 icd:hasPupilReactionScore rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf icd:levelOfConsciousness ;
-                          rdfs:range icd:ICDExtensionCode ;
                           rdfs:label "hasPupilReactionScore" ;
                           skos:inScheme <https://who.int/whofic/contentmodel> .
 
 
 ###  http://who.int/icd#hasQualifier
 icd:hasQualifier rdf:type owl:ObjectProperty ;
-                 rdfs:range icd:ICFExtensionCode ;
                  rdfs:label "hasQualifier" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -632,7 +572,6 @@ icd:hasQualifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasSeverity
 icd:hasSeverity rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:severityAxis ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "hasSeverity" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -640,7 +579,6 @@ icd:hasSeverity rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#hasTarget
 icd:hasTarget rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-              rdfs:range icd:ICHICategory ;
               rdfs:label "hasTarget" ;
               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -648,7 +586,6 @@ icd:hasTarget rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#histopathology
 icd:histopathology rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:postcoordinationAxis ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "histopathology" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -656,7 +593,6 @@ icd:histopathology rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#ichiTopology
 icd:ichiTopology rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                 rdfs:range icd:ICHIExtensionCode ;
                  rdfs:label "ichiTopology" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -672,7 +608,6 @@ icd:indexType rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#indoorOrOutdoor
 icd:indoorOrOutdoor rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "indoorOrOutdoor" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -680,7 +615,6 @@ icd:indoorOrOutdoor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#infectiousAgent
 icd:infectiousAgent rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:etiology ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "infectiousAgent" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -688,7 +622,6 @@ icd:infectiousAgent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#initiatingOrMaintainingOrDiscontinuingOrResuming
 icd:initiatingOrMaintainingOrDiscontinuingOrResuming rdf:type owl:ObjectProperty ;
                                                      rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                                                     rdfs:range icd:ICHIExtensionCode ;
                                                      rdfs:label "initiatingOrMaintainingOrDiscontinuingOrResuming" ;
                                                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -696,7 +629,6 @@ icd:initiatingOrMaintainingOrDiscontinuingOrResuming rdf:type owl:ObjectProperty
 ###  http://who.int/icd#injuryQualifier
 icd:injuryQualifier rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:postcoordinationAxis ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "injuryQualifier" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -704,7 +636,6 @@ icd:injuryQualifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#insideOrOutsideCityLimits
 icd:insideOrOutsideCityLimits rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-                              rdfs:range icd:ICDExtensionCode ;
                               rdfs:label "insideOrOutsideCityLimits" ;
                               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -712,7 +643,6 @@ icd:insideOrOutsideCityLimits rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#intent
 icd:intent rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf icd:deprecatedECDimension ;
-           rdfs:range icd:ICDExtensionCode ;
            rdfs:label "intent" ;
            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -720,7 +650,6 @@ icd:intent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#intentDescriptor
 icd:intentDescriptor rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                     rdfs:range icd:ICDExtensionCode ;
                      rdfs:label "intentDescriptor" ;
                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -728,7 +657,6 @@ icd:intentDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#intentionToDieAspectOfSelfHarm
 icd:intentionToDieAspectOfSelfHarm rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf icd:aspectsOfIntentionalSelfHarm ;
-                                   rdfs:range icd:ICDExtensionCode ;
                                    rdfs:label "intentionToDieAspectOfSelfHarm" ;
                                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -736,7 +664,6 @@ icd:intentionToDieAspectOfSelfHarm rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation
 icd:interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation rdf:type owl:ObjectProperty ;
                                                                             rdfs:subPropertyOf icd:telehealth ;
-                                                                            rdfs:range icd:ICHIExtensionCode ;
                                                                             rdfs:label "interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation" ;
                                                                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -744,7 +671,6 @@ icd:interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation rdf:
 ###  http://who.int/icd#interventionProvidedToRecipientInADistantLocation
 icd:interventionProvidedToRecipientInADistantLocation rdf:type owl:ObjectProperty ;
                                                       rdfs:subPropertyOf icd:telehealth ;
-                                                      rdfs:range icd:ICHIExtensionCode ;
                                                       rdfs:label "interventionProvidedToRecipientInADistantLocation" ;
                                                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -752,7 +678,6 @@ icd:interventionProvidedToRecipientInADistantLocation rdf:type owl:ObjectPropert
 ###  http://who.int/icd#interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider
 icd:interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider rdf:type owl:ObjectProperty ;
                                                                                 rdfs:subPropertyOf icd:telehealth ;
-                                                                                rdfs:range icd:ICHIExtensionCode ;
                                                                                 rdfs:label "interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider" ;
                                                                                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -760,7 +685,6 @@ icd:interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider 
 ###  http://who.int/icd#isFacilitatedBy
 icd:isFacilitatedBy rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:hasQualifier ;
-                    rdfs:range icd:ICFExtensionCode ;
                     rdfs:label "isFacilitatedBy" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -768,7 +692,6 @@ icd:isFacilitatedBy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#isHinderedBy
 icd:isHinderedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:hasQualifier ;
-                 rdfs:range icd:ICFExtensionCode ;
                  rdfs:label "isHinderedBy" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -776,7 +699,6 @@ icd:isHinderedBy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#jointInvolvementInFracture
 icd:jointInvolvementInFracture rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf icd:fractureQualifier ;
-                               rdfs:range icd:ICDExtensionCode ;
                                rdfs:label "jointInvolvementInFracture" ;
                                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -785,7 +707,6 @@ icd:jointInvolvementInFracture rdf:type owl:ObjectProperty ;
 icd:laterality rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:ichiTopology ,
                                   icd:topology ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "laterality" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -793,7 +714,6 @@ icd:laterality rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#levelOfConsciousness
 icd:levelOfConsciousness rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf icd:consciousnessMeasure ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "levelOfConsciousness" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -801,7 +721,6 @@ icd:levelOfConsciousness rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#measurement
 icd:measurement rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:ichiTopology ;
-                rdfs:range icd:ICHIExtensionCode ;
                 rdfs:label "measurement" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -809,7 +728,6 @@ icd:measurement rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#mechanismOfInjury
 icd:mechanismOfInjury rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf icd:externalCauseDimension ;
-                      rdfs:range icd:ICDExtensionCode ;
                       rdfs:label "mechanismOfInjury" ;
                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -817,7 +735,6 @@ icd:mechanismOfInjury rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#mechanismOfTransportInjuryWithoutCounterpart
 icd:mechanismOfTransportInjuryWithoutCounterpart rdf:type owl:ObjectProperty ;
                                                  rdfs:subPropertyOf icd:transportEventDescriptor ;
-                                                 rdfs:range icd:ICDExtensionCode ;
                                                  rdfs:label "mechanismOfTransportInjuryWithoutCounterpart" ;
                                                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -825,7 +742,6 @@ icd:mechanismOfTransportInjuryWithoutCounterpart rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#medicament
 icd:medicament rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-               rdfs:range icd:ICHIExtensionCode ;
                rdfs:label "medicament" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -833,7 +749,6 @@ icd:medicament rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#medication
 icd:medication rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:etiology ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "medication" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -841,7 +756,6 @@ icd:medication rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#modeOfTransport
 icd:modeOfTransport rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:transportDimension ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "modeOfTransport" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -849,7 +763,6 @@ icd:modeOfTransport rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#modeOfTransportOfTheInjuredPerson
 icd:modeOfTransportOfTheInjuredPerson rdf:type owl:ObjectProperty ;
                                       rdfs:subPropertyOf icd:transportEventDescriptor ;
-                                      rdfs:range icd:ICDExtensionCode ;
                                       rdfs:label "modeOfTransportOfTheInjuredPerson" ;
                                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -857,7 +770,6 @@ icd:modeOfTransportOfTheInjuredPerson rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#numberOfAnatomicalStructuresAnInterventionIsPerformedOn
 icd:numberOfAnatomicalStructuresAnInterventionIsPerformedOn rdf:type owl:ObjectProperty ;
                                                             rdfs:subPropertyOf icd:quantifier ;
-                                                            rdfs:range icd:ICHIExtensionCode ;
                                                             rdfs:label "numberOfAnatomicalStructuresAnInterventionIsPerformedOn" ;
                                                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -865,7 +777,6 @@ icd:numberOfAnatomicalStructuresAnInterventionIsPerformedOn rdf:type owl:ObjectP
 ###  http://who.int/icd#numberOfInterventionsPerformed
 icd:numberOfInterventionsPerformed rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf icd:quantifier ;
-                                   rdfs:range icd:ICHIExtensionCode ;
                                    rdfs:label "numberOfInterventionsPerformed" ;
                                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -873,7 +784,6 @@ icd:numberOfInterventionsPerformed rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#numberOfTherapeuticProductsInserted
 icd:numberOfTherapeuticProductsInserted rdf:type owl:ObjectProperty ;
                                         rdfs:subPropertyOf icd:quantifier ;
-                                        rdfs:range icd:ICHIExtensionCode ;
                                         rdfs:label "numberOfTherapeuticProductsInserted" ;
                                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -881,7 +791,6 @@ icd:numberOfTherapeuticProductsInserted rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#objectOrSubstanceProducingInjury
 icd:objectOrSubstanceProducingInjury rdf:type owl:ObjectProperty ;
                                      rdfs:subPropertyOf icd:externalCauseDimension ;
-                                     rdfs:range icd:ICDExtensionCode ;
                                      rdfs:label "objectOrSubstanceProducingInjury" ;
                                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -889,7 +798,6 @@ icd:objectOrSubstanceProducingInjury rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#occupation
 icd:occupation rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:occupationalDescriptor ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "occupation" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -897,7 +805,6 @@ icd:occupation rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#occupationalDescriptor
 icd:occupationalDescriptor rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:externalCauseDimension ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "occupationalDescriptor" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -905,7 +812,6 @@ icd:occupationalDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#outcomeOfFullThicknessBurn
 icd:outcomeOfFullThicknessBurn rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf icd:burnQualifier ;
-                               rdfs:range icd:ICDExtensionCode ;
                                rdfs:label "outcomeOfFullThicknessBurn" ;
                                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -913,7 +819,6 @@ icd:outcomeOfFullThicknessBurn rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#partOfBuildingOrGrounds
 icd:partOfBuildingOrGrounds rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "partOfBuildingOrGrounds" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -921,7 +826,6 @@ icd:partOfBuildingOrGrounds rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#partOfPlace
 icd:partOfPlace rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:placeOfOccurrence ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "partOfPlace" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -929,7 +833,6 @@ icd:partOfPlace rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#perpetratorVictimRelationship
 icd:perpetratorVictimRelationship rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf icd:aspectsOfAssaultAndMaltreatment ;
-                                  rdfs:range icd:ICDExtensionCode ;
                                   rdfs:label "perpetratorVictimRelationship" ;
                                   skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -937,7 +840,6 @@ icd:perpetratorVictimRelationship rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#personalCountermeasures
 icd:personalCountermeasures rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:sportsActivityDescriptor ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "personalCountermeasures" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -945,7 +847,6 @@ icd:personalCountermeasures rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#phaseOfSportOrExerciseActivity
 icd:phaseOfSportOrExerciseActivity rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf icd:sportsActivityDescriptor ;
-                                   rdfs:range icd:ICDExtensionCode ;
                                    rdfs:label "phaseOfSportOrExerciseActivity" ;
                                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -953,7 +854,6 @@ icd:phaseOfSportOrExerciseActivity rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#placeOfOccurrence
 icd:placeOfOccurrence rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf icd:externalCauseDimension ;
-                      rdfs:range icd:ICDExtensionCode ;
                       rdfs:label "placeOfOccurrence" ;
                       skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -961,14 +861,12 @@ icd:placeOfOccurrence rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#placeOfOccurrenceDescriptor
 icd:placeOfOccurrenceDescriptor rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                                rdfs:range icd:ICDExtensionCode ;
                                 rdfs:label "placeOfOccurrenceDescriptor" ;
                                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
 
 ###  http://who.int/icd#postcoordinationAxis
 icd:postcoordinationAxis rdf:type owl:ObjectProperty ;
-                         rdfs:range icd:ICDExtensionCode ;
                          rdfs:label "postcoordinationAxis" ;
                          skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -976,7 +874,6 @@ icd:postcoordinationAxis rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#previousSuicideAttempt
 icd:previousSuicideAttempt rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:aspectsOfIntentionalSelfHarm ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "previousSuicideAttempt" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -984,7 +881,6 @@ icd:previousSuicideAttempt rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#proximalRiskFactorsForIntentionalSelfHarm
 icd:proximalRiskFactorsForIntentionalSelfHarm rdf:type owl:ObjectProperty ;
                                               rdfs:subPropertyOf icd:aspectsOfIntentionalSelfHarm ;
-                                              rdfs:range icd:ICDExtensionCode ;
                                               rdfs:label "proximalRiskFactorsForIntentionalSelfHarm" ;
                                               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -992,7 +888,6 @@ icd:proximalRiskFactorsForIntentionalSelfHarm rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#psychoactiveDrugUseInInjury
 icd:psychoactiveDrugUseInInjury rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf icd:externalCauseDimension ;
-                                rdfs:range icd:ICDExtensionCode ;
                                 rdfs:label "psychoactiveDrugUseInInjury" ;
                                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1000,7 +895,6 @@ icd:psychoactiveDrugUseInInjury rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#quantifier
 icd:quantifier rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-               rdfs:range icd:ICHIExtensionCode ;
                rdfs:label "quantifier" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1008,7 +902,6 @@ icd:quantifier rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#regional
 icd:regional rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf icd:topology ;
-             rdfs:range icd:ICDExtensionCode ;
              rdfs:label "regional" ;
              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1017,7 +910,6 @@ icd:regional rdf:type owl:ObjectProperty ;
 icd:relational rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:ichiTopology ,
                                   icd:topology ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "relational" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1025,7 +917,6 @@ icd:relational rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#relationshipToOtherIntervention
 icd:relationshipToOtherIntervention rdf:type owl:ObjectProperty ;
                                     rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                                    rdfs:range icd:ICHIExtensionCode ;
                                     rdfs:label "relationshipToOtherIntervention" ;
                                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1033,7 +924,6 @@ icd:relationshipToOtherIntervention rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#residentOfHome
 icd:residentOfHome rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "residentOfHome" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1041,7 +931,6 @@ icd:residentOfHome rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#roleOfInjuredPersonInArmedConflict
 icd:roleOfInjuredPersonInArmedConflict rdf:type owl:ObjectProperty ;
                                        rdfs:subPropertyOf icd:aspectsOfArmedConflict ;
-                                       rdfs:range icd:ICDExtensionCode ;
                                        rdfs:label "roleOfInjuredPersonInArmedConflict" ;
                                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1049,7 +938,6 @@ icd:roleOfInjuredPersonInArmedConflict rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#roleOfTheInjuredPerson
 icd:roleOfTheInjuredPerson rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:transportEventDescriptor ;
-                           rdfs:range icd:ICDExtensionCode ;
                            rdfs:label "roleOfTheInjuredPerson" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1057,7 +945,6 @@ icd:roleOfTheInjuredPerson rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#serotype
 icd:serotype rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf icd:biologicalIndicator ;
-             rdfs:range icd:ICDExtensionCode ;
              rdfs:label "serotype" ;
              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1065,7 +952,6 @@ icd:serotype rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#settingOfEvent
 icd:settingOfEvent rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf icd:transportDimension ;
-                   rdfs:range icd:ICDExtensionCode ;
                    rdfs:label "settingOfEvent" ;
                    skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1073,7 +959,6 @@ icd:settingOfEvent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#severityAxis
 icd:severityAxis rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:postcoordinationAxis ;
-                 rdfs:range icd:ICDExtensionCode ;
                  rdfs:label "severityAxis" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1081,7 +966,6 @@ icd:severityAxis rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#specificAnatomicDetail
 icd:specificAnatomicDetail rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                           rdfs:range icd:ICHIExtensionCode ;
                            rdfs:label "specificAnatomicDetail" ;
                            skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1089,7 +973,6 @@ icd:specificAnatomicDetail rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#specificAnatomy
 icd:specificAnatomy rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf icd:anatomy ;
-                    rdfs:range icd:ICDExtensionCode ;
                     rdfs:label "specificAnatomy" ;
                     skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1097,7 +980,6 @@ icd:specificAnatomy rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#specificSkillsAndTechnique
 icd:specificSkillsAndTechnique rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                               rdfs:range icd:ICHIExtensionCode ;
                                rdfs:label "specificSkillsAndTechnique" ;
                                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1105,7 +987,6 @@ icd:specificSkillsAndTechnique rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#sportsActivityDescriptor
 icd:sportsActivityDescriptor rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf icd:externalCauseDimension ;
-                             rdfs:range icd:ICDExtensionCode ;
                              rdfs:label "sportsActivityDescriptor" ;
                              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1113,7 +994,6 @@ icd:sportsActivityDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#standardisationOrStructure
 icd:standardisationOrStructure rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                               rdfs:range icd:ICHIExtensionCode ;
                                rdfs:label "standardisationOrStructure" ;
                                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1121,7 +1001,6 @@ icd:standardisationOrStructure rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#substanceUse
 icd:substanceUse rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:deprecatedECDimension ;
-                 rdfs:range icd:ICDExtensionCode ;
                  rdfs:label "substanceUse" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1129,7 +1008,6 @@ icd:substanceUse rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#telehealth
 icd:telehealth rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-               rdfs:range icd:ICHIExtensionCode ;
                rdfs:label "telehealth" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1137,7 +1015,6 @@ icd:telehealth rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#temporalPatternAndOnset
 icd:temporalPatternAndOnset rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:temporality ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "temporalPatternAndOnset" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1145,7 +1022,6 @@ icd:temporalPatternAndOnset rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#temporality
 icd:temporality rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:postcoordinationAxis ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "temporality" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1153,7 +1029,6 @@ icd:temporality rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#temporaryIntervention
 icd:temporaryIntervention rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                          rdfs:range icd:ICHIExtensionCode ;
                           rdfs:label "temporaryIntervention" ;
                           skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1161,7 +1036,6 @@ icd:temporaryIntervention rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#therapeuticProduct
 icd:therapeuticProduct rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf icd:ICHIPostcoordinationAxis ;
-                       rdfs:range icd:ICHIExtensionCode ;
                        rdfs:label "therapeuticProduct" ;
                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1169,7 +1043,6 @@ icd:therapeuticProduct rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#timeInLife
 icd:timeInLife rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:temporality ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "timeInLife" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1177,7 +1050,6 @@ icd:timeInLife rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#tissueFlap
 icd:tissueFlap rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-               rdfs:range icd:ICHIExtensionCode ;
                rdfs:label "tissueFlap" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1185,7 +1057,6 @@ icd:tissueFlap rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#tissueGraft
 icd:tissueGraft rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                rdfs:range icd:ICHIExtensionCode ;
                 rdfs:label "tissueGraft" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1193,7 +1064,6 @@ icd:tissueGraft rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#topology
 icd:topology rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf icd:anatomy ;
-             rdfs:range icd:ICDExtensionCode ;
              rdfs:label "topology" ;
              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1201,7 +1071,6 @@ icd:topology rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#transportDimension
 icd:transportDimension rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                       rdfs:range icd:ICDExtensionCode ;
                        rdfs:label "transportDimension" ;
                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1209,7 +1078,6 @@ icd:transportDimension rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#transportEventDescriptor
 icd:transportEventDescriptor rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf icd:externalCauseDimension ;
-                             rdfs:range icd:ICDExtensionCode ;
                              rdfs:label "transportEventDescriptor" ;
                              skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1217,7 +1085,6 @@ icd:transportEventDescriptor rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#transportUserRoleOfInjuredPerson
 icd:transportUserRoleOfInjuredPerson rdf:type owl:ObjectProperty ;
                                      rdfs:subPropertyOf icd:transportDimension ;
-                                     rdfs:range icd:ICDExtensionCode ;
                                      rdfs:label "transportUserRoleOfInjuredPerson" ;
                                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1225,7 +1092,6 @@ icd:transportUserRoleOfInjuredPerson rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfArmedConflict
 icd:typeOfArmedConflict rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf icd:aspectsOfArmedConflict ;
-                        rdfs:range icd:ICDExtensionCode ;
                         rdfs:label "typeOfArmedConflict" ;
                         skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1233,7 +1099,6 @@ icd:typeOfArmedConflict rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfHome
 icd:typeOfHome rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-               rdfs:range icd:ICDExtensionCode ;
                rdfs:label "typeOfHome" ;
                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1241,7 +1106,6 @@ icd:typeOfHome rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfInjury
 icd:typeOfInjury rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:injuryQualifier ;
-                 rdfs:range icd:ICDExtensionCode ;
                  rdfs:label "typeOfInjury" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1249,7 +1113,6 @@ icd:typeOfInjury rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfLegalIntervention
 icd:typeOfLegalIntervention rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf icd:externalCauseDimension ;
-                            rdfs:range icd:ICDExtensionCode ;
                             rdfs:label "typeOfLegalIntervention" ;
                             skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1257,7 +1120,6 @@ icd:typeOfLegalIntervention rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfPlace
 icd:typeOfPlace rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf icd:placeOfOccurrence ;
-                rdfs:range icd:ICDExtensionCode ;
                 rdfs:label "typeOfPlace" ;
                 skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1265,7 +1127,6 @@ icd:typeOfPlace rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfSchool
 icd:typeOfSchool rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf icd:placeOfOccurrenceDescriptor ;
-                 rdfs:range icd:ICDExtensionCode ;
                  rdfs:label "typeOfSchool" ;
                  skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1273,7 +1134,6 @@ icd:typeOfSchool rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfSportOrExerciseActivity
 icd:typeOfSportOrExerciseActivity rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf icd:sportsActivityDescriptor ;
-                                  rdfs:range icd:ICDExtensionCode ;
                                   rdfs:label "typeOfSportOrExerciseActivity" ;
                                   skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1281,7 +1141,6 @@ icd:typeOfSportOrExerciseActivity rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#typeOfTransportInjuryEvent
 icd:typeOfTransportInjuryEvent rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                               rdfs:range icd:ICDExtensionCode ;
                                rdfs:label "typeOfTransportInjuryEvent" ;
                                skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1289,7 +1148,6 @@ icd:typeOfTransportInjuryEvent rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#unplanned
 icd:unplanned rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-              rdfs:range icd:ICHIExtensionCode ;
               rdfs:label "unplanned" ;
               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1297,7 +1155,6 @@ icd:unplanned rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#useOfEquipmentOrChallenge
 icd:useOfEquipmentOrChallenge rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf icd:additionalDescriptiveInformationForIntervention ;
-                              rdfs:range icd:ICHIExtensionCode ;
                               rdfs:label "useOfEquipmentOrChallenge" ;
                               skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1305,7 +1162,6 @@ icd:useOfEquipmentOrChallenge rdf:type owl:ObjectProperty ;
 ###  http://who.int/icd#violenceDescriptor
 icd:violenceDescriptor rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf icd:externalCauseDimensionDescriptor ;
-                       rdfs:range icd:ICDExtensionCode ;
                        rdfs:label "violenceDescriptor" ;
                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
@@ -1334,13 +1190,6 @@ icd:isInclusion rdf:type owl:DatatypeProperty ;
                 rdfs:label "isInclusion" ;
                 skos:definition "true if the synonym or narrower term is also an inclusion term" ;
                 skos:inScheme <https://who.int/whofic/contentmetamodel> .
-
-
-###  http://who.int/icd#label
-icd:label rdf:type owl:DatatypeProperty ;
-          rdfs:range xsd:string ;
-          rdfs:label "label" ;
-          skos:inScheme <https://who.int/whofic/contentmetamodel> .
 
 
 ###  http://who.int/icd#referencedEntity
@@ -1407,125 +1256,11 @@ icd:BaseIndexTerm rdf:type owl:Class ;
                   skos:inScheme <https://who.int/whofic/contentmetamodel> .
 
 
-###  http://who.int/icd#ClassificationEntity
-icd:ClassificationEntity rdf:type owl:Class ;
-                         rdfs:label "ClassificationEntity" ;
-                         skos:definition "Top-level classification entity" ;
-                         skos:exactMatch <http://id.who.int/icd/entity/1224012103> ;
-                         skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
 ###  http://who.int/icd#ContentModelEntity
 icd:ContentModelEntity rdf:type owl:Class ;
                        rdfs:label "ContentModelEntity" ;
                        skos:definition "Description of ContentModelEntity" ;
                        skos:inScheme <https://who.int/whofic/contentmetamodel> .
-
-
-###  http://who.int/icd#ICDCategory
-icd:ICDCategory rdf:type owl:Class ;
-                rdfs:subClassOf icd:ICDEntity ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty icd:diagnosticCriteria ;
-                                  owl:allValuesFrom xsd:string
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty icd:functionalImpact ;
-                                  owl:allValuesFrom xsd:anyURI
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty icd:diagnosticCriteria ;
-                                  owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty icd:functionalImpact ;
-                                  owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                ] ;
-                rdfs:label "ICDCategory" ;
-                skos:definition "Top-level codable ICD entities" ;
-                skos:exactMatch <http://id.who.int/icd/entity/455013390> ;
-                skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICDEntity
-icd:ICDEntity rdf:type owl:Class ;
-              rdfs:subClassOf icd:ClassificationEntity ;
-              rdfs:label "ICDEntity" ;
-              skos:definition "Top-level ICD entity" ;
-              skos:exactMatch <http://id.who.int/icd/entity/448895267> ;
-              skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICDExtensionCode
-icd:ICDExtensionCode rdf:type owl:Class ;
-                     rdfs:subClassOf icd:ICDEntity ;
-                     rdfs:label "ICDExtensionCode" ;
-                     skos:definition "Top-level ICD extension code" ;
-                     skos:exactMatch <http://id.who.int/icd/entity/1920852714> ;
-                     skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICFCategory
-icd:ICFCategory rdf:type owl:Class ;
-                rdfs:subClassOf icd:ICFEntity ;
-                rdfs:label "ICFCategory" ;
-                skos:definition "Top-level ICF entities with codes" ;
-                skos:exactMatch <http://id.who.int/icd/entity/619527855> ;
-                skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICFEntity
-icd:ICFEntity rdf:type owl:Class ;
-              rdfs:subClassOf icd:ClassificationEntity ;
-              rdfs:label "ICFEntity" ;
-              skos:definition "Top-level ICF entity" ;
-              skos:exactMatch <http://id.who.int/icd/entity/1405434703> ;
-              skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICFExtensionCode
-icd:ICFExtensionCode rdf:type owl:Class ;
-                     rdfs:subClassOf icd:ICFEntity ;
-                     rdfs:label "ICFExtensionCode" ;
-                     skos:definition "Top-level ICD extension code" ;
-                     skos:exactMatch <http://id.who.int/icd/entity/152976210> ;
-                     skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICFQualifier
-icd:ICFQualifier rdf:type owl:Class ;
-                 rdfs:subClassOf icd:ICFEntity ;
-                 rdfs:label "ICFQualifier" ;
-                 skos:definition "Top-level ICD extension code" ;
-                 skos:exactMatch <http://id.who.int/icd/entity/423829389> ;
-                 skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICHICategory
-icd:ICHICategory rdf:type owl:Class ;
-                 rdfs:subClassOf icd:ICHIEntity ;
-                 rdfs:label "ICHICategory" ;
-                 skos:definition "Top-level ICHI entities with codes (Health Intervention, Action, Target, Means)" ;
-                 skos:exactMatch <http://id.who.int/icd/entity/1190112446> ;
-                 skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICHIEntity
-icd:ICHIEntity rdf:type owl:Class ;
-               rdfs:subClassOf icd:ClassificationEntity ;
-               rdfs:label "ICHIEntity" ;
-               skos:definition "Top-level ICHI entity" ;
-               skos:exactMatch <http://id.who.int/icd/entity/60347385> ;
-               skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
-###  http://who.int/icd#ICHIExtensionCode
-icd:ICHIExtensionCode rdf:type owl:Class ;
-                      rdfs:subClassOf icd:ICHIEntity ;
-                      rdfs:label "ICHIExtensionCode" ;
-                      skos:definition "Top-level ICHI extension code" ;
-                      skos:exactMatch <http://id.who.int/icd/entity/1153570334> ;
-                      skos:inScheme <https://who.int/whofic/contentmodel> .
 
 
 ###  http://who.int/icd#IndexType
@@ -1550,19 +1285,8 @@ icd:LanguageTerm rdf:type owl:Class ;
 
 ###  http://who.int/icd#Term
 icd:Term rdf:type owl:Class ;
-         rdfs:subClassOf icd:ContentModelEntity ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty icd:label ;
-                           owl:allValuesFrom xsd:string
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty icd:label ;
-                           owl:minCardinality "0"^^xsd:nonNegativeInteger
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty icd:label ;
-                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                         ] ;
+         rdfs:subClassOf icd:ContentModelEntity ;
+         icd:label "None" ;
          rdfs:label "Term" ;
          skos:definition "Toplevel entity for reified values" ;
          skos:inScheme <https://who.int/whofic/contentmetamodel> .

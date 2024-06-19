@@ -79,7 +79,7 @@ classes:
   Term:
     is_a: ContentModelEntity
     description : Toplevel entity for reified values 
-    slots:
+    annotations:
       - label
   
   LanguageTerm:
@@ -186,6 +186,8 @@ slots:
   label:
     range: string
     multivalued: false
+    implements:
+      - owl:AnnotationProperty
 
   isInclusion:
     description: true if the synonym or narrower term is also an inclusion term
