@@ -96,9 +96,12 @@ classes:
   BaseExclusionTerm:
     is_a: Term
     description: Refeference to an excluded classification category
-    slots:
-      - referencedEntity
-    
+  
+  LinearizationView:
+    is_a: ContentModelEntity
+    description: >-
+      Name of a linearization
+  
       
     
 #   InternalReferenceTerm:
@@ -200,11 +203,15 @@ slots:
   referencedEntity:
     description: a WHO-FIC entity referenced by another WHO-FIC entity
     range: uriorcurie
+    implements:
+      - owl:AnnotationProperty
       
+  linearizationName:
+    description: name of linearization
+    range: uriorcurie  
+    implements:
+      - owl:AnnotationProperty
     
-#   referencedCategory:
-#     range: uri
-
 enums:
   IndexType:
     implements:

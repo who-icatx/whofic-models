@@ -84,12 +84,28 @@ icd:label rdf:type owl:AnnotationProperty ;
           rdfs:range xsd:string .
 
 
+###  http://who.int/icd#linearizationName
+icd:linearizationName rdf:type owl:AnnotationProperty ;
+                      rdfs:label "linearizationName" ;
+                      skos:definition "name of linearization" ;
+                      skos:inScheme <https://who.int/whofic/contentmetamodel> ;
+                      rdfs:range xsd:anyURI .
+
+
 ###  http://who.int/icd#longDefinition
 icd:longDefinition rdf:type owl:AnnotationProperty ;
                    rdfs:label "longDefinition" ;
                    skos:definition "Long definition" ;
                    skos:inScheme <https://who.int/whofic/contentmetamodel> ;
                    rdfs:range icd:LanguageTerm .
+
+
+###  http://who.int/icd#referencedEntity
+icd:referencedEntity rdf:type owl:AnnotationProperty ;
+                     rdfs:label "referencedEntity" ;
+                     skos:definition "a WHO-FIC entity referenced by another WHO-FIC entity" ;
+                     skos:inScheme <https://who.int/whofic/contentmetamodel> ;
+                     rdfs:range xsd:anyURI .
 
 
 ###  http://who.int/icd#relatedImpairment
@@ -1192,33 +1208,13 @@ icd:isInclusion rdf:type owl:DatatypeProperty ;
                 skos:inScheme <https://who.int/whofic/contentmetamodel> .
 
 
-###  http://who.int/icd#referencedEntity
-icd:referencedEntity rdf:type owl:DatatypeProperty ;
-                     rdfs:range xsd:anyURI ;
-                     rdfs:label "referencedEntity" ;
-                     skos:definition "a WHO-FIC entity referenced by another WHO-FIC entity" ;
-                     skos:inScheme <https://who.int/whofic/contentmetamodel> .
-
-
 #################################################################
 #    Classes
 #################################################################
 
 ###  http://who.int/icd#BaseExclusionTerm
 icd:BaseExclusionTerm rdf:type owl:Class ;
-                      rdfs:subClassOf icd:Term ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty icd:referencedEntity ;
-                                        owl:allValuesFrom xsd:anyURI
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty icd:referencedEntity ;
-                                        owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty icd:referencedEntity ;
-                                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                                      ] ;
+                      rdfs:subClassOf icd:Term ;
                       rdfs:label "BaseExclusionTerm" ;
                       skos:definition "Refeference to an excluded classification category" ;
                       skos:inScheme <https://who.int/whofic/contentmetamodel> .
@@ -1271,8 +1267,8 @@ icd:IndexType rdf:type owl:Class ;
                                               )
                                   ] ;
               rdfs:subClassOf icd:ContentModelEntity ;
-              linkml:permissible_values icd:IndexType.Narrower ,
-                                        icd:IndexType.Synonym .
+              linkml:permissible_values <http://who.int/icd#IndexType#Narrower> ,
+                                        <http://who.int/icd#IndexType#Synonym> .
 
 
 ###  http://who.int/icd#LanguageTerm
@@ -1281,6 +1277,14 @@ icd:LanguageTerm rdf:type owl:Class ;
                  rdfs:label "LanguageTerm" ;
                  skos:definition "Reified string value" ;
                  skos:inScheme <https://who.int/whofic/contentmetamodel> .
+
+
+###  http://who.int/icd#LinearizationView
+icd:LinearizationView rdf:type owl:Class ;
+                      rdfs:subClassOf icd:ContentModelEntity ;
+                      rdfs:label "LinearizationView" ;
+                      skos:definition "Name of a linearization" ;
+                      skos:inScheme <https://who.int/whofic/contentmetamodel> .
 
 
 ###  http://who.int/icd#Term

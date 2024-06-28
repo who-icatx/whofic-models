@@ -86,12 +86,6 @@ classes:
       Description of ValueSet
     slots:
 
-  LinearizationView:
-    is_a: LiniearizationEntity
-    description: >-
-      Name of a linearization
-    slots:
-      - linearizationName  # previously sortingCode
 
   
 slots:
@@ -131,7 +125,7 @@ slots:
     multivalued: false
     minimum_cardinality: 1
   linearizationView:
-    range: LinearizationView
+    range: uriorcurie
     multivalued: false
     minimum_cardinality: 1
   linearizationName:

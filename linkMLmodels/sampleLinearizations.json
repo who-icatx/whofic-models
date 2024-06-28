@@ -5,33 +5,29 @@
       "suppressUnspecifiedResiduals": true,
       "suppressOtherSpecifiedResiduals": false,
       "otherSpecifiedResidualTitle": {
-      "label": "Other specified Dengue"
-      }
+        "label": "Other specified Dengue"
+      },
       "linearization": [
         {
           "isAuxiliaryAxisChild": false,
           "isGrouping": false,
           "isIncludedInLinearization": true,
           "linearizationParent": "http://id.who.int/icd/entity/921595235",
-          "linearizationSortingLabel": "enim quis"
-          "linearizationView": {
-            "linearizationName": "Mortality and Morbidity Statistical Tabulation"
-          }
+          "linearizationSortingLabel": "enim quis",
+          "linearizationView": "http://id.who.int/icd/entity/40392843990"
         },
         {
           "isAuxiliaryAxisChild": false,
           "isGrouping": false,
           "isIncludedInLinearization": false,
           "linearizationSortingLabel": "dolor culpa",
-          "linearizationView": {
-            "linearizationName": "Dermatology specialisation"
-          }
+          "linearizationView": "http://id.who.int/icd/entity/40392843990"
         }
       ]
     },
     {
       "whoficEntityIri": "http://id.who.int/icd/entity/921595235",
-      "suppressOtherSpecifiedResiduals": true
+      "suppressOtherSpecifiedResiduals": true,
       "suppressUnspecifiedResiduals": true,  
       "linearization": [
         {
@@ -40,18 +36,14 @@
           "isIncludedInLinearization": true,
           "linearizationParent": "http://id.who.int/icd/entity/1435254666",
           "linearizationSortingLabel": "Lorem ad amet",
-          "linearizationView": {
-            "linearizationName": "Mortality and Morbidity Statistical Tabulation"
-          }
+          "linearizationView": "http://id.who.int/icd/entity/50392843990"
         },
         {
           "isAuxiliaryAxisChild": false,
           "isGrouping": false,
           "isIncludedInLinearization": false,
           "linearizationSortingLabel": "dolor culpa",
-          "linearizationView": {
-            "linearizationName": "Dermatology specialisation"
-          }
+          "linearizationView": "http://id.who.int/icd/entity/40392843990"
         }
       ]
     }

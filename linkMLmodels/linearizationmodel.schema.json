@@ -3,12 +3,6 @@
         "BaseExclusionTerm": {
             "additionalProperties": false,
             "description": "Refeference to an excluded classification category",
-            "properties": {
-                "referencedEntity": {
-                    "description": "a WHO-FIC entity referenced by another WHO-FIC entity",
-                    "type": "string"
-                }
-            },
             "title": "BaseExclusionTerm",
             "type": "object"
         },
@@ -102,7 +96,7 @@
                 "label": {
                   "type": "string"
                 }
-                }
+            }
         },
         "LinearizationSection": {
             "additionalProperties": false,
@@ -156,7 +150,7 @@
                     "type": "string"
                 },
                 "linearizationView": {
-                    "$ref": "#/$defs/LinearizationView"
+                    "type": "string"
                 }
             },
             "title": "LinearizationSpecification",
@@ -165,11 +159,6 @@
         "LinearizationView": {
             "additionalProperties": false,
             "description": "Name of a linearization",
-            "properties": {
-                "linearizationName": {
-                    "type": "string"
-                }
-            },
             "title": "LinearizationView",
             "type": "object"
         },
