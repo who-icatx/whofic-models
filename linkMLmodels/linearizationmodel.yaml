@@ -51,6 +51,7 @@ classes:
     description: >-
       Description of an entity's set of linearization specifications 
     slots:
+      - whoficEntityIri
       - linearization  # the collection of linearization specifications
       - unspecifiedResidualTitle
       - otherSpecifiedResidualTitle
@@ -94,6 +95,8 @@ classes:
 
   
 slots:
+  whoficEntityIri:
+    range: uriorcurie
   linearization:
     multivalued: true
     range: LinearizationSpecification
@@ -117,17 +120,20 @@ slots:
   isIncludedInLinearization:
     range: boolean
     multivalued: false
+    minimum_cardinality: 1
   linearizationSortingLabel:
     range: string
   isAuxiliaryAxisChild:
     range: boolean
     multivalued: false
   linearizationParent:
-    range: WHOFICEntityModel   #Not clear how to constrain reference to other categories
+    range: uriorcurie   
     multivalued: false
+    minimum_cardinality: 1
   linearizationView:
     range: LinearizationView
     multivalued: false
+    minimum_cardinality: 1
   linearizationName:
     range: string
     multivalued: false

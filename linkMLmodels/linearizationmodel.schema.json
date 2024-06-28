@@ -1,8 +1,30 @@
 {
     "$defs": {
+        "BaseExclusionTerm": {
+            "additionalProperties": false,
+            "description": "Refeference to an excluded classification category",
+            "properties": {
+                "referencedEntity": {
+                    "description": "a WHO-FIC entity referenced by another WHO-FIC entity",
+                    "type": "string"
+                }
+            },
+            "title": "BaseExclusionTerm",
+            "type": "object"
+        },
         "BaseIndexTerm": {
             "additionalProperties": false,
             "description": "Description of BaseIndexTerm",
+            "properties": {
+                "indexType": {
+                    "$ref": "#/$defs/IndexType",
+                    "description": "an index term that's either a synonym or a narrower term"
+                },
+                "isInclusion": {
+                    "description": "true if the synonym or narrower term is also an inclusion term",
+                    "type": "boolean"
+                }
+            },
             "title": "BaseIndexTerm",
             "type": "object"
         },
@@ -32,10 +54,22 @@
             "title": "ICDCategoryModel",
             "type": "object"
         },
+        "ICDExtensionCodeModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICDExtensionCodeModel",
+            "type": "object"
+        },
         "ICFCategoryModel": {
             "additionalProperties": false,
             "description": "",
             "title": "ICFCategoryModel",
+            "type": "object"
+        },
+        "ICFExtensionCodeModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICFExtensionCodeModel",
             "type": "object"
         },
         "ICHICategoryModel": {
@@ -44,11 +78,17 @@
             "title": "ICHICategoryModel",
             "type": "object"
         },
+        "ICHIExtensionCodeModel": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ICHIExtensionCodeModel",
+            "type": "object"
+        },
         "IndexType": {
             "description": "types of index terms",
             "enum": [
-                "synonym",
-                "narrower"
+                "Synonym",
+                "Narrower"
             ],
             "title": "IndexType",
             "type": "string"
@@ -57,7 +97,12 @@
             "additionalProperties": false,
             "description": "Reified string value",
             "title": "LanguageTerm",
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "label": {
+                  "type": "string"
+                }
+                }
         },
         "LinearizationSection": {
             "additionalProperties": false,
@@ -80,6 +125,9 @@
                 },
                 "unspecifiedResidualTitle": {
                     "$ref": "#/$defs/LanguageTerm"
+                },
+                "whoficEntityIri": {
+                    "type": "string"
                 }
             },
             "title": "LinearizationSection",
@@ -102,7 +150,7 @@
                     "type": "boolean"
                 },
                 "linearizationParent": {
-                    "$ref": "#/$defs/WHOFICEntityModel"
+                    "type": "string"
                 },
                 "linearizationSortingLabel": {
                     "type": "string"
