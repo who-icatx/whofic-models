@@ -96,12 +96,7 @@ classes:
   BaseExclusionTerm:
     is_a: Term
     description: Refeference to an excluded classification category
-  
-  LinearizationView:
-    is_a: ContentModelEntity
-    description: >-
-      Name of a linearization
-  
+    
       
     
 #   InternalReferenceTerm:

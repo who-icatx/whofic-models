@@ -26,7 +26,13 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "whoficEntityLinearizations": {
+                "linearizations": {
+                    "items": {
+                        "$ref": "#/$defs/LinearizationView"
+                    },
+                    "type": "array"
+                },
+                "whoficEntityLinearizationSpecification": {
                     "items": {
                         "$ref": "#/$defs/LinearizationSection"
                     },
@@ -91,34 +97,49 @@
             "additionalProperties": false,
             "description": "Reified string value",
             "title": "LanguageTerm",
-            "type": "object",
+            "type": "object"
+        },
+        "LinMode": {
+            "description": "",
+            "enum": [
+                "Basic",
+                "TelescopicFromAnotherLinearization"
+            ],
+            "title": "LinMode",
+            "type": "string"
+        },
+        "LinearizationResiduals": {
+            "additionalProperties": false,
+            "description": "",
             "properties": {
-                "label": {
-                  "type": "string"
+                "otherSpecifiedResidualTitle": {
+                    "$ref": "#/$defs/LanguageTerm"
+                },
+                "suppressOtherSpecifiedResiduals": {
+                    "$ref": "#/$defs/TrueFalseUnknown"
+                },
+                "suppressUnspecifiedResiduals": {
+                    "$ref": "#/$defs/TrueFalseUnknown"
+                },
+                "unspecifiedResidualTitle": {
+                    "$ref": "#/$defs/LanguageTerm"
                 }
-            }
+            },
+            "title": "LinearizationResiduals",
+            "type": "object"
         },
         "LinearizationSection": {
             "additionalProperties": false,
             "description": "Description of an entity's set of linearization specifications",
             "properties": {
-                "linearization": {
+                "linearizationResiduals": {
+                    "$ref": "#/$defs/LinearizationResiduals"
+                },
+                "linearizationSpecifications": {
                     "items": {
                         "$ref": "#/$defs/LinearizationSpecification"
                     },
                     "type": "array"
-                },
-                "otherSpecifiedResidualTitle": {
-                    "$ref": "#/$defs/LanguageTerm"
-                },
-                "suppressOtherSpecifiedResiduals": {
-                    "type": "boolean"
-                },
-                "suppressUnspecifiedResiduals": {
-                    "type": "boolean"
-                },
-                "unspecifiedResidualTitle": {
-                    "$ref": "#/$defs/LanguageTerm"
                 },
                 "whoficEntityIri": {
                     "type": "string"
@@ -135,13 +156,13 @@
                     "$ref": "#/$defs/LanguageTerm"
                 },
                 "isAuxiliaryAxisChild": {
-                    "type": "boolean"
+                    "$ref": "#/$defs/TrueFalseUnknown"
                 },
                 "isGrouping": {
-                    "type": "boolean"
+                    "$ref": "#/$defs/TrueFalseUnknown"
                 },
                 "isIncludedInLinearization": {
-                    "type": "boolean"
+                    "$ref": "#/$defs/TrueFalseUnknown"
                 },
                 "linearizationParent": {
                     "type": "string"
@@ -158,7 +179,44 @@
         },
         "LinearizationView": {
             "additionalProperties": false,
-            "description": "Name of a linearization",
+            "description": "The schema of a linearization",
+            "properties": {
+                "CoreLinId": {
+                    "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from"
+                },
+                "Description": {
+                    "description": "String description for a linearization (e.g., \"ICD-11 for Mortality and Morbidity Statistics\"). ",
+                    "type": "string"
+                },
+                "Id": {
+                    "description": "The string id of a linearization (e.g., \"MMS\"). ",
+                    "type": "string"
+                },
+                "LinearizationMode": {
+                    "$ref": "#/$defs/LinMode",
+                    "description": "Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the \"specialty linearizations\" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. "
+                },
+                "defaultIsAuxiliaryAxisChild": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isAuxiliaryAxisChild flag for the linearization "
+                },
+                "defaultIsGrouping": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isGrouping flag for the linearization "
+                },
+                "defaultIsIncluded": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isIncluded flag for the linearization "
+                },
+                "rootId": {
+                    "description": "URI of the foundation entity which becomes the root node for this linearization. ",
+                    "type": "string"
+                },
+                "sortingCode": {
+                    "description": "String used to sort linearizations (e.g., \"01\" for MMS). ",
+                    "type": "string"
+                }
+            },
             "title": "LinearizationView",
             "type": "object"
         },
@@ -173,6 +231,16 @@
             "description": "Toplevel entity for reified values",
             "title": "Term",
             "type": "object"
+        },
+        "TrueFalseUnknown": {
+            "description": "",
+            "enum": [
+                "true",
+                "false",
+                "unknown"
+            ],
+            "title": "TrueFalseUnknown",
+            "type": "string"
         },
         "ValueSet": {
             "additionalProperties": false,
@@ -193,7 +261,13 @@
     "description": "",
     "metamodel_version": "1.7.0",
     "properties": {
-        "whoficEntityLinearizations": {
+        "linearizations": {
+            "items": {
+                "$ref": "#/$defs/LinearizationView"
+            },
+            "type": "array"
+        },
+        "whoficEntityLinearizationSpecification": {
             "items": {
                 "$ref": "#/$defs/LinearizationSection"
             },

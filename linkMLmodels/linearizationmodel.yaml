@@ -44,6 +44,22 @@ classes:
     description: >-
       Root class entity
 
+  LinearizationView:
+    is_a: ContentModelEntity
+    description: >-
+      The schema of a linearization
+    slots:
+      - Id
+      - Description
+      - rootId
+      - LinearizationMode
+      - CoreLinId
+      - sortingCode
+      - defaultIsIncluded
+      - defaultIsGrouping
+      - defaultIsAuxiliaryAxisChild
+
+
 # We agreed that LinearizationSection will not have a back reference to the classification 
 # entity for which the LinearizationSection specify the entity's linearization
   LinearizationSection:
@@ -52,20 +68,28 @@ classes:
       Description of an entity's set of linearization specifications 
     slots:
       - whoficEntityIri
-      - linearization  # the collection of linearization specifications
-      - unspecifiedResidualTitle
-      - otherSpecifiedResidualTitle
-      - suppressOtherSpecifiedResiduals
-      - suppressUnspecifiedResiduals
+      - linearizationSpecifications  # the collection of linearization specifications
+      - linearizationResiduals
 
 # Add a container to indicate which class is the root of the linearization specifiation
   Container:
     tree_root: true
     attributes:
-      whoficEntityLinearizations:
+      whoficEntityLinearizationSpecification:
         multivalued: true
         inlined_as_list: true
         range: LinearizationSection
+      linearizations:
+        range: LinearizationView
+        multivalued: true
+        
+  LinearizationResiduals:
+    slots:
+      - unspecifiedResidualTitle
+      - otherSpecifiedResidualTitle
+      - suppressOtherSpecifiedResiduals
+      - suppressUnspecifiedResiduals
+
         
   LinearizationSpecification:
     is_a: LiniearizationEntity
@@ -91,15 +115,15 @@ classes:
 slots:
   whoficEntityIri:
     range: uriorcurie
-  linearization:
+  linearizationSpecifications:
     multivalued: true
     range: LinearizationSpecification
   suppressOtherSpecifiedResiduals:
     multivalued: false
-    range: boolean
+    range: TrueFalseUnknown
   suppressUnspecifiedResiduals:
     multivalued: false
-    range: boolean  
+    range: TrueFalseUnknown  
   unspecifiedResidualTitle:
     range: LanguageTerm
     multivalued: false
@@ -109,16 +133,16 @@ slots:
   codingNote:
     range: LanguageTerm
   isGrouping:
-    range: boolean
+    range: TrueFalseUnknown
     multivalued: false
   isIncludedInLinearization:
-    range: boolean
+    range: TrueFalseUnknown
     multivalued: false
     minimum_cardinality: 1
   linearizationSortingLabel:
     range: string
   isAuxiliaryAxisChild:
-    range: boolean
+    range: TrueFalseUnknown
     multivalued: false
   linearizationParent:
     range: uriorcurie   
@@ -131,3 +155,63 @@ slots:
   linearizationName:
     range: string
     multivalued: false
+  linearizationResiduals:
+    range: LinearizationResiduals
+    multivalued: false
+  rootId:
+    description: >-
+      URI of the foundation entity which becomes the root node for this linearization. 
+    range: uriorcurie
+    multivalued: false
+  LinearizationMode:
+    description: >-
+      Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the "specialty linearizations" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. 
+    range: LinMode
+    multivalued: false
+  CoreLinId:
+    description: >-
+      If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from
+    range: uricurie
+    multivalued: false
+  Id:
+    description: >-
+      The string id of a linearization (e.g., "MMS"). 
+    range: string
+    multivalued: false
+  Description:
+    description: >-
+      String description for a linearization (e.g., "ICD-11 for Mortality and Morbidity Statistics"). 
+    range: string
+    multivalued: false
+  sortingCode:
+    description: >-
+      String used to sort linearizations (e.g., "01" for MMS). 
+    range: string
+    multivalued: false
+  defaultIsIncluded:
+    description: >-
+      Default value for isIncluded flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
+  defaultIsGrouping:
+    description: >-
+      Default value for isGrouping flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
+  defaultIsAuxiliaryAxisChild:
+    description: >-
+      Default value for isAuxiliaryAxisChild flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
+
+
+enums:
+  TrueFalseUnknown:
+    permissible_values:
+      true:
+      false:
+      unknown:
+  LinMode:
+    permissible_values:
+      Basic:
+      TelescopicFromAnotherLinearization:
