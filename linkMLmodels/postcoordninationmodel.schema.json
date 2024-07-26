@@ -1,19 +1,27 @@
 {
     "$defs": {
-        "BaseIndexTerm": {
+        "AllowedRequiredPostcoordinationAxes": {
             "additionalProperties": false,
-            "description": "Description of BaseIndexTerm",
-            "title": "BaseIndexTerm",
+            "description": "",
+            "properties": {
+                "allowedAxes": {
+                    "items": {},
+                    "type": "array"
+                },
+                "requiredAxes": {
+                    "items": {},
+                    "type": "array"
+                }
+            },
+            "title": "AllowedRequiredPostcoordinationAxes",
             "type": "object"
         },
         "Container": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "whoficEntityLinearizations": {
-                    "items": {
-                        "$ref": "#/$defs/LinearizationSection"
-                    },
+                "whoficEntityPostcoordinationSpecification": {
+                    "items": {},
                     "type": "array"
                 }
             },
@@ -26,229 +34,96 @@
             "title": "ContentModelEntity",
             "type": "object"
         },
-        "ICDCategoryModel": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "ICDCategoryModel",
-            "type": "object"
-        },
-        "ICDPostcoordinationAxesSpecification": {
-            "additionalProperties": false,
-            "description": "Description of PostcoordinationAxesSpecification, for ICD",
-            "title": "ICDPostcoordinationAxesSpecification",
-            "type": "object"
-        },
-        "ICDPostcoordinationProperty": {
+        "LinMode": {
             "description": "",
             "enum": [
-                "causality",
-                "laterality",
-                "regional",
-                "distribution",
-                "relational",
-                "serotype",
-                "durationOfComa",
-                "hasPupilReactionScore",
-                "hasGCSEyeScore",
-                "hasGCSMotorScore",
-                "hasGCSVerbalScore",
-                "diagnosisConfirmedBy",
-                "typeOfInjury",
-                "fractureSubtype",
-                "fractureOpenOrClosed",
-                "jointInvolvementInFracture",
-                "extentOfBurnByBodySurface",
-                "extentOfFullThicknessBurnByBodySurface",
-                "outcomeOfFullThicknessBurn",
-                "timeInLife",
-                "specificAnatomy",
-                "infectiousAgent",
-                "medication",
-                "chemicalAgent",
-                "histopathology",
-                "genomicAndChomosomalAnomaly",
-                "hasCausingCondition",
-                "hasManifestation",
-                "associatedWith",
-                "intent",
-                "violenceDescriptor",
-                "mechanismOfInjury",
-                "transportEventDescriptor",
-                "objectOrSubstanceProducingInjury",
-                "sportsActivityDescriptor",
-                "placeOfOccurrence",
-                "placeOfOccurrenceDescriptor",
-                "activityWhenInjured",
-                "occupationalDescriptor",
-                "substanceUse",
-                "hasSeverity",
-                "course",
-                "temporalPatternAndOnset"
+                "Basic",
+                "TelescopicFromAnotherLinearization"
             ],
-            "title": "ICDPostcoordinationProperty",
+            "title": "LinMode",
             "type": "string"
-        },
-        "ICDPostcoordinationSection": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "allowedPostcoordinationAxes": {
-                    "items": {
-                        "$ref": "#/$defs/ICDPostcoordinationAxesSpecification"
-                    },
-                    "type": "array"
-                }
-            },
-            "title": "ICDPostcoordinationSection",
-            "type": "object"
-        },
-        "ICFCategoryModel": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "ICFCategoryModel",
-            "type": "object"
-        },
-        "ICHICategoryModel": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "ICHICategoryModel",
-            "type": "object"
-        },
-        "IndexType": {
-            "description": "types of index terms",
-            "enum": [
-                "synonym",
-                "narrower"
-            ],
-            "title": "IndexType",
-            "type": "string"
-        },
-        "LanguageTerm": {
-            "additionalProperties": false,
-            "description": "Reified string value",
-            "title": "LanguageTerm",
-            "type": "object"
-        },
-        "LinearizationSection": {
-            "additionalProperties": false,
-            "description": "Description of an entity's set of linearization specifications",
-            "properties": {
-                "linearization": {
-                    "items": {
-                        "$ref": "#/$defs/LinearizationSpecification"
-                    },
-                    "type": "array"
-                },
-                "otherSpecifiedResidualTitle": {
-                    "$ref": "#/$defs/LanguageTerm"
-                },
-                "suppressOtherSpecifiedResiduals": {
-                    "type": "boolean"
-                },
-                "suppressUnspecifiedResiduals": {
-                    "type": "boolean"
-                },
-                "unspecifiedResidualTitle": {
-                    "$ref": "#/$defs/LanguageTerm"
-                }
-            },
-            "title": "LinearizationSection",
-            "type": "object"
-        },
-        "LinearizationSpecification": {
-            "additionalProperties": false,
-            "description": "Description of LinearizationSpecification",
-            "properties": {
-                "codingNote": {
-                    "$ref": "#/$defs/LanguageTerm"
-                },
-                "isAuxiliaryAxisChild": {
-                    "type": "boolean"
-                },
-                "isGrouping": {
-                    "type": "boolean"
-                },
-                "isIncludedInLinearization": {
-                    "type": "boolean"
-                },
-                "linearizationParent": {
-                    "$ref": "#/$defs/WHOFICEntityModel"
-                },
-                "linearizationSortingLabel": {
-                    "type": "string"
-                },
-                "linearizationView": {
-                    "$ref": "#/$defs/LinearizationView"
-                }
-            },
-            "title": "LinearizationSpecification",
-            "type": "object"
         },
         "LinearizationView": {
             "additionalProperties": false,
-            "description": "Name of a linearization",
+            "description": "The schema of a linearization",
             "properties": {
-                "linearizationName": {
+                "coreLinId": {
+                    "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from"
+                },
+                "defaultIsAuxiliaryAxisChild": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isAuxiliaryAxisChild flag for the linearization "
+                },
+                "defaultIsGrouping": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isGrouping flag for the linearization "
+                },
+                "defaultIsIncluded": {
+                    "$ref": "#/$defs/TrueFalseUnknown",
+                    "description": "Default value for isIncluded flag for the linearization "
+                },
+                "description": {
+                    "description": "String description for a linearization (e.g., \"ICD-11 for Mortality and Morbidity Statistics\"). ",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The string id of a linearization (e.g., \"MMS\"). ",
+                    "type": "string"
+                },
+                "linearizationMode": {
+                    "$ref": "#/$defs/LinMode",
+                    "description": "Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the \"specialty linearizations\" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. "
+                },
+                "rootId": {
+                    "description": "URI of the foundation entity which becomes the root node for this linearization. ",
+                    "type": "string"
+                },
+                "sortingCode": {
+                    "description": "String used to sort linearizations (e.g., \"01\" for MMS). ",
                     "type": "string"
                 }
             },
             "title": "LinearizationView",
             "type": "object"
         },
-        "LiniearizationEntity": {
-            "additionalProperties": false,
-            "description": "Root class entity",
-            "title": "LiniearizationEntity",
-            "type": "object"
-        },
-        "PostcoordinationAxesSpecification": {
-            "additionalProperties": false,
-            "description": "Description of PostcoordinationAxesSpecification, i.e., for a linearizationView,  what post-coordination axes are allowed and required",
-            "properties": {
-                "allowedPostcoordinationAxisProperty": {
-                    "type": "string"
-                },
-                "linearizationView": {
-                    "$ref": "#/$defs/LinearizationView"
-                },
-                "requiredPostcoordinationAxisProperty": {
-                    "type": "string"
-                }
-            },
-            "title": "PostcoordinationAxesSpecification",
-            "type": "object"
-        },
         "PostcoordinationSection": {
             "additionalProperties": false,
-            "description": "Description of ICD Postcoordination Model",
+            "description": "An entity that holds the Postcoordination information of a WHO-FIC entity",
             "properties": {
-                "allowedPostcoordinationAxes": {
+                "postcoordinationSpecifications": {
                     "items": {
-                        "$ref": "#/$defs/PostcoordinationAxesSpecification"
+                        "$ref": "#/$defs/PostcoordinationSpecification"
                     },
                     "type": "array"
-                }
+                },
+                "whoficEntityIri": {}
             },
             "title": "PostcoordinationSection",
             "type": "object"
         },
-        "Term": {
-            "additionalProperties": false,
-            "description": "Toplevel entity for reified values",
-            "title": "Term",
-            "type": "object"
-        },
-        "ValueSet": {
-            "additionalProperties": false,
-            "description": "Description of ValueSet",
-            "title": "ValueSet",
-            "type": "object"
-        },
-        "WHOFICEntityModel": {
+        "PostcoordinationSpecification": {
             "additionalProperties": false,
             "description": "",
-            "title": "WHOFICEntityModel",
+            "properties": {
+                "linearizationView": {
+                    "type": "string"
+                },
+                "postcoordinationAxes": {
+                    "$ref": "#/$defs/AllowedRequiredPostcoordinationAxes"
+                }
+            },
+            "title": "PostcoordinationSpecification",
             "type": "object"
+        },
+        "TrueFalseUnknown": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "unknown"
+            ],
+            "title": "TrueFalseUnknown",
+            "type": "string"
         }
     },
     "$id": "https://who.int/whofic/foundation/whofic/contentmodel",
@@ -257,10 +132,8 @@
     "description": "",
     "metamodel_version": "1.7.0",
     "properties": {
-        "whoficEntityLinearizations": {
-            "items": {
-                "$ref": "#/$defs/LinearizationSection"
-            },
+        "whoficEntityPostcoordinationSpecification": {
+            "items": {},
             "type": "array"
         }
     },

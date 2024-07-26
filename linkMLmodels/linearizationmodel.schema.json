@@ -181,20 +181,8 @@
             "additionalProperties": false,
             "description": "The schema of a linearization",
             "properties": {
-                "CoreLinId": {
+                "coreLinId": {
                     "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from"
-                },
-                "Description": {
-                    "description": "String description for a linearization (e.g., \"ICD-11 for Mortality and Morbidity Statistics\"). ",
-                    "type": "string"
-                },
-                "Id": {
-                    "description": "The string id of a linearization (e.g., \"MMS\"). ",
-                    "type": "string"
-                },
-                "LinearizationMode": {
-                    "$ref": "#/$defs/LinMode",
-                    "description": "Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the \"specialty linearizations\" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. "
                 },
                 "defaultIsAuxiliaryAxisChild": {
                     "$ref": "#/$defs/TrueFalseUnknown",
@@ -207,6 +195,18 @@
                 "defaultIsIncluded": {
                     "$ref": "#/$defs/TrueFalseUnknown",
                     "description": "Default value for isIncluded flag for the linearization "
+                },
+                "description": {
+                    "description": "String description for a linearization (e.g., \"ICD-11 for Mortality and Morbidity Statistics\"). ",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The string id of a linearization (e.g., \"MMS\"). ",
+                    "type": "string"
+                },
+                "linearizationMode": {
+                    "$ref": "#/$defs/LinMode",
+                    "description": "Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the \"specialty linearizations\" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. "
                 },
                 "rootId": {
                     "description": "URI of the foundation entity which becomes the root node for this linearization. ",
@@ -235,8 +235,8 @@
         "TrueFalseUnknown": {
             "description": "",
             "enum": [
-                "true",
-                "false",
+                "True",
+                "False",
                 "unknown"
             ],
             "title": "TrueFalseUnknown",

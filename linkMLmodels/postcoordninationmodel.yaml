@@ -7,7 +7,7 @@ default_curi_maps:
   - semweb_context
 imports:
   - linkml:types
-  - ./linearizationmodel
+#  - ./linearizationmodel
 prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   owl: http://www.w3.org/2002/07/owl#
@@ -15,6 +15,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   sh: http://www.w3.org/ns/shacl#
   icd: http://who.int/icd#
+  idwho: http://id.who.int/icd/entity/
   schema: http://schema.org/
   linkml: https://w3id.org/linkml/
 
@@ -32,180 +33,128 @@ emit_prefixes:
 
 classes:
 
+# Add a container to indicate which class is the root of the post-coordination specification
+  Container:
+    tree_root: true
+    attributes:
+      whoficEntityPostcoordinationSpecification:
+        multivalued: true
+        inlined_as_list: true
+        range: PostcoordinationnSection
+
+  ContentModelEntity:
+    description: Description of ContentModelEntity
+    slots:
+
   PostcoordinationSection:
-    is_a: LiniearizationEntity
+    is_a: ContentModelEntity
     description: >-
-      Description of ICD Postcoordination Model 
+      An entity that holds the Postcoordination information of a WHO-FIC entity 
     slots:
-      - allowedPostcoordinationAxes
+      - whoficEntityIri
+      - postcoordinationSpecifications
       
-  ICDPostcoordinationSection:
-    is_a: PostcoordinationSection
-    slot_usage:
-      allowedPostcoordinationAxes:
-        range: ICDPostcoordinationAxesSpecification
-
-  PostcoordinationAxesSpecification:
-    is_a: LiniearizationEntity
-    description: >-
-      Description of PostcoordinationAxesSpecification, i.e., for a linearizationView, 
-      what post-coordination axes are allowed and required
+  PostcoordinationSpecification:
+    is_a: ContentModelEntity
     slots:
-      - requiredPostcoordinationAxisProperty #list of required post-coordination axes
-      - allowedPostcoordinationAxisProperty  #list of allowed post-coordination axes
       - linearizationView
+      - postcoordinationAxes
 
-  ICDPostcoordinationAxesSpecification:
-    is_a: LiniearizationEntity
+  AllowedRequiredPostcoordinationAxes:
+    is_a: ContentModelEntity
+    slots:
+      - requiredAxes
+      - allowedAxes
+      
+  LinearizationView:
+    is_a: ContentModelEntity
     description: >-
-      Description of PostcoordinationAxesSpecification, for ICD
-    slot_usage:
-      requiredPostcoordinationAxisProperty:
-        range: ICDPostcoordinationProperty
-      allowedPostcoordinationAxisProperty:
-        range: ICDPostcoordinationProperty  #list of allowed post-coordination axes
+      The schema of a linearization
+    slots:
+      - id
+      - description
+      - rootId
+      - linearizationMode
+      - coreLinId
+      - sortingCode
+      - defaultIsIncluded
+      - defaultIsGrouping
+      - defaultIsAuxiliaryAxisChild
+
+slots:
+  whoficEntityIri:
+    range: uricurie
+    multivalued: false
+  postcoordinationSpecifications:
+    range: PostcoordinationSpecification
+    multivalued: true
+  linearizationView:
+    range: uriorcurie
+    multivalued: false
+    minimum_cardinality: 1
+  postcoordinationAxes:
+    range: AllowedRequiredPostcoordinationAxes
+    multivalued: false
+  requiredAxes:
+    range: uricurie
+    multivalued: true
+  allowedAxes:
+    range: uricurie
+    multivalued: true
+  id:
+    description: >-
+      The string id of a linearization (e.g., "MMS"). 
+    range: string
+    multivalued: false
+  description:
+    description: >-
+      String description for a linearization (e.g., "ICD-11 for Mortality and Morbidity Statistics"). 
+    range: string
+    multivalued: false
+  rootId:
+    description: >-
+      URI of the foundation entity which becomes the root node for this linearization. 
+    range: uriorcurie
+    multivalued: false
+  linearizationMode:
+    description: >-
+      Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the "specialty linearizations" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. 
+    range: LinMode
+    multivalued: false
+  coreLinId:
+    description: >-
+      If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from
+    range: uricurie
+    multivalued: false
+  sortingCode:
+    description: >-
+      String used to sort linearizations (e.g., "01" for MMS). 
+    range: string
+    multivalued: false
+  defaultIsIncluded:
+    description: >-
+      Default value for isIncluded flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
+  defaultIsGrouping:
+    description: >-
+      Default value for isGrouping flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
+  defaultIsAuxiliaryAxisChild:
+    description: >-
+      Default value for isAuxiliaryAxisChild flag for the linearization 
+    range: TrueFalseUnknown
+    multivalued: false
 
 
 enums:
-  ICDPostcoordinationProperty:
+  TrueFalseUnknown:
     permissible_values:
-      causality:
-        description: causality post-coordination axis
-        meaning: icd:causality        
-      laterality:
-        description: laterality post-coordination axis
-        meaning: icd:laterality        
-      regional:
-        description: regional post-coordination axis
-        meaning: icd:regional        
-      distribution:
-        description: distribution post-coordination axis
-        meaning: icd:distribution        
-      relational:
-        description: relational post-coordination axis
-        meaning: icd:relational        
-      serotype:
-        description: serotype post-coordination axis
-        meaning: icd:serotype        
-      durationOfComa:
-        description: durationOfComa post-coordination axis
-        meaning: icd:durationOfComa        
-      hasPupilReactionScore:
-        description: hasPupilReactionScore post-coordination axis
-        meaning: icd:hasPupilReactionScore        
-      hasGCSEyeScore:
-        description: hasGCSEyeScore post-coordination axis
-        meaning: icd:hasGCSEyeScore        
-      hasGCSMotorScore:
-        description: hasGCSMotorScore post-coordination axis
-        meaning: icd:hasGCSMotorScore        
-      hasGCSVerbalScore:
-        description: hasGCSVerbalScore post-coordination axis
-        meaning: icd:hasGCSVerbalScore        
-      diagnosisConfirmedBy:
-        description: diagnosisConfirmedBy post-coordination axis
-        meaning: icd:diagnosisConfirmedBy        
-      typeOfInjury:
-        description: typeOfInjury post-coordination axis
-        meaning: icd:typeOfInjury        
-      fractureSubtype:
-        description: fractureSubtype post-coordination axis
-        meaning: icd:fractureSubtype        
-      fractureOpenOrClosed:
-        description: fractureOpenOrClosed post-coordination axis
-        meaning: icd:fractureOpenOrClosed        
-      jointInvolvementInFracture:
-        description: jointInvolvementInFracture post-coordination axis
-        meaning: icd:jointInvolvementInFracture        
-      extentOfBurnByBodySurface:
-        description: extentOfBurnByBodySurface post-coordination axis
-        meaning: icd:extentOfBurnByBodySurface        
-      extentOfFullThicknessBurnByBodySurface:
-        description: extentOfFullThicknessBurnByBodySurface post-coordination axis
-        meaning: icd:extentOfFullThicknessBurnByBodySurface        
-      outcomeOfFullThicknessBurn:
-        description: outcomeOfFullThicknessBurn post-coordination axis
-        meaning: icd:outcomeOfFullThicknessBurn        
-      timeInLife:
-        description: timeInLife post-coordination axis
-        meaning: icd:timeInLife        
-      specificAnatomy:
-        description: specificAnatomy post-coordination axis
-        meaning: icd:specificAnatomy        
-      infectiousAgent:
-        description: infectiousAgent post-coordination axis
-        meaning: icd:infectiousAgent        
-      medication:
-        description: medication post-coordination axis
-        meaning: icd:medication        
-      chemicalAgent:
-        description: chemicalAgent post-coordination axis
-        meaning: icd:chemicalAgent        
-      histopathology:
-        description: histopathology post-coordination axis
-        meaning: icd:histopathology        
-      genomicAndChomosomalAnomaly:
-        description: genomicAndChomosomalAnomaly post-coordination axis
-        meaning: icd:genomicAndChomosomalAnomaly        
-      hasCausingCondition:
-        description: hasCausingCondition post-coordination axis
-        meaning: icd:hasCausingCondition        
-      hasManifestation:
-        description: hasManifestation post-coordination axis
-        meaning: icd:hasManifestation        
-      associatedWith:
-        description: associatedWith post-coordination axis
-        meaning: icd:associatedWith        
-      intent:
-        description: intent post-coordination axis
-        meaning: icd:intent        
-      violenceDescriptor:
-        description: violenceDescriptor post-coordination axis
-        meaning: icd:violenceDescriptor        
-      mechanismOfInjury:
-        description: mechanismOfInjury post-coordination axis
-        meaning: icd:mechanismOfInjury        
-      transportEventDescriptor:
-        description: transportEventDescriptor post-coordination axis
-        meaning: icd:transportEventDescriptor        
-      objectOrSubstanceProducingInjury:
-        description: objectOrSubstanceProducingInjury post-coordination axis
-        meaning: icd:objectOrSubstanceProducingInjury        
-      sportsActivityDescriptor:
-        description: sportsActivityDescriptor post-coordination axis
-        meaning: icd:sportsActivityDescriptor        
-      placeOfOccurrence:
-        description: placeOfOccurrence post-coordination axis
-        meaning: icd:placeOfOccurrence        
-      placeOfOccurrenceDescriptor:
-        description: placeOfOccurrenceDescriptor post-coordination axis
-        meaning: icd:placeOfOccurrenceDescriptor        
-      activityWhenInjured:
-        description: activityWhenInjured post-coordination axis
-        meaning: icd:activityWhenInjured        
-      occupationalDescriptor:
-        description: occupationalDescriptor post-coordination axis
-        meaning: icd:occupationalDescriptor        
-      substanceUse:
-        description: substanceUse post-coordination axis
-        meaning: icd:substanceUse        
-      hasSeverity:
-        description: hasSeverity post-coordination axis
-        meaning: icd:hasSeverity        
-      course:
-        description: course post-coordination axis
-        meaning: icd:course        
-      temporalPatternAndOnset:
-        description: temporalPatternAndOnset post-coordination axis
-        meaning: icd:temporalPatternAndOnset        
-
-
-slots:
-  allowedPostcoordinationAxes:
-    range: PostcoordinationAxesSpecification
-    multivalued: true
-  allowedPostcoordinationAxisProperty:
-    slot_uri: icd:allowedPostcoordinationAxisProperty
-  requiredPostcoordinationAxisProperty:
-    slot_uri: icd:requiredPostcoordinationAxisProperty
-    subproperty_of: allowedPostcoordinationAxisProperty
+      true:
+      false:
+      unknown:
+  LinMode:
+    permissible_values:
+      Basic:
+      TelescopicFromAnotherLinearization:

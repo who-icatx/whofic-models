@@ -1,0 +1,77 @@
+id: https://who.int/whofic/foundation/whofic/contentmodel
+name: WhO-FICPostCoordinationModel
+description: |-
+  WHO-FIC Content Model for core WHO-FIC classifications
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+#   - ./linearizationmodel
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sh: http://www.w3.org/ns/shacl#
+  icd: http://who.int/icd#
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+classes:
+
+# Add a container to indicate which class is the root of the post-coordination specification
+  Container:
+    tree_root: true
+    attributes:
+      postcoordinationScaleCustomization:
+        multivalued: true
+        inlined_as_list: true
+        range: EntityScaleCustomizations
+
+  ContentModelEntity:
+    description: Description of ContentModelEntity
+    slots:
+
+  EntityScaleCustomizations:
+    is_a: ContentModelEntity
+    description: >-
+      An entity that holds the Postcoordination information of a WHO-FIC entity 
+    slots:
+      - whoficEntityIri
+      - scaleCustomization
+      
+  ScaleCustomization:
+    is_a: ContentModelEntity
+    slots:
+      - description
+      - axis
+      - scaleValue
+
+slots:
+  scaleCustomization:
+    range: ScaleCustomization
+    multivalued: true
+  scaleValue:
+    range: uricurie
+    multivalued: false
+  axis:
+    range: uricurie
+    multivalued: false
+  whoficEntityIri:
+    range: uricurie
+    multivalued: false
+  description:
+    range: string
+    multivalued: false
+    
