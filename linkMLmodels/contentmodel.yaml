@@ -108,737 +108,737 @@ slots:
     multivalued: true
     range: uriorcurie
   postcoordinationAxis:
-    slot_uri: icd:postcoordinationAxis
+    slot_uri: icdschema:postcoordinationAxis
     range: ICDExtensionCode
   anatomy:
-    slot_uri: icd:anatomy
+    slot_uri: icdschema:anatomy
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   specificAnatomy:
-    slot_uri: icd:specificAnatomy
+    slot_uri: icdschema:specificAnatomy
     is_a:  anatomy
     range: ICDExtensionCode
 
   topology:
-    slot_uri: icd:topology
+    slot_uri: icdschema:topology
     is_a:  anatomy
     range: ICDExtensionCode
 
   distribution:
-    slot_uri: icd:distribution
+    slot_uri: icdschema:distribution
     is_a:  topology
     range: ICDExtensionCode
 
   laterality:
-    slot_uri: icd:laterality
+    slot_uri: icdschema:laterality
     is_a:  topology
     mixins: 
       - ichiTopology
     range: ICDExtensionCode
 
   regional:
-    slot_uri: icd:regional
+    slot_uri: icdschema:regional
     is_a:  topology
     range: ICDExtensionCode
 
   relational:
-    slot_uri: icd:relational
+    slot_uri: icdschema:relational
     is_a:  topology
     mixins: 
       - ichiTopology
     range: ICDExtensionCode
 
   associatedWith:
-    slot_uri: icd:associatedWith
+    slot_uri: icdschema:associatedWith
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   biologicalIndicator:
-    slot_uri: icd:biologicalIndicator
+    slot_uri: icdschema:biologicalIndicator
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   genomicAndChomosomalAnomaly:
-    slot_uri: icd:genomicAndChomosomalAnomaly
+    slot_uri: icdschema:genomicAndChomosomalAnomaly
     is_a:  biologicalIndicator
     range: ICDExtensionCode
 
   serotype:
-    slot_uri: icd:serotype
+    slot_uri: icdschema:serotype
     is_a:  biologicalIndicator
     range: ICDExtensionCode
 
   consciousnessMeasure:
-    slot_uri: icd:consciousnessMeasure
+    slot_uri: icdschema:consciousnessMeasure
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   durationOfComa:
-    slot_uri: icd:durationOfComa
+    slot_uri: icdschema:durationOfComa
     is_a:  consciousnessMeasure
     range: ICDExtensionCode
 
   levelOfConsciousness:
-    slot_uri: icd:levelOfConsciousness
+    slot_uri: icdschema:levelOfConsciousness
     is_a:  consciousnessMeasure
     range: ICDExtensionCode
 
   hasGCSScore:
-    slot_uri: icd:hasGCSScore
+    slot_uri: icdschema:hasGCSScore
     is_a:  levelOfConsciousness
     range: ICDExtensionCode
 
   hasGCSEyeScore:
-    slot_uri: icd:hasGCSEyeScore
+    slot_uri: icdschema:hasGCSEyeScore
     is_a:  hasGCSScore
     range: ICDExtensionCode
 
   hasGCSMotorScore:
-    slot_uri: icd:hasGCSMotorScore
+    slot_uri: icdschema:hasGCSMotorScore
     is_a:  hasGCSScore
     range: ICDExtensionCode
 
   hasGCSVerbalScore:
-    slot_uri: icd:hasGCSVerbalScore
+    slot_uri: icdschema:hasGCSVerbalScore
     is_a:  hasGCSScore
     range: ICDExtensionCode
 
   hasPupilReactionScore:
-    slot_uri: icd:hasPupilReactionScore
+    slot_uri: icdschema:hasPupilReactionScore
     is_a:  levelOfConsciousness
     range: ICDExtensionCode
 
   diagnosisConfirmedBy:
-    slot_uri: icd:diagnosisConfirmedBy
+    slot_uri: icdschema:diagnosisConfirmedBy
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   etiology:
-    slot_uri: icd:etiology
+    slot_uri: icdschema:etiology
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   causality:
-    slot_uri: icd:causality
+    slot_uri: icdschema:causality
     is_a:  etiology
     range: ICDExtensionCode
 
   chemicalAgent:
-    slot_uri: icd:chemicalAgent
+    slot_uri: icdschema:chemicalAgent
     is_a:  etiology
     range: ICDExtensionCode
 
   infectiousAgent:
-    slot_uri: icd:infectiousAgent
+    slot_uri: icdschema:infectiousAgent
     is_a:  etiology
     range: ICDExtensionCode
 
   medication:
-    slot_uri: icd:medication
+    slot_uri: icdschema:medication
     is_a:  etiology
     range: ICDExtensionCode
 
   externalCauseDimension:
-    slot_uri: icd:externalCauseDimension
+    slot_uri: icdschema:externalCauseDimension
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   activityWhenInjured:
-    slot_uri: icd:activityWhenInjured
+    slot_uri: icdschema:activityWhenInjured
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   alcoholUseInInjury:
-    slot_uri: icd:alcoholUseInInjury
+    slot_uri: icdschema:alcoholUseInInjury
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   aspectsOfArmedConflict:
-    slot_uri: icd:aspectsOfArmedConflict
+    slot_uri: icdschema:aspectsOfArmedConflict
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   roleOfInjuredPersonInArmedConflict:
-    slot_uri: icd:roleOfInjuredPersonInArmedConflict
+    slot_uri: icdschema:roleOfInjuredPersonInArmedConflict
     is_a:  aspectsOfArmedConflict
     range: ICDExtensionCode
 
   typeOfArmedConflict:
-    slot_uri: icd:typeOfArmedConflict
+    slot_uri: icdschema:typeOfArmedConflict
     is_a:  aspectsOfArmedConflict
     range: ICDExtensionCode
 
   aspectsOfAssaultAndMaltreatment:
-    slot_uri: icd:aspectsOfAssaultAndMaltreatment
+    slot_uri: icdschema:aspectsOfAssaultAndMaltreatment
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   contextOfAssaultAndMaltreatment:
-    slot_uri: icd:contextOfAssaultAndMaltreatment
+    slot_uri: icdschema:contextOfAssaultAndMaltreatment
     is_a:  aspectsOfAssaultAndMaltreatment
     range: ICDExtensionCode
 
   genderOfPerpetrator:
-    slot_uri: icd:genderOfPerpetrator
+    slot_uri: icdschema:genderOfPerpetrator
     is_a:  aspectsOfAssaultAndMaltreatment
     range: ICDExtensionCode
 
   perpetratorVictimRelationship:
-    slot_uri: icd:perpetratorVictimRelationship
+    slot_uri: icdschema:perpetratorVictimRelationship
     is_a:  aspectsOfAssaultAndMaltreatment
     range: ICDExtensionCode
 
   aspectsOfIntentionalSelfHarm:
-    slot_uri: icd:aspectsOfIntentionalSelfHarm
+    slot_uri: icdschema:aspectsOfIntentionalSelfHarm
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   intentionToDieAspectOfSelfHarm:
-    slot_uri: icd:intentionToDieAspectOfSelfHarm
+    slot_uri: icdschema:intentionToDieAspectOfSelfHarm
     is_a:  aspectsOfIntentionalSelfHarm
     range: ICDExtensionCode
 
   previousSuicideAttempt:
-    slot_uri: icd:previousSuicideAttempt
+    slot_uri: icdschema:previousSuicideAttempt
     is_a:  aspectsOfIntentionalSelfHarm
     range: ICDExtensionCode
 
   proximalRiskFactorsForIntentionalSelfHarm:
-    slot_uri: icd:proximalRiskFactorsForIntentionalSelfHarm
+    slot_uri: icdschema:proximalRiskFactorsForIntentionalSelfHarm
     is_a:  aspectsOfIntentionalSelfHarm
     range: ICDExtensionCode
 
   deprecatedECDimension:
-    slot_uri: icd:deprecatedECDimension
+    slot_uri: icdschema:deprecatedECDimension
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   externalCauseDimensionDescriptor:
-    slot_uri: icd:externalCauseDimensionDescriptor
+    slot_uri: icdschema:externalCauseDimensionDescriptor
     is_a:  deprecatedECDimension
     range: ICDExtensionCode
 
   activitiesDescriptor:
-    slot_uri: icd:activitiesDescriptor
+    slot_uri: icdschema:activitiesDescriptor
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   counterMeasureDescriptor:
-    slot_uri: icd:counterMeasureDescriptor
+    slot_uri: icdschema:counterMeasureDescriptor
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   intentDescriptor:
-    slot_uri: icd:intentDescriptor
+    slot_uri: icdschema:intentDescriptor
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   placeOfOccurrenceDescriptor:
-    slot_uri: icd:placeOfOccurrenceDescriptor
+    slot_uri: icdschema:placeOfOccurrenceDescriptor
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   indoorOrOutdoor:
-    slot_uri: icd:indoorOrOutdoor
+    slot_uri: icdschema:indoorOrOutdoor
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   insideOrOutsideCityLimits:
-    slot_uri: icd:insideOrOutsideCityLimits
+    slot_uri: icdschema:insideOrOutsideCityLimits
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   partOfBuildingOrGrounds:
-    slot_uri: icd:partOfBuildingOrGrounds
+    slot_uri: icdschema:partOfBuildingOrGrounds
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   residentOfHome:
-    slot_uri: icd:residentOfHome
+    slot_uri: icdschema:residentOfHome
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   typeOfHome:
-    slot_uri: icd:typeOfHome
+    slot_uri: icdschema:typeOfHome
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   typeOfSchool:
-    slot_uri: icd:typeOfSchool
+    slot_uri: icdschema:typeOfSchool
     is_a:  placeOfOccurrenceDescriptor
     range: ICDExtensionCode
 
   transportDimension:
-    slot_uri: icd:transportDimension
+    slot_uri: icdschema:transportDimension
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   counterPartInCollision:
-    slot_uri: icd:counterPartInCollision
+    slot_uri: icdschema:counterPartInCollision
     is_a:  transportDimension
     range: ICDExtensionCode
 
   modeOfTransport:
-    slot_uri: icd:modeOfTransport
+    slot_uri: icdschema:modeOfTransport
     is_a:  transportDimension
     range: ICDExtensionCode
 
   settingOfEvent:
-    slot_uri: icd:settingOfEvent
+    slot_uri: icdschema:settingOfEvent
     is_a:  transportDimension
     range: ICDExtensionCode
 
   transportUserRoleOfInjuredPerson:
-    slot_uri: icd:transportUserRoleOfInjuredPerson
+    slot_uri: icdschema:transportUserRoleOfInjuredPerson
     is_a:  transportDimension
     range: ICDExtensionCode
 
   typeOfTransportInjuryEvent:
-    slot_uri: icd:typeOfTransportInjuryEvent
+    slot_uri: icdschema:typeOfTransportInjuryEvent
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   violenceDescriptor:
-    slot_uri: icd:violenceDescriptor
+    slot_uri: icdschema:violenceDescriptor
     is_a:  externalCauseDimensionDescriptor
     range: ICDExtensionCode
 
   intent:
-    slot_uri: icd:intent
+    slot_uri: icdschema:intent
     is_a:  deprecatedECDimension
     range: ICDExtensionCode
 
   substanceUse:
-    slot_uri: icd:substanceUse
+    slot_uri: icdschema:substanceUse
     is_a:  deprecatedECDimension
     range: ICDExtensionCode
 
   mechanismOfInjury:
-    slot_uri: icd:mechanismOfInjury
+    slot_uri: icdschema:mechanismOfInjury
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   objectOrSubstanceProducingInjury:
-    slot_uri: icd:objectOrSubstanceProducingInjury
+    slot_uri: icdschema:objectOrSubstanceProducingInjury
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   occupationalDescriptor:
-    slot_uri: icd:occupationalDescriptor
+    slot_uri: icdschema:occupationalDescriptor
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   economicActivity:
-    slot_uri: icd:economicActivity
+    slot_uri: icdschema:economicActivity
     is_a:  occupationalDescriptor
     range: ICDExtensionCode
 
   occupation:
-    slot_uri: icd:occupation
+    slot_uri: icdschema:occupation
     is_a:  occupationalDescriptor
     range: ICDExtensionCode
 
   placeOfOccurrence:
-    slot_uri: icd:placeOfOccurrence
+    slot_uri: icdschema:placeOfOccurrence
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   partOfPlace:
-    slot_uri: icd:partOfPlace
+    slot_uri: icdschema:partOfPlace
     is_a:  placeOfOccurrence
     range: ICDExtensionCode
 
   typeOfPlace:
-    slot_uri: icd:typeOfPlace
+    slot_uri: icdschema:typeOfPlace
     is_a:  placeOfOccurrence
     range: ICDExtensionCode
 
   psychoactiveDrugUseInInjury:
-    slot_uri: icd:psychoactiveDrugUseInInjury
+    slot_uri: icdschema:psychoactiveDrugUseInInjury
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   sportsActivityDescriptor:
-    slot_uri: icd:sportsActivityDescriptor
+    slot_uri: icdschema:sportsActivityDescriptor
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   environmentalCountermeasures:
-    slot_uri: icd:environmentalCountermeasures
+    slot_uri: icdschema:environmentalCountermeasures
     is_a:  sportsActivityDescriptor
     range: ICDExtensionCode
 
   personalCountermeasures:
-    slot_uri: icd:personalCountermeasures
+    slot_uri: icdschema:personalCountermeasures
     is_a:  sportsActivityDescriptor
     range: ICDExtensionCode
 
   phaseOfSportOrExerciseActivity:
-    slot_uri: icd:phaseOfSportOrExerciseActivity
+    slot_uri: icdschema:phaseOfSportOrExerciseActivity
     is_a:  sportsActivityDescriptor
     range: ICDExtensionCode
 
   typeOfSportOrExerciseActivity:
-    slot_uri: icd:typeOfSportOrExerciseActivity
+    slot_uri: icdschema:typeOfSportOrExerciseActivity
     is_a:  sportsActivityDescriptor
     range: ICDExtensionCode
 
   transportEventDescriptor:
-    slot_uri: icd:transportEventDescriptor
+    slot_uri: icdschema:transportEventDescriptor
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   counterpart:
-    slot_uri: icd:counterpart
+    slot_uri: icdschema:counterpart
     is_a:  transportEventDescriptor
     range: ICDExtensionCode
 
   mechanismOfTransportInjuryWithoutCounterpart:
-    slot_uri: icd:mechanismOfTransportInjuryWithoutCounterpart
+    slot_uri: icdschema:mechanismOfTransportInjuryWithoutCounterpart
     is_a:  transportEventDescriptor
     range: ICDExtensionCode
 
   modeOfTransportOfTheInjuredPerson:
-    slot_uri: icd:modeOfTransportOfTheInjuredPerson
+    slot_uri: icdschema:modeOfTransportOfTheInjuredPerson
     is_a:  transportEventDescriptor
     range: ICDExtensionCode
 
   roleOfTheInjuredPerson:
-    slot_uri: icd:roleOfTheInjuredPerson
+    slot_uri: icdschema:roleOfTheInjuredPerson
     is_a:  transportEventDescriptor
     range: ICDExtensionCode
 
   typeOfLegalIntervention:
-    slot_uri: icd:typeOfLegalIntervention
+    slot_uri: icdschema:typeOfLegalIntervention
     is_a:  externalCauseDimension
     range: ICDExtensionCode
 
   hasCausingCondition:
-    slot_uri: icd:hasCausingCondition
+    slot_uri: icdschema:hasCausingCondition
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   hasManifestation:
-    slot_uri: icd:hasManifestation
+    slot_uri: icdschema:hasManifestation
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   histopathology:
-    slot_uri: icd:histopathology
+    slot_uri: icdschema:histopathology
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   injuryQualifier:
-    slot_uri: icd:injuryQualifier
+    slot_uri: icdschema:injuryQualifier
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   burnQualifier:
-    slot_uri: icd:burnQualifier
+    slot_uri: icdschema:burnQualifier
     is_a:  injuryQualifier
     range: ICDExtensionCode
 
   extentOfBurnByBodySurface:
-    slot_uri: icd:extentOfBurnByBodySurface
+    slot_uri: icdschema:extentOfBurnByBodySurface
     is_a:  burnQualifier
     range: ICDExtensionCode
 
   extentOfFullThicknessBurnByBodySurface:
-    slot_uri: icd:extentOfFullThicknessBurnByBodySurface
+    slot_uri: icdschema:extentOfFullThicknessBurnByBodySurface
     is_a:  burnQualifier
     range: ICDExtensionCode
 
   outcomeOfFullThicknessBurn:
-    slot_uri: icd:outcomeOfFullThicknessBurn
+    slot_uri: icdschema:outcomeOfFullThicknessBurn
     is_a:  burnQualifier
     range: ICDExtensionCode
 
   fractureQualifier:
-    slot_uri: icd:fractureQualifier
+    slot_uri: icdschema:fractureQualifier
     is_a:  injuryQualifier
     range: ICDExtensionCode
 
   fractureOpenOrClosed:
-    slot_uri: icd:fractureOpenOrClosed
+    slot_uri: icdschema:fractureOpenOrClosed
     is_a:  fractureQualifier
     range: ICDExtensionCode
 
   fractureSubtype:
-    slot_uri: icd:fractureSubtype
+    slot_uri: icdschema:fractureSubtype
     is_a:  fractureQualifier
     range: ICDExtensionCode
 
   jointInvolvementInFracture:
-    slot_uri: icd:jointInvolvementInFracture
+    slot_uri: icdschema:jointInvolvementInFracture
     is_a:  fractureQualifier
     range: ICDExtensionCode
 
   typeOfInjury:
-    slot_uri: icd:typeOfInjury
+    slot_uri: icdschema:typeOfInjury
     is_a:  injuryQualifier
     range: ICDExtensionCode
 
   severityAxis:
-    slot_uri: icd:severityAxis
+    slot_uri: icdschema:severityAxis
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   hasAlternativeSeverity1:
-    slot_uri: icd:hasAlternativeSeverity1
+    slot_uri: icdschema:hasAlternativeSeverity1
     is_a:  severityAxis
     range: ICDExtensionCode
 
   hasAlternativeSeverity2:
-    slot_uri: icd:hasAlternativeSeverity2
+    slot_uri: icdschema:hasAlternativeSeverity2
     is_a:  severityAxis
     range: ICDExtensionCode
 
   hasSeverity:
-    slot_uri: icd:hasSeverity
+    slot_uri: icdschema:hasSeverity
     is_a:  severityAxis
     range: ICDExtensionCode
 
   temporality:
-    slot_uri: icd:temporality
+    slot_uri: icdschema:temporality
     is_a:  postcoordinationAxis
     range: ICDExtensionCode
 
   course:
-    slot_uri: icd:course
+    slot_uri: icdschema:course
     is_a:  temporality
     range: ICDExtensionCode
 
   temporalPatternAndOnset:
-    slot_uri: icd:temporalPatternAndOnset
+    slot_uri: icdschema:temporalPatternAndOnset
     is_a:  temporality
     range: ICDExtensionCode
 
   timeInLife:
-    slot_uri: icd:timeInLife
+    slot_uri: icdschema:timeInLife
     is_a:  temporality
     range: ICDExtensionCode
 
   ICHIPostcoordinationAxis:
-    slot_uri: icd:ICHIPostcoordinationAxis
+    slot_uri: icdschema:ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   hasTarget:
-    slot_uri: icd:hasTarget
+    slot_uri: icdschema:hasTarget
     is_a: ICHIPostcoordinationAxis
     range: ICHICategory
 
   hasAction:
-    slot_uri: icd:hasAction
+    slot_uri: icdschema:hasAction
     is_a: ICHIPostcoordinationAxis
     range: ICHICategory
 
   hasMeans:
-    slot_uri: icd:hasMeans
+    slot_uri: icdschema:hasMeans
     is_a: ICHIPostcoordinationAxis
     range: ICHICategory
 
   clientOrRecipient:
-    slot_uri: icd:clientOrRecipient
+    slot_uri: icdschema:clientOrRecipient
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   creativeTherapy:
-    slot_uri: icd:creativeTherapy
+    slot_uri: icdschema:creativeTherapy
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   specificSkillsAndTechnique:
-    slot_uri: icd:specificSkillsAndTechnique
+    slot_uri: icdschema:specificSkillsAndTechnique
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   unplanned:
-    slot_uri: icd:unplanned
+    slot_uri: icdschema:unplanned
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   additionalDescriptiveInformationForIntervention:
-    slot_uri: icd:additionalDescriptiveInformationForIntervention
+    slot_uri: icdschema:additionalDescriptiveInformationForIntervention
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   tissueGraft:
-    slot_uri: icd:tissueGraft
+    slot_uri: icdschema:tissueGraft
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   enablingFactorsForBehaviourChange:
-    slot_uri: icd:enablingFactorsForBehaviourChange
+    slot_uri: icdschema:enablingFactorsForBehaviourChange
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   temporaryIntervention:
-    slot_uri: icd:temporaryIntervention
+    slot_uri: icdschema:temporaryIntervention
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   initiatingOrMaintainingOrDiscontinuingOrResuming:
-    slot_uri: icd:initiatingOrMaintainingOrDiscontinuingOrResuming
+    slot_uri: icdschema:initiatingOrMaintainingOrDiscontinuingOrResuming
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   useOfEquipmentOrChallenge:
-    slot_uri: icd:useOfEquipmentOrChallenge
+    slot_uri: icdschema:useOfEquipmentOrChallenge
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   standardisationOrStructure:
-    slot_uri: icd:standardisationOrStructure	 
+    slot_uri: icdschema:standardisationOrStructure	 
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   administrativeSystemLevelAtWhichInterventionDirected:
-    slot_uri: icd:administrativeSystemLevelAtWhichInterventionDirected
+    slot_uri: icdschema:administrativeSystemLevelAtWhichInterventionDirected
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   tissueFlap:
-    slot_uri: icd:tissueFlap
+    slot_uri: icdschema:tissueFlap
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   relationshipToOtherIntervention:
-    slot_uri: icd:relationshipToOtherIntervention
+    slot_uri: icdschema:relationshipToOtherIntervention
     is_a: additionalDescriptiveInformationForIntervention
     range: ICHIExtensionCode
 
   numberOfTherapeuticProductsInserted:
-    slot_uri: icd:numberOfTherapeuticProductsInserted
+    slot_uri: icdschema:numberOfTherapeuticProductsInserted
     is_a: quantifier
     range: ICHIExtensionCode
 
   numberOfAnatomicalStructuresAnInterventionIsPerformedOn:
-    slot_uri: icd:numberOfAnatomicalStructuresAnInterventionIsPerformedOn
+    slot_uri: icdschema:numberOfAnatomicalStructuresAnInterventionIsPerformedOn
     is_a: quantifier
     range: ICHIExtensionCode
 
   numberOfInterventionsPerformed:
-    slot_uri: icd:numberOfInterventionsPerformed
+    slot_uri: icdschema:numberOfInterventionsPerformed
     is_a: quantifier
     range: ICHIExtensionCode
 
   quantifier:
-    slot_uri: icd:quantifier
+    slot_uri: icdschema:quantifier
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   interventionProvidedToRecipientInADistantLocation:
-    slot_uri: icd:interventionProvidedToRecipientInADistantLocation
+    slot_uri: icdschema:interventionProvidedToRecipientInADistantLocation
     is_a: telehealth
     range: ICHIExtensionCode
 
   telehealth:
-    slot_uri: icd:telehealth
+    slot_uri: icdschema:telehealth
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation:
-    slot_uri: icd:interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation
+    slot_uri: icdschema:interventionPerformedWithAdviceOrAssistanceProvidedFromADistantLocation
     is_a: telehealth
     range: ICHIExtensionCode
 
   interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider:
-    slot_uri: icd:interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider
+    slot_uri: icdschema:interventionsDeliveredViaTechnologyWithoutDirectInvolvementOfAHumanProvider
     is_a: telehealth
     range: ICHIExtensionCode
 
   additionalTarget:
-    slot_uri: icd:additionalTarget
+    slot_uri: icdschema:additionalTarget
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   ichiTopology:
-    slot_uri: icd:ichiTopology
+    slot_uri: icdschema:ichiTopology
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   specificAnatomicDetail:
-    slot_uri: icd:specificAnatomicDetail
+    slot_uri: icdschema:specificAnatomicDetail
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   medicament:
-    slot_uri: icd:medicament
+    slot_uri: icdschema:medicament
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   therapeuticProduct:
-    slot_uri: icd:therapeuticProduct
+    slot_uri: icdschema:therapeuticProduct
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   assistiveProduct:
-    slot_uri: icd:assistiveProduct
+    slot_uri: icdschema:assistiveProduct
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   essentialPathologyTest:
-    slot_uri: icd:essentialPathologyTest
+    slot_uri: icdschema:essentialPathologyTest
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
   measurement:
-    slot_uri: icd:measurement
+    slot_uri: icdschema:measurement
     is_a: ichiTopology
     range: ICHIExtensionCode
  
   hasCapacityWithAssistance:
-    slot_uri: icd:hasCapacityWithAssistance
+    slot_uri: icdschema:hasCapacityWithAssistance
     is_a: hasCapacityOrPerformanceQualifier
     range: ICFExtensionCode
 
   hasPerformanceWithoutAssistance:
-    slot_uri: icd:hasPerformanceWithoutAssistance
+    slot_uri: icdschema:hasPerformanceWithoutAssistance
     is_a: hasCapacityOrPerformanceQualifier
     range: ICFExtensionCode
 
   hasPerformance:
-    slot_uri: icd:hasPerformance
+    slot_uri: icdschema:hasPerformance
     is_a: hasCapacityOrPerformanceQualifier
     range: ICFExtensionCode
 
   hasCapacityWithoutAssistance:
-    slot_uri: icd:hasCapacityWithoutAssistance
+    slot_uri: icdschema:hasCapacityWithoutAssistance
     is_a: hasCapacityOrPerformanceQualifier
     range: ICFExtensionCode
 
   hasCapacityOrPerformanceQualifier:
-    slot_uri: icd:hasCapacityOrPerformanceQualifier
+    slot_uri: icdschema:hasCapacityOrPerformanceQualifier
     is_a: hasQualifier
     range: ICFExtensionCode
 
   hasImpairmentNature:
-    slot_uri: icd:hasImpairmentNature
+    slot_uri: icdschema:hasImpairmentNature
     is_a: hasQualifier
     range: ICFExtensionCode
 
   hasImpairmentExtent:
-    slot_uri: icd:hasImpairmentExtent
+    slot_uri: icdschema:hasImpairmentExtent
     is_a: hasQualifier
     range: ICFExtensionCode
 
   isHinderedBy:
-    slot_uri: icd:isHinderedBy
+    slot_uri: icdschema:isHinderedBy
     is_a: hasQualifier
     range: ICFExtensionCode
 
   hasQualifier:
-    slot_uri: icd:hasQualifier
+    slot_uri: icdschema:hasQualifier
     range: ICFExtensionCode
 
   hasImpairmentLocation:
-    slot_uri: icd:hasImpairmentLocation
+    slot_uri: icdschema:hasImpairmentLocation
     is_a: hasQualifier
     range: ICFExtensionCode
 
   isFacilitatedBy:
-    slot_uri: icd:isFacilitatedBy
+    slot_uri: icdschema:isFacilitatedBy
     is_a: hasQualifier
     range: ICFExtensionCode
 
