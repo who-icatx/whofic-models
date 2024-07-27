@@ -235,8 +235,8 @@
         "TrueFalseUnknown": {
             "description": "",
             "enum": [
-                "True",
-                "False",
+                "true",
+                "false",
                 "unknown"
             ],
             "title": "TrueFalseUnknown",
