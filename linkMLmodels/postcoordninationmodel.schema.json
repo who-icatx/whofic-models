@@ -118,15 +118,15 @@
         "TrueFalseUnknown": {
             "description": "",
             "enum": [
-                "true",
-                "false",
+                "True",
+                "False",
                 "unknown"
             ],
             "title": "TrueFalseUnknown",
             "type": "string"
         }
     },
-    "$id": "https://who.int/whofic/foundation/whofic/contentmodel",
+    "$id": "https://who.int/whofic/foundation/whofic/postcoordination",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "",

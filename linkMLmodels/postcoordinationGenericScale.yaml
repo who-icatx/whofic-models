@@ -1,4 +1,4 @@
-id: https://who.int/whofic/foundation/whofic/pcscalecustomization
+id: https://who.int/whofic/foundation/whofic/pcgenericscale
 name: WhO-FICPostCoordinationScaleCustomization
 description: |-
   WHO-FIC Content Model for core WHO-FIC classifications
@@ -34,53 +34,31 @@ classes:
   Container:
     tree_root: true
     attributes:
-      postcoordinationScaleCustomization:
+      postcoordinationAxisToGenericScale:
         multivalued: true
         inlined_as_list: true
-        range: EntityScaleCustomizations
-
+        range: PostcoordinationAxisToGenericScale
 
   ContentModelEntity:
     description: Description of ContentModelEntity
     slots:
 
-  EntityScaleCustomizations:
+  PostcoordinationAxisToGenericScale:
     is_a: ContentModelEntity
     description: >-
-      An entity that holds the Postcoordination scale customization information 
-    slots:
-      - whoficEntityIri
-      - scaleCustomizations
-      
-  ScaleCustomization:
-    is_a: ContentModelEntity
+      Mapping from a post-coordination axis to a generic scale 
     slots:
       - postcoordinationAxis
-      - postcoordinationScaleValues
-
-
-  PostcoordinationScaleValue:
-    is_a: ContentModelEntity
-    slots:
-      - scaleValueTopClass
-      - description
-      
+      - genericPostcoordinationScaleTopClass
+ 
+ 
 slots:
-  whoficEntityIri:
-    range: uricurie
-    multivalued: false
-  scaleCustomizations:
-    range: ScaleCustomization
+  postcoordinationAxisToGenericScale:
+    range: PostcoordinationAxisToGenericScale
     multivalued: true
-  description:
-    range: string
-    multivalued: false
   postcoordinationAxis:
     range: uricurie
     multivalued: false
-  postcoordinationScaleValues:
-    range: PostcoordinationScaleValue
-    multivalued: true
-  scaleValueTopClass:
+  genericPostcoordinationScaleTopClass:
     range: uricurie
     multivalued: false

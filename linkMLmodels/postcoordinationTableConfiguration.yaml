@@ -1,0 +1,86 @@
+id: https://who.int/whofic/foundation/whofic/pctableconfigurartion
+name: WhO-FICPostCoordinationTableConfiguration
+description: |-
+  Configuration table for specifying postcoordination
+license: https://creativecommons.org/licenses/by-nd/3.0/igo/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+#   - ./linearizationmodel
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sh: http://www.w3.org/ns/shacl#
+  icd: http://who.int/icd#
+  schema: http://schema.org/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: icd
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - icd
+
+classes:
+
+# Add a container to indicate which class is the root of the post-coordination specification
+  Container:
+    tree_root: true
+    attributes:
+      postcoordinationTableConfiguration:
+        multivalued: true
+        inlined_as_list: true
+        range: TableConfiguration
+
+  TableConfiguration:
+    description: Configuration of the table to specify postcoordination for different entity types
+    slots:
+      - entityType
+      - postcoordinationAxes
+      - compositePostcoordinationAxes
+      - postcoordinationAxisLabels
+      
+  CompostPostcoordinationAxis:
+    slots:
+      - postcoordinationAxis
+      - replacedBySubaxes
+      
+  PostcoordinationAxisLabel:
+    slots:
+      - postcoordinationAxis
+      - tableLabel
+      - scaleLabel
+      
+slots:
+  entityType:
+    range: string
+    multivalued: false
+  postcoordinationAxes:
+    range: uricurie
+    multivalued: true
+  compositePostcoordinationAxes:
+    range: CompostPostcoordinationAxis
+    multivalued: true
+  postcoordinationAxis:
+    range: uriorcurie
+    multivalued: false
+    minimum_cardinality: 1
+  replacedBySubaxes:
+    range: uricurie
+    multivalued: true
+  postcoordinationAxisLabels:
+    range: PostcoordinationAxisLabel
+    multivalued: true
+  tableLabel:
+    range: string
+    multivalued: false
+  scaleLabel:
+    range: string
+    multivalued: false

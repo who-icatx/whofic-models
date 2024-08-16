@@ -1,0 +1,50 @@
+{
+    "$defs": {
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationAxisToGenericScale": {
+                    "items": {
+                        "$ref": "#/$defs/PostcoordinationAxisToGenericScale"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "ContentModelEntity": {
+            "additionalProperties": false,
+            "description": "Description of ContentModelEntity",
+            "title": "ContentModelEntity",
+            "type": "object"
+        },
+        "PostcoordinationAxisToGenericScale": {
+            "additionalProperties": false,
+            "description": "Mapping from a post-coordination axis to a generic scale",
+            "properties": {
+                "genericPostcoordinationScaleTopClass": {},
+                "postcoordinationAxis": {}
+            },
+            "title": "PostcoordinationAxisToGenericScale",
+            "type": "object"
+        }
+    },
+    "$id": "https://who.int/whofic/foundation/whofic/pcgenericscale",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "postcoordinationAxisToGenericScale": {
+            "items": {
+                "$ref": "#/$defs/PostcoordinationAxisToGenericScale"
+            },
+            "type": "array"
+        }
+    },
+    "title": "WhO-FICPostCoordinationScaleCustomization",
+    "type": "object",
+    "version": null
+}

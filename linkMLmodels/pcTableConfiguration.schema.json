@@ -1,0 +1,93 @@
+{
+    "$defs": {
+        "CompostPostcoordinationAxis": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationAxis": {
+                    "type": "string"
+                },
+                "replacedBySubaxes": {
+                    "items": {},
+                    "type": "array"
+                }
+            },
+            "title": "CompostPostcoordinationAxis",
+            "type": "object"
+        },
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationTableConfiguration": {
+                    "items": {
+                        "$ref": "#/$defs/TableConfiguration"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "PostcoordinationAxisLabel": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationAxis": {
+                    "type": "string"
+                },
+                "scaleLabel": {
+                    "type": "string"
+                },
+                "tableLabel": {
+                    "type": "string"
+                }
+            },
+            "title": "PostcoordinationAxisLabel",
+            "type": "object"
+        },
+        "TableConfiguration": {
+            "additionalProperties": false,
+            "description": "Configuration of the table to specify postcoordination for different entity types",
+            "properties": {
+                "compositePostcoordinationAxes": {
+                    "items": {
+                        "$ref": "#/$defs/CompostPostcoordinationAxis"
+                    },
+                    "type": "array"
+                },
+                "entityType": {
+                    "type": "string"
+                },
+                "postcoordinationAxes": {
+                    "items": {},
+                    "type": "array"
+                },
+                "postcoordinationAxisLabels": {
+                    "items": {
+                        "$ref": "#/$defs/PostcoordinationAxisLabel"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "TableConfiguration",
+            "type": "object"
+        }
+    },
+    "$id": "https://who.int/whofic/foundation/whofic/pctableconfigurartion",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "postcoordinationTableConfiguration": {
+            "items": {
+                "$ref": "#/$defs/TableConfiguration"
+            },
+            "type": "array"
+        }
+    },
+    "title": "WhO-FICPostCoordinationTableConfiguration",
+    "type": "object",
+    "version": null
+}

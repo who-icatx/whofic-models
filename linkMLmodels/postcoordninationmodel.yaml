@@ -1,7 +1,7 @@
-id: https://who.int/whofic/foundation/whofic/contentmodel
+id: https://who.int/whofic/foundation/whofic/postcoordination
 name: WhO-FICPostCoordinationModel
 description: |-
-  WHO-FIC Content Model for core WHO-FIC classifications
+  WHO-FIC Postcoordination Model for core WHO-FIC classifications
 license: https://creativecommons.org/licenses/by-nd/3.0/igo/
 default_curi_maps:
   - semweb_context

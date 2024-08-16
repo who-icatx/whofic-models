@@ -1,0 +1,82 @@
+{
+    "$defs": {
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationScaleCustomization": {
+                    "items": {
+                        "$ref": "#/$defs/EntityScaleCustomizations"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "ContentModelEntity": {
+            "additionalProperties": false,
+            "description": "Description of ContentModelEntity",
+            "title": "ContentModelEntity",
+            "type": "object"
+        },
+        "EntityScaleCustomizations": {
+            "additionalProperties": false,
+            "description": "An entity that holds the Postcoordination scale customization information",
+            "properties": {
+                "scaleCustomizations": {
+                    "items": {
+                        "$ref": "#/$defs/ScaleCustomization"
+                    },
+                    "type": "array"
+                },
+                "whoficEntityIri": {}
+            },
+            "title": "EntityScaleCustomizations",
+            "type": "object"
+        },
+        "PostcoordinationScaleValue": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "scaleValueTopClass": {}
+            },
+            "title": "PostcoordinationScaleValue",
+            "type": "object"
+        },
+        "ScaleCustomization": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "postcoordinationAxis": {},
+                "postcoordinationScaleValues": {
+                    "items": {
+                        "$ref": "#/$defs/PostcoordinationScaleValue"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "ScaleCustomization",
+            "type": "object"
+        }
+    },
+    "$id": "https://who.int/whofic/foundation/whofic/pcscalecustomization",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "postcoordinationScaleCustomization": {
+            "items": {
+                "$ref": "#/$defs/EntityScaleCustomizations"
+            },
+            "type": "array"
+        }
+    },
+    "title": "WhO-FICPostCoordinationScaleCustomization",
+    "type": "object",
+    "version": null
+}
