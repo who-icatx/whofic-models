@@ -1,6 +1,6 @@
 {
     "$defs": {
-        "CompostPostcoordinationAxis": {
+        "CompositePostcoordinationAxis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -12,7 +12,7 @@
                     "type": "array"
                 }
             },
-            "title": "CompostPostcoordinationAxis",
+            "title": "CompositePostcoordinationAxis",
             "type": "object"
         },
         "Container": {
@@ -52,7 +52,7 @@
             "properties": {
                 "compositePostcoordinationAxes": {
                     "items": {
-                        "$ref": "#/$defs/CompostPostcoordinationAxis"
+                        "$ref": "#/$defs/CompositePostcoordinationAxis"
                     },
                     "type": "array"
                 },

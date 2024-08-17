@@ -30,7 +30,7 @@ emit_prefixes:
 
 classes:
 
-# Add a container to indicate which class is the root of the post-coordination specification
+# Add a container to indicate which class is the root of the postcoordination specification
   Container:
     tree_root: true
     attributes:
@@ -47,7 +47,7 @@ classes:
       - compositePostcoordinationAxes
       - postcoordinationAxisLabels
       
-  CompostPostcoordinationAxis:
+  CompositePostcoordinationAxis:
     slots:
       - postcoordinationAxis
       - replacedBySubaxes
@@ -66,7 +66,7 @@ slots:
     range: uricurie
     multivalued: true
   compositePostcoordinationAxes:
-    range: CompostPostcoordinationAxis
+    range: CompositePostcoordinationAxis
     multivalued: true
   postcoordinationAxis:
     range: uriorcurie
