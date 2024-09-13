@@ -43,49 +43,6 @@
             "title": "LinMode",
             "type": "string"
         },
-        "LinearizationView": {
-            "additionalProperties": false,
-            "description": "The schema of a linearization",
-            "properties": {
-                "coreLinId": {
-                    "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from"
-                },
-                "defaultIsAuxiliaryAxisChild": {
-                    "$ref": "#/$defs/TrueFalseUnknown",
-                    "description": "Default value for isAuxiliaryAxisChild flag for the linearization "
-                },
-                "defaultIsGrouping": {
-                    "$ref": "#/$defs/TrueFalseUnknown",
-                    "description": "Default value for isGrouping flag for the linearization "
-                },
-                "defaultIsIncluded": {
-                    "$ref": "#/$defs/TrueFalseUnknown",
-                    "description": "Default value for isIncluded flag for the linearization "
-                },
-                "description": {
-                    "description": "String description for a linearization (e.g., \"ICD-11 for Mortality and Morbidity Statistics\"). ",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "The string id of a linearization (e.g., \"MMS\"). ",
-                    "type": "string"
-                },
-                "linearizationMode": {
-                    "$ref": "#/$defs/LinMode",
-                    "description": "Some linearizations are independent of any other linearization such as MMS, ICF, ICH  (LinMode.Basic) whereas some others are based on another linearization such as the \"specialty linearizations\" (LinMode.TelescopicFromAnotherLinearization) In these second type linearizations, the linearization parent is inherited from the linearization, that the it is derived from. "
-                },
-                "rootId": {
-                    "description": "URI of the foundation entity which becomes the root node for this linearization. ",
-                    "type": "string"
-                },
-                "sortingCode": {
-                    "description": "String used to sort linearizations (e.g., \"01\" for MMS). ",
-                    "type": "string"
-                }
-            },
-            "title": "LinearizationView",
-            "type": "object"
-        },
         "PostcoordinationSection": {
             "additionalProperties": false,
             "description": "An entity that holds the Postcoordination information of a WHO-FIC entity",
