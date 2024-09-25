@@ -24,8 +24,12 @@
             "additionalProperties": false,
             "description": "Mapping from a post-coordination axis to a generic scale",
             "properties": {
-                "genericPostcoordinationScaleTopClass": {},
-                "postcoordinationAxis": {}
+                "genericPostcoordinationScaleTopClass": {
+                    "type": "string"
+                },
+                "postcoordinationAxis": {
+                    "type": "string"
+                }
             },
             "title": "PostcoordinationAxisToGenericScale",
             "type": "object"

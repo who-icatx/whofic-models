@@ -5,11 +5,15 @@
             "description": "",
             "properties": {
                 "allowedAxes": {
-                    "items": {},
+                    "items": {
+                        "type": "string"
+                    },
                     "type": "array"
                 },
                 "requiredAxes": {
-                    "items": {},
+                    "items": {
+                        "type": "string"
+                    },
                     "type": "array"
                 }
             },
@@ -21,7 +25,9 @@
             "description": "",
             "properties": {
                 "whoficEntityPostcoordinationSpecification": {
-                    "items": {},
+                    "items": {
+                        "$ref": "#/$defs/PostcoordinationSection"
+                    },
                     "type": "array"
                 }
             },
@@ -53,7 +59,9 @@
                     },
                     "type": "array"
                 },
-                "whoficEntityIri": {}
+                "whoficEntityIri": {
+                    "type": "string"
+                }
             },
             "title": "PostcoordinationSection",
             "type": "object"
@@ -90,7 +98,9 @@
     "metamodel_version": "1.7.0",
     "properties": {
         "whoficEntityPostcoordinationSpecification": {
-            "items": {},
+            "items": {
+                "$ref": "#/$defs/PostcoordinationSection"
+            },
             "type": "array"
         }
     },

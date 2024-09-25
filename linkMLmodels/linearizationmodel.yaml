@@ -171,7 +171,7 @@ slots:
   coreLinId:
     description: >-
       If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from
-    range: uricurie
+    range: uriorcurie
     multivalued: false
   id:
     description: >-

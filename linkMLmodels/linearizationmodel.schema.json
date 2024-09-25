@@ -182,7 +182,8 @@
             "description": "The schema of a linearization",
             "properties": {
                 "coreLinId": {
-                    "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from"
+                    "description": "If the linearization is based on another linearization, this field provides the id of the linearization, that it is based from",
+                    "type": "string"
                 },
                 "defaultIsAuxiliaryAxisChild": {
                     "$ref": "#/$defs/TrueFalseUnknown",

@@ -67,7 +67,7 @@ classes:
       
 slots:
   whoficEntityIri:
-    range: uricurie
+    range: uriorcurie
     multivalued: false
   scaleCustomizations:
     range: ScaleCustomization
@@ -76,11 +76,11 @@ slots:
     range: string
     multivalued: false
   postcoordinationAxis:
-    range: uricurie
+    range: uriorcurie
     multivalued: false
   postcoordinationScaleValues:
     range: PostcoordinationScaleValue
     multivalued: true
   scaleValueTopClass:
-    range: uricurie
+    range: uriorcurie
     multivalued: false

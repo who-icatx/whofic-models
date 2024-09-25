@@ -40,7 +40,7 @@ classes:
       whoficEntityPostcoordinationSpecification:
         multivalued: true
         inlined_as_list: true
-        range: PostcoordinationnSection
+        range: PostcoordinationSection
 
   ContentModelEntity:
     description: Description of ContentModelEntity
@@ -68,7 +68,7 @@ classes:
       
 slots:
   whoficEntityIri:
-    range: uricurie
+    range: uriorcurie
     multivalued: false
   postcoordinationSpecifications:
     range: PostcoordinationSpecification
@@ -81,10 +81,10 @@ slots:
     range: AllowedRequiredPostcoordinationAxes
     multivalued: false
   requiredAxes:
-    range: uricurie
+    range: uriorcurie
     multivalued: true
   allowedAxes:
-    range: uricurie
+    range: uriorcurie
     multivalued: true
 
 

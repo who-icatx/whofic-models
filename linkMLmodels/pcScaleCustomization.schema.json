@@ -30,7 +30,9 @@
                     },
                     "type": "array"
                 },
-                "whoficEntityIri": {}
+                "whoficEntityIri": {
+                    "type": "string"
+                }
             },
             "title": "EntityScaleCustomizations",
             "type": "object"
@@ -42,7 +44,9 @@
                 "description": {
                     "type": "string"
                 },
-                "scaleValueTopClass": {}
+                "scaleValueTopClass": {
+                    "type": "string"
+                }
             },
             "title": "PostcoordinationScaleValue",
             "type": "object"
@@ -51,7 +55,9 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "postcoordinationAxis": {},
+                "postcoordinationAxis": {
+                    "type": "string"
+                },
                 "postcoordinationScaleValues": {
                     "items": {
                         "$ref": "#/$defs/PostcoordinationScaleValue"

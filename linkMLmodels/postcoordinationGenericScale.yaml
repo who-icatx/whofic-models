@@ -57,8 +57,8 @@ slots:
     range: PostcoordinationAxisToGenericScale
     multivalued: true
   postcoordinationAxis:
-    range: uricurie
+    range: uriorcurie
     multivalued: false
   genericPostcoordinationScaleTopClass:
-    range: uricurie
+    range: uriorcurie
     multivalued: false
