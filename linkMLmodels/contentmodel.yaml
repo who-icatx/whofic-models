@@ -61,7 +61,6 @@ classes:
       - contentmodel:ICDCategoryModel    
     description : Top-level codable ICD entities
     slots:
-      - diagnosticCriteria
       - functionalImpact
 
             
@@ -101,9 +100,6 @@ classes:
     description :    Top-level ICHI extension code
   
 slots:
-  diagnosticCriteria:
-    multivalued: true
-    range: string
   functionalImpact:
     multivalued: true
     range: uriorcurie

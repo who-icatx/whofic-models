@@ -56,6 +56,7 @@ classes:
     annotations:
       - longDefinition
       - fullySpecifiedName
+      - diagnosticCriteria
 
   ICFCategoryModel:
     is_a: WHOFICEntityModel
@@ -161,6 +162,12 @@ slots:
   fullySpecifiedName:
     range: LanguageTerm
     multivalued: false
+    implements:
+      - owl:AnnotationProperty
+
+  diagnosticCriteria:
+    description: Diagnostic Criteria
+    range: LanguageTerm
     implements:
       - owl:AnnotationProperty
 
