@@ -49,7 +49,6 @@ classes:
       - baseExclusion
       - baseIndex
       - subclassBaseInclusion
-      - isObsolete
      
   ICDCategoryModel:
     is_a:   WHOFICEntityModel
@@ -79,17 +78,17 @@ classes:
 
   Term:
     is_a: ContentModelEntity
-    description : Toplevel entity for reified values 
+    description: Toplevel entity for reified values 
     annotations:
       - label
   
   LanguageTerm:
     is_a: Term
-    description : Reified string value 
+    description: Reified string value 
 
   BaseIndexTerm:
     is_a: LanguageTerm
-    description : Description of BaseIndexTerm
+    description: Description of BaseIndexTerm
     slots:
       - isInclusion
       - indexType
@@ -102,7 +101,7 @@ classes:
     
 #   InternalReferenceTerm:
 #     is_a: Term
-#     description : Reified reference to a WHO-FIC entity
+#     description: Reified reference to a WHO-FIC entity
 #     slots:
 #       - referencedCategory
 
@@ -122,7 +121,7 @@ slots:
       - owl:AnnotationProperty
   
   baseInclusion:
-    description : >- 
+    description: >- 
       Inclusion term of a Foundation entity, from which inclusions of classification 
       entities are computed, may be synonym, narrower term, or subclass inclusions
     range: Term
@@ -182,11 +181,12 @@ slots:
     implements:
       - owl:AnnotationProperty
       
-  isObsolete:
-    description: true if the WHO-FIC entity is obsolete
-    range: boolean
-    implements:
-      - owl:AnnotationProperty
+  # isObsolete:
+#     description: true if the WHO-FIC entity is obsolete
+#     slot_uri: owl:deprecated
+#     range: boolean
+#     implements:
+#       - owl:AnnotationProperty
 
   label:
     range: string
