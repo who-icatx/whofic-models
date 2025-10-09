@@ -13,11 +13,11 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
   skos: http://www.w3.org/2004/02/skos/core#
+  icdschema: http://id.who.int/icd/schema/
   whofic: http://who.int/whofic/  
   icd: http://who.int/icd#
   foundation: http://id.who.int/icd/entity/
-  icdschema: http://id.who.int/icd/schema/
-  linearization: http://id.who.int/icd/linearization
+  linearization: http://id.who.int/icd/linearization/
   ps: http://id.who.int/icd/postcoordnination
   schema: http://schema.org/
   linkml: https://w3id.org/linkml/
@@ -31,6 +31,10 @@ emit_prefixes:
   - xsd
   - skos
   - icd
+  - foundation
+  - icdschema
+  - linearization
+
 
 
 classes:
