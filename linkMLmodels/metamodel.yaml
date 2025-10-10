@@ -83,8 +83,8 @@ classes:
   Term:
     is_a: ContentModelEntity
     description: Toplevel entity for reified values 
-    annotations:
-      - label
+#    annotations:
+#      - label
   
   LanguageTerm:
     is_a: Term
@@ -113,14 +113,14 @@ slots:
   title:
     description: title of WHOFIC entity
     range: LanguageTerm
-    slot_uri: skos:prefLabel
+    #slot_uri: skos:prefLabel
     implements:
       - owl:AnnotationProperty
         
   definition:
     description: definition of WHOFIC entity
     range: LanguageTerm
-    slot_uri: skos:definition
+    #slot_uri: skos:definition
     implements:
       - owl:AnnotationProperty
   
@@ -130,7 +130,7 @@ slots:
       entities are computed, may be synonym, narrower term, or subclass inclusions
     range: Term
     multivalued: true
-    slot_uri: icdschema:inclusion
+    #slot_uri: icdschema:inclusion
     implements:
       - owl:AnnotationProperty
     
@@ -145,7 +145,7 @@ slots:
     description: Exclusion term of a Foundation entity, from which exclusions of classification entities are computed
     range: BaseExclusionTerm #InternalReferenceTerm
     multivalued: true
-    slot_uri: icdschema:exclusion
+    #slot_uri: icdschema:exclusion
     implements:
       - owl:AnnotationProperty
     
@@ -158,7 +158,7 @@ slots:
   longDefinition:
     description: Long definition
     range: LanguageTerm
-    slot_uri: icdschema:longDefinition
+    #slot_uri: icdschema:longDefinition
     implements:
       - owl:AnnotationProperty
 
