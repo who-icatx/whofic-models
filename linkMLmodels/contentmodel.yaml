@@ -117,6 +117,8 @@ slots:
   specificAnatomy:
     slot_uri: icdschema:specificAnatomy
     is_a:  anatomy
+    mixins:
+      - ICHIPostcoordinationAxis
     range: ICDExtensionCode
 
   topology:
@@ -757,10 +759,10 @@ slots:
     is_a: ICHIPostcoordinationAxis
     range: ICHIExtensionCode
 
-  specificAnatomicDetail:
-    slot_uri: icdschema:specificAnatomicDetail
-    is_a: ICHIPostcoordinationAxis
-    range: ICHIExtensionCode
+#   specificAnatomicDetail:
+#     slot_uri: icdschema:specificAnatomicDetail
+#     is_a: ICHIPostcoordinationAxis
+#     range: ICHIExtensionCode
 
   medicament:
     slot_uri: icdschema:medicament
