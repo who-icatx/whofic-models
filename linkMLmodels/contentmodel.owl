@@ -1094,17 +1094,10 @@ icdschema:severityAxis rdf:type owl:ObjectProperty ;
                        skos:inScheme <https://who.int/whofic/contentmodel> .
 
 
-###  http://id.who.int/icd/schema/specificAnatomicDetail
-icdschema:specificAnatomicDetail rdf:type owl:ObjectProperty ;
-                                 rdfs:subPropertyOf icdschema:ICHIPostcoordinationAxis ;
-                                 rdfs:range <http://id.who.int/icd/entity/1153570334> ;
-                                 rdfs:label "specificAnatomicDetail" ;
-                                 skos:inScheme <https://who.int/whofic/contentmodel> .
-
-
 ###  http://id.who.int/icd/schema/specificAnatomy
 icdschema:specificAnatomy rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf icdschema:anatomy ;
+                          rdfs:subPropertyOf icdschema:ICHIPostcoordinationAxis ,
+                                             icdschema:anatomy ;
                           rdfs:range <http://id.who.int/icd/entity/1920852714> ;
                           rdfs:label "specificAnatomy" ;
                           skos:inScheme <https://who.int/whofic/contentmodel> .
@@ -1517,6 +1510,7 @@ icd:IndexType rdf:type owl:Class ;
                                                 icd:IndexType.Synonym
                                               )
                                   ] ;
+              rdfs:subClassOf icd:ContentModelEntity ;
               linkml:permissible_values icd:IndexType.Narrower ,
                                         icd:IndexType.Synonym .
 
